@@ -1,35 +1,14 @@
 import React from "react";
-import { View, Text, TouchableOpacity, TextInput, Image } from "react-native";
-
-import { Feather } from "@expo/vector-icons";
+import { View, Text, TouchableOpacity, Image } from "react-native";
 
 import styles from "./styles";
-import arrow from "../../assets/arrow.png";
 import emailIcon from "../../assets/Logar-Email.png";
 import googleIcon from "../../assets/logar-google.png";
 import faceIcon from "../../assets/logar-facebook.png";
 
-import Header from "../../pages/Header";
-
 export default function Login() {
     return (
         <View style={styles.loginContainer}>
-            <Header />
-            <View style={styles.searchContainer}>
-                <Text style={styles.searchText}>Digite sua palavra chave:</Text>
-                <View style={styles.arrowText}>
-                    <Image source={arrow} style={styles.arrow} />
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Ex: Web"
-                        underlineColorAndroid="#333"
-                        accessibilityLabel="search input"
-                        // value={}
-                        onChange={() => {}}
-                    />
-                </View>
-            </View>
-
             <View>
                 <View style={styles.register}>
                     <Text style={styles.registerText}>Cadastre-se</Text>
