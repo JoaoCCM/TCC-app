@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, TextInput, Text, TouchableOpacity, Image } from 'react-native';
 import { Formik } from 'formik';
+import { Feather } from '@expo/vector-icons';
 
 import styles from './styles';
 
@@ -20,14 +21,17 @@ export default function LoginForm() {
                     <View style={styles.inputContainer}>
                         <TextInput
                             style={styles.emailInput}
-                            placeholder='Email'
+                            placeholder='E-mail'
                             value={formikProps.values.email}
                             onChangeText={formikProps.handleChange('email')}
                             onBlur={formikProps.handleBlur('email')}
                         />
+                        <TouchableOpacity onPress={() => console.log('eye clicked')}>
+                            <Feather name='eye-off' size={18} style={styles.eye} />
+                        </TouchableOpacity>
                         <TextInput
                             style={styles.passwordInput}
-                            placeholder='Password'
+                            placeholder='Senha'
                             value={formikProps.values.password}
                             onChangeText={formikProps.handleChange('password')}
                             onBlur={formikProps.handleBlur('password')}

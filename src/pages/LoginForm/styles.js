@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     },
 
     emailInput: {
+        fontSize: 19,
         width: 260,
         height: 50,
         borderBottomWidth: 1,
@@ -22,12 +23,21 @@ const styles = StyleSheet.create({
     },
 
     passwordInput: {
+        fontSize: 19,
         width: 260,
         height: 50,
         borderBottomWidth: 1,
         borderBottomColor: 'black',
         textAlignVertical: 'center',
         marginBottom: 32
+    },
+
+    eye: {
+        position: 'absolute',
+        alignItems: 'center',
+        padding: 15,
+        marginLeft: 80,
+        marginTop: 0
     },
 
     submitContainer: {
