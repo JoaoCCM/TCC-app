@@ -12,3 +12,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 -   Logo on header
 -   Navigation
 -   Login page
+-   Login Adjusts
