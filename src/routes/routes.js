@@ -8,13 +8,12 @@ const TabNav = createBottomTabNavigator();
 
 import Home from "../pages/Home";
 import Help from "../pages/Help";
-import Login from "../pages/Login";
 
 export default function routes() {
     return (
         <NavigationContainer>
             <TabNav.Navigator
-                initialRouteName="Login"
+                initialRouteName="Home"
                 screenOptions={({ route }) => ({
                     tabBarIcon: ({ focused, color, size }) => {
                         let iconName;
@@ -23,8 +22,6 @@ export default function routes() {
                             iconName = focused ? "home" : "home";
                         } else if (route.name === "Help") {
                             iconName = focused ? "help-circle" : "help-circle";
-                        } else if (route.name == "Login") {
-                            iconName = focused ? "log-in" : "log-in";
                         }
 
                         // You can return any component that you like here!
@@ -42,7 +39,6 @@ export default function routes() {
                     inactiveTintColor: "gray",
                 }}
             >
-                <TabNav.Screen name="Login" component={Login} />
                 <TabNav.Screen name="Home" component={Home} />
                 <TabNav.Screen name="Help" component={Help} />
             </TabNav.Navigator>
