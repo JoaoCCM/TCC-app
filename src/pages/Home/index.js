@@ -19,7 +19,7 @@ export default function Home() {
                         style={styles.input}
                         placeholder="Ex: Web"
                         underlineColorAndroid="#333"
-                        accessibilityLabel="search input"
+                        accessibilityLabel="Search Input"
                         onChange={() => {}}
                     />
                 </View>
