@@ -98,6 +98,28 @@ const styles = StyleSheet.create({
         height: 30,
         padding: 25,
     },
+
+    modalToggle: {
+        marginBottom: 10,
+        marginRight: 15,
+        padding: 10,
+        alignSelf: "flex-end"
+    },
+    modalClose: {
+        marginTop: 20,
+        marginBottom: -50
+    },
+    modalContent: {
+        flex: 1,
+        // justifyContent: 'center',
+        // alignItems: 'center',
+        // margin: 0
+    },
+    modalContainer: {
+        maxHeight: 200
+        // height: 200,
+        // width: 200
+    }
 });
 
 export default styles;

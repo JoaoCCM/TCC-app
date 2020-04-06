@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
     loginContainer: {
         flex: 1,
         backgroundColor: "#fbfbfb",
-        fontFamily: "montserrat-regular",
+        // fontFamily: "montserrat-regular",
     },
     searchContainer: {
         justifyContent: "center",
@@ -98,6 +98,7 @@ const styles = StyleSheet.create({
         height: 30,
         padding: 25,
     },
+
 });
 
 export default styles;
