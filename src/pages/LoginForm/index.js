@@ -12,11 +12,11 @@ export default function LoginForm() {
     const [showPass, setShowPassword] = useState(false);
     const [eyeIcon, setEyeIcon] = useState("eye-off");
 
-    const showPassword = () => {
+    function showPassword() {
         console.log("click");
         setShowPassword(!showPass);
-        showPass ? setEyeIcon("eye") : setEyeIcon("eye-off");
-    };
+        showPass ? setEyeIcon("eye-off") : setEyeIcon("eye");
+    }
     return (
         <View style={styles.loginFormContainer}>
             <Formik
@@ -32,7 +32,7 @@ export default function LoginForm() {
                             onChangeText={formikProps.handleChange("email")}
                             onBlur={formikProps.handleBlur("email")}
                         />
-                        <TouchableOpacity onPress={() => showPassword()}>
+                        <TouchableOpacity onPress={showPassword}>
                             <Feather
                                 name={eyeIcon}
                                 size={18}
@@ -45,7 +45,7 @@ export default function LoginForm() {
                             value={formikProps.values.password}
                             onChangeText={formikProps.handleChange("password")}
                             onBlur={formikProps.handleBlur("password")}
-                            secureTextEntry={true}
+                            secureTextEntry={!showPass}
                         />
 
                         <View style={styles.submitContainer}>
