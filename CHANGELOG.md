@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+-   Escreve o Proximo aqui
+
 ## Release [0.0.1] - 06-04-2020
 
 ### Added
