@@ -8,11 +8,11 @@ import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
 
 export default function Header() {
-    const navigation = useNavigation();
+    // const navigation = useNavigation();
 
-    const toHome = () => {
-        navigation.navigate("Home");
-    };
+    // const toHome = () => {
+    //     navigation.navigate("Home");
+    // };
     return (
         <View style={styles.header}>
             <LinearGradient
@@ -23,7 +23,7 @@ export default function Header() {
                 style={styles.gradientBar}
             ></LinearGradient>
             <View style={styles.headerRow}>
-                <TouchableOpacity onPress={toHome}>
+                <TouchableOpacity onPress={() => { }}>
                     <Image source={logo} style={{ width: 80, height: 50 }} />
                 </TouchableOpacity>
                 <Image source={magGlass} style={styles.magGlassIcon} />
