@@ -14,3 +14,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 -   Login page
 -   Login Adjusts
 -   Home and login
+-   Account Inicial

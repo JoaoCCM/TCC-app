@@ -8,6 +8,7 @@ const TabNav = createBottomTabNavigator();
 
 import Home from "../pages/Home";
 import Help from "../pages/Help";
+import Account from "../pages/Account";
 
 export default function routes() {
     return (
@@ -22,6 +23,8 @@ export default function routes() {
                             iconName = focused ? "home" : "home";
                         } else if (route.name === "Help") {
                             iconName = focused ? "help-circle" : "help-circle";
+                        } else if (route.name === "Account") {
+                            iconName = focused ? "user" : "user";
                         }
 
                         // You can return any component that you like here!
@@ -40,6 +43,7 @@ export default function routes() {
                 }}
             >
                 <TabNav.Screen name="Home" component={Home} />
+                <TabNav.Screen name="Account" component={Account} />
                 <TabNav.Screen name="Help" component={Help} />
             </TabNav.Navigator>
         </NavigationContainer>

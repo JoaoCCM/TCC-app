@@ -3,7 +3,6 @@ import * as Font from "expo-font";
 import { AppLoading } from "expo";
 
 import Routes from "./src/routes/routes";
-import LoginForm from './src/pages/LoginForm';
 
 //loading fonts
 const getFonts = () => {

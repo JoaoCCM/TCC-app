@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, Image } from "react-native";
-
+import globalStyles from "../globalStyle/globalStyles";
 
 import styles from "./styles";
 import arrow from "../../assets/arrow.png";
@@ -8,12 +8,9 @@ import Login from "../Login";
 
 import Header from "../Header";
 
-
 export default function Home() {
-
-
     return (
-        <View style={styles.loginContainer}>
+        <View style={globalStyles.container}>
             <Header />
             <View style={styles.searchContainer}>
                 <Text style={styles.searchText}>Digite sua palavra chave:</Text>
@@ -24,7 +21,7 @@ export default function Home() {
                         placeholder="Ex: Web"
                         underlineColorAndroid="#333"
                         accessibilityLabel="Search Input"
-                        onChange={() => { }}
+                        onChange={() => {}}
                     />
                 </View>
             </View>
