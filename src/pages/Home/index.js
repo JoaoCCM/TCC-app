@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, Image } from "react-native";
-import globalStyles from "../globalStyle/globalStyles";
+import globalStyles from "../../globalStyle/globalStyles";
 
 import styles from "./styles";
 import arrow from "../../assets/arrow.png";
 import Login from "../Login";
+import UserHome from "../UserHome";
 
 import Header from "../Header";
 
 export default function Home() {
+    const [logado, setlogado] = useState(true);
     return (
         <View style={globalStyles.container}>
             <Header />
@@ -25,8 +27,7 @@ export default function Home() {
                     />
                 </View>
             </View>
-            {/*Ai aqui a gente coloca um if se ele nao estiver logado roda esse componente, e se ele estiver roda outro*/}
-            <Login />
+            {logado ? <Login /> : <UserHome />}
         </View>
     );
 }

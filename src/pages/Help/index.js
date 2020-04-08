@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text } from "react-native";
 import Header from "../Header";
-import globalStyles from "../globalStyle/globalStyles";
+import globalStyles from "../../globalStyle/globalStyles";
 
 export default function Help() {
     return (

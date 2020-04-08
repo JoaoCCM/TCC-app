@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Image } from "react-native";
 import Header from "../Header";
 import styles from "./styles";
-import globalStyles from "../globalStyle/globalStyles";
+import globalStyles from "../../globalStyle/globalStyles";
 
 import defaultUser from "../../assets/defaultUserImage.png";
 
