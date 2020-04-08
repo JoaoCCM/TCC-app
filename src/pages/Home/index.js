@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, Image } from "react-native";
-import globalStyles from "../../globalStyle/globalStyles";
 
+import globalStyles from "../../globalStyle/globalStyles";
 import styles from "./styles";
 import arrow from "../../assets/arrow.png";
-import Login from "../Login";
-import UserHome from "../UserHome";
 
+import Login from "../Login";
 import Header from "../Header";
+import UserHome from '../UserHome';
 
 export default function Home() {
     const [logado, setlogado] = useState(true);
@@ -23,11 +23,11 @@ export default function Home() {
                         placeholder="Ex: Web"
                         underlineColorAndroid="#333"
                         accessibilityLabel="Search Input"
-                        onChange={() => {}}
+                        onChange={() => { }}
                     />
                 </View>
             </View>
-            {logado ? <Login /> : <UserHome />}
+            {logado ? <UserHome /> : <Login />}
         </View>
     );
 }
