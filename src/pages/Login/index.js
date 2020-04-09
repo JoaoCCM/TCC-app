@@ -30,7 +30,6 @@ export default function Login(props) {
     const toCadastro = () => {
         //     navigation.navigate("Cadastro");
     };
-    console.log("props", props);
 
     return (
         <View style={styles.loginContainer}>
