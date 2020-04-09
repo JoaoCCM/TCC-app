@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 -   Swipe to delete
+-   Favorites page
+-   icons in the tab fixed
 
 ## Release [0.0.1] - 06-08-2020
 

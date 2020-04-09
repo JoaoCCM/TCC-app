@@ -2,7 +2,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import { Feather } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const TabNav = createBottomTabNavigator();
 
@@ -10,7 +10,8 @@ import Home from "../pages/Home";
 import Help from "../pages/Help";
 import Account from "../pages/Account";
 import Cadastro from "../pages/Cadastro";
-// import UserHome from "../pages/UserHome";
+import Favorites from "../pages/Favorites";
+
 
 export default function routes() {
     return (
@@ -23,16 +24,18 @@ export default function routes() {
                         let iconName;
 
                         if (route.name === "Home") {
-                            iconName = focused ? "home" : "home";
+                            iconName = focused ? "home" : "home-outline";
                         } else if (route.name === "Help") {
-                            iconName = focused ? "help-circle" : "help-circle";
+                            iconName = focused ? "help-circle" : "help-circle-outline";
                         } else if (route.name === "Account") {
-                            iconName = focused ? "user" : "user";
+                            iconName = focused ? "account" : "account-outline";
+                        } else if (route.name === 'Favorites') {
+                            iconName = focused ? "cards-heart" : "heart-outline";
                         }
 
                         // You can return any component that you like here!
                         return (
-                            <Feather
+                            <MaterialCommunityIcons
                                 name={iconName}
                                 size={size}
                                 color={color}
@@ -42,12 +45,13 @@ export default function routes() {
                 })}
                 tabBarOptions={{
                     keyboardHidesTabBar: true,
-                    activeTintColor: "#6A82FB",
+                    activeTintColor: "black",
                     inactiveTintColor: "gray",
                 }}
             >
                 {/* <TabNav.Screen name="Cadastro" component={Cadastro} /> */}
                 <TabNav.Screen name="Home" component={Home} />
+                <TabNav.Screen name="Favorites" component={Favorites} />
                 <TabNav.Screen name="Account" component={Account} />
                 <TabNav.Screen name="Help" component={Help} />
             </TabNav.Navigator>
