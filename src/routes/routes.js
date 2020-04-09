@@ -9,6 +9,7 @@ const TabNav = createBottomTabNavigator();
 import Home from "../pages/Home";
 import Help from "../pages/Help";
 import Account from "../pages/Account";
+// import Cadastro from "../pages/Cadastro";
 // import UserHome from "../pages/UserHome";
 
 export default function routes() {
@@ -43,6 +44,7 @@ export default function routes() {
                     inactiveTintColor: "gray",
                 }}
             >
+                <TabNav.Screen name="Cadastro" component={Cadastro} />
                 <TabNav.Screen name="Home" component={Home} />
                 <TabNav.Screen name="Account" component={Account} />
                 <TabNav.Screen name="Help" component={Help} />

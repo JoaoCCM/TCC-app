@@ -8,7 +8,7 @@ import {
     Keyboard,
     TouchableWithoutFeedback,
 } from "react-native";
-import { Feather } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 import CadastroDialog from "../components/cadastroDialog";
 
@@ -17,20 +17,29 @@ import emailIcon from "../../assets/Logar-Email.png";
 import googleIcon from "../../assets/logar-google.png";
 import faceIcon from "../../assets/logar-facebook.png";
 
-import LoginForm from "../LoginForm";
+import Cadastro from "../Cadastro";
 
-export default function Login() {
-    const [modalOpen, setModalOpen] = useState(false);
-    const [cadastroOpen, setCadastroOpen] = useState(false);
+export default function Login(props) {
+    const [emailLoginOpen, setEmailLoginOpen] = useState(false);
 
     function closeDialog() {
-        setCadastroOpen(!cadastroOpen);
+        setEmailLoginOpen(!emailLoginOpen);
     }
+    // const navigation = useNavigation();
+
+    const toCadastro = () => {
+        //     navigation.navigate("Cadastro");
+    };
+    console.log("props", props);
+
     return (
         <View style={styles.loginContainer}>
-            <CadastroDialog visible={cadastroOpen} closeDialog={closeDialog} />
+            <CadastroDialog
+                visible={emailLoginOpen}
+                closeDialog={closeDialog}
+            />
             <View>
-                <TouchableOpacity onPress={() => {}}>
+                <TouchableOpacity onPress={toCadastro}>
                     <View style={styles.register}>
                         <Text style={styles.registerText}>Cadastre-se</Text>
                     </View>
@@ -40,7 +49,7 @@ export default function Login() {
                 <Text style={styles.orText}>ou</Text>
             </View>
             <View style={styles.loginOpt}>
-                <TouchableOpacity onPress={() => setCadastroOpen(true)}>
+                <TouchableOpacity onPress={() => setEmailLoginOpen(true)}>
                     <Image source={emailIcon} style={styles.loginIcon} />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => console.log("face clicked")}>
