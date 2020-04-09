@@ -9,7 +9,7 @@ const TabNav = createBottomTabNavigator();
 import Home from "../pages/Home";
 import Help from "../pages/Help";
 import Account from "../pages/Account";
-// import Cadastro from "../pages/Cadastro";
+import Cadastro from "../pages/Cadastro";
 // import UserHome from "../pages/UserHome";
 
 export default function routes() {
