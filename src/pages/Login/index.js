@@ -1,51 +1,46 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, Image, Modal, Keyboard, TouchableWithoutFeedback } from "react-native";
-import { Feather } from "@expo/vector-icons"
+import {
+    View,
+    Text,
+    TouchableOpacity,
+    Image,
+    Modal,
+    Keyboard,
+    TouchableWithoutFeedback,
+} from "react-native";
+import { Feather } from "@expo/vector-icons";
+
+import CadastroDialog from "../components/cadastroDialog";
 
 import styles from "./styles";
 import emailIcon from "../../assets/Logar-Email.png";
 import googleIcon from "../../assets/logar-google.png";
 import faceIcon from "../../assets/logar-facebook.png";
 
-import LoginForm from '../LoginForm';
-
+import LoginForm from "../LoginForm";
 
 export default function Login() {
     const [modalOpen, setModalOpen] = useState(false);
+    const [cadastroOpen, setCadastroOpen] = useState(false);
 
-
+    function closeDialog() {
+        setCadastroOpen(!cadastroOpen);
+    }
     return (
         <View style={styles.loginContainer}>
-            <View style={styles.modalContainer}>
-                <Modal visible={modalOpen} animationType="slide">
-                    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                        <View style={styles.modalContent}>
-                            <Feather
-                                name="x-circle"
-                                size={27}
-                                style={{
-                                    ...styles.modalToggle,
-                                    ...styles.modalClose
-                                }}
-                                onPress={() => setModalOpen(false)}
-                            />
-                            <LoginForm />
-                        </View>
-                    </TouchableWithoutFeedback>
-                </Modal>
-            </View>
+            <CadastroDialog visible={cadastroOpen} closeDialog={closeDialog} />
             <View>
-                <View style={styles.register}>
-                    <Text style={styles.registerText}>Cadastre-se</Text>
-                </View>
+                <TouchableOpacity onPress={() => {}}>
+                    <View style={styles.register}>
+                        <Text style={styles.registerText}>Cadastre-se</Text>
+                    </View>
+                </TouchableOpacity>
             </View>
-
             <View style={styles.or}>
                 <Text style={styles.orText}>ou</Text>
             </View>
-
             <View style={styles.loginOpt}>
-                <TouchableOpacity onPress={() => setModalOpen(true)}>
+                <TouchableOpacity onPress={() => setCadastroOpen(true)}>
                     <Image source={emailIcon} style={styles.loginIcon} />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => console.log("face clicked")}>

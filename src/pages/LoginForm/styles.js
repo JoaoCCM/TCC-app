@@ -1,16 +1,10 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-    loginFormContainer: {
-        flex: 1,
-    },
-
     inputContainer: {
         alignItems: "center",
         justifyContent: "center",
-        marginTop: 150,
     },
-
     emailInput: {
         fontSize: 19,
         width: 260,
@@ -20,33 +14,36 @@ const styles = StyleSheet.create({
         textAlignVertical: "center",
         marginBottom: 32,
     },
-
+    passwordContainer: {
+        flexDirection: "row",
+    },
     passwordInput: {
         fontSize: 19,
-        width: 260,
+        width: 240,
         height: 50,
         borderBottomWidth: 1,
         borderBottomColor: "black",
         textAlignVertical: "center",
         marginBottom: 32,
-        zIndex: -1,
     },
-
+    eyeContainer: {
+        borderBottomWidth: 1,
+        borderBottomColor: "black",
+        height: 50,
+        justifyContent: "center",
+        paddingRight: 5,
+    },
     eye: {
-        // position: "absolute",
         alignItems: "center",
-        padding: 15,
-        marginLeft: 80,
+        marginLeft: 0,
         marginTop: 0,
     },
-
     submitContainer: {
         flexDirection: "row-reverse",
         alignItems: "center",
         justifyContent: "space-evenly",
-        marginTop: 15,
+        marginTop: 5,
     },
-
     btnSubmit: {
         borderWidth: 1,
         borderRadius: 10,
@@ -54,7 +51,6 @@ const styles = StyleSheet.create({
         height: 45,
         width: 120,
     },
-
     btnText: {
         justifyContent: "center",
         alignItems: "center",
@@ -64,7 +60,6 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         color: "#6A82FB",
     },
-
     googleIcon: {
         width: 35,
         height: 35,

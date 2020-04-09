@@ -7,7 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## Release [0.0.1] - 06-08-2020
+
+### Added
+
 -   Eye on / Eye off
+-   Login pop up
+-   Help Page
 
 ## Release [0.0.1] - 06-04-2020
 

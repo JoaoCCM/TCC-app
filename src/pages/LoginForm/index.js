@@ -13,7 +13,6 @@ export default function LoginForm() {
     const [eyeIcon, setEyeIcon] = useState("eye-off");
 
     function showPassword() {
-        console.log("click");
         setShowPassword(!showPass);
         showPass ? setEyeIcon("eye-off") : setEyeIcon("eye");
     }
@@ -32,21 +31,27 @@ export default function LoginForm() {
                             onChangeText={formikProps.handleChange("email")}
                             onBlur={formikProps.handleBlur("email")}
                         />
-                        <TouchableOpacity onPress={showPassword}>
-                            <Feather
-                                name={eyeIcon}
-                                size={18}
-                                style={styles.eye}
+                        <View style={styles.passwordContainer}>
+                            <TextInput
+                                style={styles.passwordInput}
+                                placeholder="Senha"
+                                value={formikProps.values.password}
+                                onChangeText={formikProps.handleChange(
+                                    "password"
+                                )}
+                                onBlur={formikProps.handleBlur("password")}
+                                secureTextEntry={!showPass}
                             />
-                        </TouchableOpacity>
-                        <TextInput
-                            style={styles.passwordInput}
-                            placeholder="Senha"
-                            value={formikProps.values.password}
-                            onChangeText={formikProps.handleChange("password")}
-                            onBlur={formikProps.handleBlur("password")}
-                            secureTextEntry={!showPass}
-                        />
+                            <View style={styles.eyeContainer}>
+                                <TouchableOpacity onPress={showPassword}>
+                                    <Feather
+                                        name={eyeIcon}
+                                        size={18}
+                                        style={styles.eye}
+                                    />
+                                </TouchableOpacity>
+                            </View>
+                        </View>
 
                         <View style={styles.submitContainer}>
                             <TouchableOpacity style={styles.btnSubmit}>
