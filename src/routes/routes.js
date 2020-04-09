@@ -44,7 +44,7 @@ export default function routes() {
                     inactiveTintColor: "gray",
                 }}
             >
-                <TabNav.Screen name="Cadastro" component={Cadastro} />
+                {/* <TabNav.Screen name="Cadastro" component={Cadastro} /> */}
                 <TabNav.Screen name="Home" component={Home} />
                 <TabNav.Screen name="Account" component={Account} />
                 <TabNav.Screen name="Help" component={Help} />

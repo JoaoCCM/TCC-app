@@ -75,6 +75,18 @@ const styles = StyleSheet.create({
         height: 37,
         marginRight: 10,
     },
+
+    touch: {
+        backgroundColor: '#AF2222',
+        height: 62,
+        marginTop: 10
+    },
+    deleteText: {
+        textAlign: 'right',
+        alignItems: 'center',
+        marginTop: 17,
+        marginRight: 25,
+    }
 });
 
 export default styles;
