@@ -10,7 +10,7 @@ import Header from "../Header";
 import UserHome from "../UserHome";
 
 export default function Home() {
-    const [logado, setlogado] = useState(false);
+    const [logado, setlogado] = useState(true);
     return (
         <View style={globalStyles.container}>
             <Header />
@@ -23,7 +23,7 @@ export default function Home() {
                         placeholder="Ex: Web"
                         underlineColorAndroid="#333"
                         accessibilityLabel="Search Input"
-                        onChange={() => {}}
+                        onChange={() => { }}
                     />
                 </View>
             </View>

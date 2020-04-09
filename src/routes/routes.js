@@ -16,6 +16,7 @@ export default function routes() {
     return (
         <NavigationContainer>
             <TabNav.Navigator
+
                 initialRouteName="Home"
                 screenOptions={({ route }) => ({
                     tabBarIcon: ({ focused, color, size }) => {
@@ -40,11 +41,12 @@ export default function routes() {
                     },
                 })}
                 tabBarOptions={{
+                    keyboardHidesTabBar: true,
                     activeTintColor: "#6A82FB",
                     inactiveTintColor: "gray",
                 }}
             >
-                <TabNav.Screen name="Cadastro" component={Cadastro} />
+                {/* <TabNav.Screen name="Cadastro" component={Cadastro} /> */}
                 <TabNav.Screen name="Home" component={Home} />
                 <TabNav.Screen name="Account" component={Account} />
                 <TabNav.Screen name="Help" component={Help} />

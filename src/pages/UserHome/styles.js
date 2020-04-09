@@ -75,6 +75,29 @@ const styles = StyleSheet.create({
         height: 37,
         marginRight: 10,
     },
+
+    touch: {
+        backgroundColor: '#AF2222',
+        height: 62,
+        marginTop: 10
+    },
+    deleteText: {
+        textAlign: 'right',
+        alignItems: 'center',
+        marginTop: 17,
+        marginRight: 25,
+    },
+
+    msgContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 100
+    },
+
+    msg: {
+        fontFamily: 'montserrat-regular',
+        color: 'grey'
+    }
 });
 
 export default styles;
