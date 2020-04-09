@@ -1,50 +1,50 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     initialInfo: {
-        justifyContent: 'center',
-        alignItems: 'center'
+        justifyContent: "center",
+        alignItems: "center",
     },
     title: {
-        fontFamily: 'montserrat-regular',
+        fontFamily: "montserrat-regular",
         fontSize: 30,
-        fontWeight: 'bold',
-        marginTop: 20
+        fontWeight: "bold",
+        marginTop: 25,
     },
     content: {
         width: 300,
-        textAlign: 'center',
-        fontFamily: 'montserrat-regular',
-        marginTop: 7
+        textAlign: "center",
+        fontFamily: "montserrat-regular",
+        marginTop: 15,
+        marginBottom: 50,
     },
     questionsContainer: {
-        flex: 1
+        flex: 1,
     },
     dropdown: {
-        marginTop: 40,
-        alignSelf: 'center'
+        // alignSelf: "center",
+        padding: 10,
+        borderTopWidth: 1,
+        borderTopColor: "#CACACA",
     },
     headerContent: {
         width: 360,
         height: 50,
-        borderTopWidth: 1,
-        borderTopColor: '#CACACA',
-        borderBottomWidth: 1,
-        borderBottomColor: '#CACACA'
+        paddingTop: 0,
     },
     headerText: {
-        textAlign: 'left',
+        textAlign: "left",
         marginLeft: 15,
-        padding: 10,
-        fontFamily: 'montserrat-regular',
-        fontSize: 18
+        fontFamily: "montserrat-regular",
+        fontSize: 18,
+        textTransform: "capitalize",
     },
     body: {
-        marginTop: 20,
+        marginBottom: 15,
         marginLeft: 15,
-        fontFamily: 'montserrat-regular',
-        fontSize: 18
-    }
+        fontFamily: "montserrat-regular",
+        fontSize: 18,
+    },
 });
 
 export default styles;

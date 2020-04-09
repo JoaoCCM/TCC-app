@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     searchContainer: {
@@ -38,41 +38,43 @@ const styles = StyleSheet.create({
         bottom: 10,
     },
     favList: {
-
+        marginTop: 10,
     },
     listContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        alignItems: 'center',
-        marginTop: 32,
+        flexDirection: "row",
+        justifyContent: "space-evenly",
+        alignItems: "center",
+        marginTop: 10,
+        paddingVertical: 5,
+
         borderBottomWidth: 1,
-        borderBottomColor: 'black',
+        borderBottomColor: "#cacaca",
         borderTopWidth: 1,
-        borderTopColor: 'black'
+        borderTopColor: "#cacaca",
     },
 
     profilePic: {
-        width: 30,
-        height: 30,
-        marginLeft: 10
+        width: 40,
+        height: 40,
+        marginLeft: 10,
     },
 
     profName: {
         width: 200,
         height: 50,
         borderRadius: 8,
-        alignItems: 'center',
+        alignItems: "center",
         padding: 12,
         marginRight: 38,
-        fontFamily: 'montserrat-regular',
-        fontSize: 18
+        fontFamily: "montserrat-regular",
+        fontSize: 18,
     },
 
     sendMail: {
         width: 37,
         height: 37,
-        marginRight: 10
-    }
-})
+        marginRight: 10,
+    },
+});
 
 export default styles;

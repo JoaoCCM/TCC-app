@@ -23,7 +23,7 @@ export default function Header() {
                 style={styles.gradientBar}
             ></LinearGradient>
             <View style={styles.headerRow}>
-                <TouchableOpacity onPress={() => { }}>
+                <TouchableOpacity onPress={() => {}}>
                     <Image source={logo} style={{ width: 80, height: 50 }} />
                 </TouchableOpacity>
                 <Image source={magGlass} style={styles.magGlassIcon} />

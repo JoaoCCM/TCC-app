@@ -7,10 +7,10 @@ import arrow from "../../assets/arrow.png";
 
 import Login from "../Login";
 import Header from "../Header";
-import UserHome from '../UserHome';
+import UserHome from "../UserHome";
 
 export default function Home() {
-    const [logado, setlogado] = useState(true);
+    const [logado, setlogado] = useState(false);
     return (
         <View style={globalStyles.container}>
             <Header />
@@ -23,7 +23,7 @@ export default function Home() {
                         placeholder="Ex: Web"
                         underlineColorAndroid="#333"
                         accessibilityLabel="Search Input"
-                        onChange={() => { }}
+                        onChange={() => {}}
                     />
                 </View>
             </View>

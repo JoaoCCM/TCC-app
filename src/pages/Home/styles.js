@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     searchText: {
-        marginTop: 55,
+        marginTop: 40,
         paddingHorizontal: 50,
         textAlign: "center",
         color: "#3a3a3a",
@@ -98,7 +98,6 @@ const styles = StyleSheet.create({
         height: 30,
         padding: 25,
     },
-
 });
 
 export default styles;
