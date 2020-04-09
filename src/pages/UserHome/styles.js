@@ -86,6 +86,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 17,
         marginRight: 25,
+    },
+
+    msgContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 100
+    },
+
+    msg: {
+        fontFamily: 'montserrat-regular',
+        color: 'grey'
     }
 });
 

@@ -41,24 +41,31 @@ export default function UserHome() {
     }
 
     return (
-        <FlatList
-            style={styles.favList}
-            data={profList}
-            showsVerticalScrollIndicator={false}
-            keyExtractor={(profList) => String(profList.id)}
-            renderItem={({ item: prof }) => (
-                <Swipeable leftButtons={btns} onLeftActionRelease={() => deleteProf(prof.id)}>
-                    <View style={styles.listContainer}>
-                        <Image source={profilePic} style={styles.profilePic} />
-                        <Text style={styles.profName}>{prof.name}</Text>
-                        <TouchableOpacity
-                            onPress={() => console.log("mail composer")}
-                        >
-                            <Image source={sendMail} style={styles.sendMail} />
-                        </TouchableOpacity>
-                    </View>
-                </Swipeable>
-            )}
-        />
+        profList.length ? (
+            <FlatList
+                style={styles.favList}
+                data={profList}
+                showsVerticalScrollIndicator={false}
+                keyExtractor={(profList) => String(profList.id)}
+                renderItem={({ item: prof }) => (
+                    <Swipeable leftButtons={btns} onLeftActionRelease={() => deleteProf(prof.id)}>
+                        <View style={styles.listContainer}>
+                            <Image source={profilePic} style={styles.profilePic} />
+                            <Text style={styles.profName}>{prof.name}</Text>
+                            <TouchableOpacity
+                                onPress={() => console.log("mail composer")}
+                            >
+                                <Image source={sendMail} style={styles.sendMail} />
+                            </TouchableOpacity>
+                        </View>
+                    </Swipeable>
+                )}
+            />
+        ) : (
+                <View style={styles.msgContainer}>
+                    <Text style={styles.msg}>Você não possui nenhum professor salvo ainda!</Text>
+                </View>
+            )
+
     );
 }

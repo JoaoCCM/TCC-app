@@ -16,6 +16,7 @@ export default function routes() {
     return (
         <NavigationContainer>
             <TabNav.Navigator
+
                 initialRouteName="Home"
                 screenOptions={({ route }) => ({
                     tabBarIcon: ({ focused, color, size }) => {
@@ -40,6 +41,7 @@ export default function routes() {
                     },
                 })}
                 tabBarOptions={{
+                    keyboardHidesTabBar: true,
                     activeTintColor: "#6A82FB",
                     inactiveTintColor: "gray",
                 }}
