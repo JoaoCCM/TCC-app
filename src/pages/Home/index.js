@@ -6,8 +6,8 @@ import styles from "./styles";
 import arrow from "../../assets/arrow.png";
 
 import Login from "../Login";
-import Header from "../../Components/Header";
-import HomeLogged from "../../Components/HomeLogged";
+import Header from "../../components/Header";
+import HomeLogged from "../../components/HomeLogged";
 
 export default function Home() {
     const [logado, setlogado] = useState(true);
@@ -23,7 +23,7 @@ export default function Home() {
                         placeholder="Ex: Web"
                         underlineColorAndroid="#333"
                         accessibilityLabel="Search Input"
-                        onChange={() => {}}
+                        onChange={() => { }}
                     />
                 </View>
             </View>

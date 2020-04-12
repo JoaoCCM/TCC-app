@@ -10,11 +10,11 @@ import stylesFormik from "../LoginForm/styles";
 import globalStyles from "../../globalStyle/globalStyles";
 import { Dropdown } from "react-native-material-dropdown";
 
-import Header from "../../Components/Header";
-import VoltarLink from "../../Components/VoltarLink";
-import EyeShowPasswd from "../../Components/EyeShowPasswd";
+import Header from "../../components/Header";
+import VoltarLink from "../../components/VoltarLink";
+import EyeShowPasswd from "../../components/EyeShowPasswd";
 
-import CadastroDialog from "../../Components/CadastroDialog";
+import CadastroDialog from "../../components/CadastroDialog";
 
 export default function Cadastro() {
     const [showPass, setShowPassword] = useState(false);
@@ -56,8 +56,8 @@ export default function Cadastro() {
                 <View style={styles.cadastro}>
                     <Text style={styles.cadastroTitle}>Registre-se</Text>
                     <Formik
-                        initialValues={{ Nome: "", email: "", password: "" }}
-                        onSubmit={() => {}}
+                        initialValues={{ nome: "", email: "", password: "" }}
+                        onSubmit={() => { }}
                     >
                         {(formikProps) => (
                             <View style={stylesFormik.inputContainer}>
@@ -67,11 +67,11 @@ export default function Cadastro() {
                                         ...styles.input,
                                     }}
                                     placeholder="Nome"
-                                    value={formikProps.values.email}
+                                    value={formikProps.values.nome}
                                     onChangeText={formikProps.handleChange(
-                                        "Nome"
+                                        "nome"
                                     )}
-                                    onBlur={formikProps.handleBlur("Nome")}
+                                    onBlur={formikProps.handleBlur("nome")}
                                 />
                                 <TextInput
                                     style={{
@@ -117,7 +117,7 @@ export default function Cadastro() {
                                     />
                                 </View>
                                 <View style={styles.esqueceuSenhaContainer}>
-                                    <TouchableOpacity onPress={() => {}}>
+                                    <TouchableOpacity onPress={() => { }}>
                                         <Text style={styles.esqueceuSenha}>
                                             Esqueceu a Senha
                                         </Text>

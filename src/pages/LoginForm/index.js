@@ -7,7 +7,7 @@ import styles from "./styles";
 import googleIcon from "../../assets/logar-google.png";
 import faceIcon from "../../assets/logar-facebook.png";
 
-import EyeShowPasswd from "../../Components/EyeShowPasswd";
+import EyeShowPasswd from "../../components/EyeShowPasswd";
 
 export default function LoginForm() {
     const [showPass, setShowPassword] = useState(false);
@@ -21,7 +21,7 @@ export default function LoginForm() {
         <View style={styles.loginFormContainer}>
             <Formik
                 initialValues={{ email: "", password: "" }}
-                onSubmit={() => {}}
+                onSubmit={() => { }}
             >
                 {(formikProps) => (
                     <View style={styles.inputContainer}>

@@ -7,10 +7,10 @@ import styles from "./styles";
 import profilePic from "../../assets/defaultUserImage.png";
 import sendMail from "../../assets/Logar-Email.png";
 
-import Header from "../../Components/Header";
+import Header from "../../components/Header";
 
 const btns = [
-    <TouchableOpacity onPress={() => {}} style={styles.touch}>
+    <TouchableOpacity onPress={() => { }} style={styles.touch}>
         <Feather
             name="trash-2"
             style={styles.deleteText}
@@ -68,12 +68,12 @@ export default function Favorites() {
                     )}
                 />
             ) : (
-                <View style={styles.msgContainer}>
-                    <Text style={styles.msg}>
-                        Você não possui nenhum professor salvo ainda!
+                    <View style={styles.msgContainer}>
+                        <Text style={styles.msg}>
+                            Você não possui nenhum professor salvo ainda!
                     </Text>
-                </View>
-            )}
+                    </View>
+                )}
         </>
     );
 }

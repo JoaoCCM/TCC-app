@@ -8,7 +8,7 @@ import styles from "./styles";
 import arrowUp from "../../assets/ArrowUp.png";
 import arrowDown from "../../assets/ArrowDown.png";
 
-import Header from "../../Components/Header";
+import Header from "../../components/Header";
 
 const qNa = [
     { title: "question 1", body: "2bdui2dbiubde" },
@@ -34,27 +34,27 @@ export default function Help() {
                 <ScrollView>
                     {qNa
                         ? qNa.map((item, i) => {
-                              return (
-                                  <DropDownItem
-                                      style={styles.dropdown}
-                                      key={i}
-                                      contentVisible={false}
-                                      invisibleImage={arrowDown}
-                                      visibleImage={arrowUp}
-                                      header={
-                                          <View style={styles.headerContent}>
-                                              <Text style={styles.headerText}>
-                                                  {item.title}
-                                              </Text>
-                                          </View>
-                                      }
-                                  >
-                                      <Text style={styles.body}>
-                                          {item.body}
-                                      </Text>
-                                  </DropDownItem>
-                              );
-                          })
+                            return (
+                                <DropDownItem
+                                    style={styles.dropdown}
+                                    key={i}
+                                    contentVisible={false}
+                                    invisibleImage={arrowDown}
+                                    visibleImage={arrowUp}
+                                    header={
+                                        <View style={styles.headerContent}>
+                                            <Text style={styles.headerText}>
+                                                {item.title}
+                                            </Text>
+                                        </View>
+                                    }
+                                >
+                                    <Text style={styles.body}>
+                                        {item.body}
+                                    </Text>
+                                </DropDownItem>
+                            );
+                        })
                         : null}
                 </ScrollView>
             </View>
