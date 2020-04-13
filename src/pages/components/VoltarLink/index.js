@@ -1,13 +1,15 @@
 import React from "react";
-import { Text, Image } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 import { StyleSheet } from "react-native";
-import globalStyles from "../../../globalStyle/globalStyles";
+import { useNavigation } from "@react-navigation/native";
 
 export default function VoltarLink({ link }) {
+    const navigation = useNavigation();
+
     return (
-        <>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
             <Text style={styles.link}>{"<< Voltar"}</Text>
-        </>
+        </TouchableOpacity>
     );
 }
 

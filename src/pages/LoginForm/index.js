@@ -54,8 +54,11 @@ export default function LoginForm() {
                             />
                         </View>
                         <View style={styles.submitContainer}>
-                            <TouchableOpacity style={styles.btnSubmit}>
-                                <Text style={styles.btnText}>Entre</Text>
+                            <TouchableOpacity>
+                                <Image
+                                    source={faceIcon}
+                                    style={styles.faceIcon}
+                                />
                             </TouchableOpacity>
                             <TouchableOpacity>
                                 <Image
@@ -63,11 +66,8 @@ export default function LoginForm() {
                                     style={styles.googleIcon}
                                 />
                             </TouchableOpacity>
-                            <TouchableOpacity>
-                                <Image
-                                    source={faceIcon}
-                                    style={styles.faceIcon}
-                                />
+                            <TouchableOpacity style={styles.btnSubmit}>
+                                <Text style={styles.btnText}>Entre</Text>
                             </TouchableOpacity>
                         </View>
                     </View>

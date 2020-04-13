@@ -12,12 +12,10 @@ import Account from "../pages/Account";
 import Cadastro from "../pages/Cadastro";
 import Favorites from "../pages/Favorites";
 
-
 export default function routes() {
     return (
         <NavigationContainer>
             <TabNav.Navigator
-
                 initialRouteName="Home"
                 screenOptions={({ route }) => ({
                     tabBarIcon: ({ focused, color, size }) => {
@@ -26,11 +24,15 @@ export default function routes() {
                         if (route.name === "Home") {
                             iconName = focused ? "home" : "home-outline";
                         } else if (route.name === "Help") {
-                            iconName = focused ? "help-circle" : "help-circle-outline";
+                            iconName = focused
+                                ? "help-circle"
+                                : "help-circle-outline";
                         } else if (route.name === "Account") {
                             iconName = focused ? "account" : "account-outline";
-                        } else if (route.name === 'Favorites') {
-                            iconName = focused ? "cards-heart" : "heart-outline";
+                        } else if (route.name === "Favorites") {
+                            iconName = focused
+                                ? "cards-heart"
+                                : "heart-outline";
                         }
 
                         // You can return any component that you like here!
@@ -45,11 +47,11 @@ export default function routes() {
                 })}
                 tabBarOptions={{
                     keyboardHidesTabBar: true,
-                    activeTintColor: "black",
+                    activeTintColor: "#333333",
                     inactiveTintColor: "gray",
                 }}
             >
-                {/* <TabNav.Screen name="Cadastro" component={Cadastro} /> */}
+                <TabNav.Screen name="Cadastro" component={Cadastro} />
                 <TabNav.Screen name="Home" component={Home} />
                 <TabNav.Screen name="Favorites" component={Favorites} />
                 <TabNav.Screen name="Account" component={Account} />

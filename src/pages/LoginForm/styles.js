@@ -9,8 +9,8 @@ const styles = StyleSheet.create({
         fontSize: 19,
         width: 260,
         height: 50,
-        borderBottomWidth: 1,
-        borderBottomColor: "#333333",
+        borderBottomWidth: 1.3,
+        borderBottomColor: "rgba(51, 51, 51, 0.80)",
         textAlignVertical: "center",
         marginTop: 10,
     },
@@ -22,10 +22,10 @@ const styles = StyleSheet.create({
         height: 50,
     },
     submitContainer: {
-        flexDirection: "row-reverse",
+        flexDirection: "row",
         alignItems: "center",
-        justifyContent: "space-evenly",
-        marginTop: 10,
+        justifyContent: "space-between",
+        marginTop: 20,
     },
     btnSubmit: {
         borderWidth: 1,
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         width: 35,
         height: 35,
         marginLeft: 10,
-        marginRight: 50,
+        marginRight: 60,
     },
     faceIcon: {
         width: 35,

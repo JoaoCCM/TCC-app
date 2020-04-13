@@ -7,15 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## Release [0.0.1] - 06-09-2020
+## Release [0.0.3] - 12-04-2020
 
 ### Added
 
 -   Swipe to delete
 -   Favorites page
--   icons in the tab fixed
+-   Icons in the tab fixed
+-   "Registre-se" tab
 
-## Release [0.0.1] - 06-08-2020
+## Release [0.0.2] - 08-04-2020
 
 ### Added
 

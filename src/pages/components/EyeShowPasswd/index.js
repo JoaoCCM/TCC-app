@@ -20,8 +20,8 @@ export default function EyeShowPasswd({ showPassword, eyeIcon, height }) {
 
 const styles = StyleSheet.create({
     eyeContainer: {
-        borderBottomWidth: 1,
-        borderBottomColor: "#333333",
+        borderBottomWidth: 1.3,
+        borderBottomColor: "rgba(51, 51, 51, 0.80)",
         height: 50,
         justifyContent: "flex-end",
         paddingBottom: 10,

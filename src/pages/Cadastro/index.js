@@ -8,6 +8,7 @@ import faceIcon from "../../assets/logar-facebook.png";
 import styles from "./styles";
 import stylesFormik from "../LoginForm/styles";
 import globalStyles from "../../globalStyle/globalStyles";
+import { Dropdown } from "react-native-material-dropdown";
 
 import Header from "../Header";
 import VoltarLink from "../components/VoltarLink";
@@ -19,6 +20,21 @@ export default function Cadastro() {
     const [showPass, setShowPassword] = useState(false);
     const [eyeIcon, setEyeIcon] = useState("eye-off");
     const [emailLoginOpen, setEmailLoginOpen] = useState(false);
+
+    let cursos = [
+        {
+            value: "ADS",
+        },
+        {
+            value: "Mecatrônica",
+        },
+        {
+            value: "Matemática",
+        },
+        {
+            value: "Engenharia",
+        },
+    ];
 
     function closeDialog() {
         setEmailLoginOpen(!emailLoginOpen);
@@ -75,6 +91,7 @@ export default function Cadastro() {
                                             ...stylesFormik.input,
                                             ...stylesFormik.passwordInput,
                                             ...styles.input,
+                                            ...styles.inputSenha,
                                         }}
                                         placeholder="Senha"
                                         value={formikProps.values.password}
@@ -92,6 +109,13 @@ export default function Cadastro() {
                                         height={45}
                                     />
                                 </View>
+                                <View style={styles.cursos}>
+                                    <Dropdown
+                                        label="Curso"
+                                        data={cursos}
+                                        dropdownOffset={{ top: 25, left: 0 }}
+                                    />
+                                </View>
                                 <View style={styles.esqueceuSenhaContainer}>
                                     <TouchableOpacity onPress={() => {}}>
                                         <Text style={styles.esqueceuSenha}>
@@ -99,13 +123,17 @@ export default function Cadastro() {
                                         </Text>
                                     </TouchableOpacity>
                                 </View>
-                                <View style={stylesFormik.submitContainer}>
-                                    <TouchableOpacity
-                                        style={stylesFormik.btnSubmit}
-                                    >
-                                        <Text style={stylesFormik.btnText}>
-                                            Entre
-                                        </Text>
+                                <View
+                                    style={{
+                                        ...stylesFormik.submitContainer,
+                                        ...styles.sendInput,
+                                    }}
+                                >
+                                    <TouchableOpacity>
+                                        <Image
+                                            source={faceIcon}
+                                            style={stylesFormik.faceIcon}
+                                        />
                                     </TouchableOpacity>
                                     <TouchableOpacity>
                                         <Image
@@ -113,11 +141,12 @@ export default function Cadastro() {
                                             style={stylesFormik.googleIcon}
                                         />
                                     </TouchableOpacity>
-                                    <TouchableOpacity>
-                                        <Image
-                                            source={faceIcon}
-                                            style={stylesFormik.faceIcon}
-                                        />
+                                    <TouchableOpacity
+                                        style={stylesFormik.btnSubmit}
+                                    >
+                                        <Text style={stylesFormik.btnText}>
+                                            Entre
+                                        </Text>
                                     </TouchableOpacity>
                                 </View>
                             </View>
