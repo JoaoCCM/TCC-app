@@ -7,7 +7,6 @@ import arrow from "../../assets/arrow.png";
 
 import Login from "../Login";
 import Header from "../../Components/Header";
-import UserHome from "../UserHome";
 import HomeLogged from "../../Components/HomeLogged";
 
 export default function Home() {
