@@ -56,7 +56,7 @@ export default function Cadastro() {
                 <View style={styles.cadastro}>
                     <Text style={styles.cadastroTitle}>Registre-se</Text>
                     <Formik
-                        initialValues={{ nome: "", email: "", password: "" }}
+                        initialValues={{ name: "", email: "", password: "" }}
                         onSubmit={() => { }}
                     >
                         {(formikProps) => (
@@ -69,9 +69,9 @@ export default function Cadastro() {
                                     placeholder="Nome"
                                     value={formikProps.values.nome}
                                     onChangeText={formikProps.handleChange(
-                                        "nome"
+                                        "name"
                                     )}
-                                    onBlur={formikProps.handleBlur("nome")}
+                                    onBlur={formikProps.handleBlur("name")}
                                 />
                                 <TextInput
                                     style={{
