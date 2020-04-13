@@ -77,27 +77,27 @@ const styles = StyleSheet.create({
     },
 
     touch: {
-        backgroundColor: '#AF2222',
+        backgroundColor: "#AF2222",
         height: 62,
-        marginTop: 10
+        marginTop: 10,
     },
     deleteText: {
-        textAlign: 'right',
-        alignItems: 'center',
+        textAlign: "right",
+        alignItems: "center",
         marginTop: 17,
         marginRight: 25,
     },
 
     msgContainer: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 100
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 100,
     },
 
     msg: {
-        fontFamily: 'montserrat-regular',
-        color: 'grey'
-    }
+        fontFamily: "montserrat-regular",
+        color: "grey",
+    },
 });
 
 export default styles;

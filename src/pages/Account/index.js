@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
-import Header from "../Header";
+import Header from "../../Components/Header";
 import styles from "./styles";
 import globalStyles from "../../globalStyle/globalStyles";
 

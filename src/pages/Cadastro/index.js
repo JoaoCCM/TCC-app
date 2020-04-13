@@ -10,11 +10,11 @@ import stylesFormik from "../LoginForm/styles";
 import globalStyles from "../../globalStyle/globalStyles";
 import { Dropdown } from "react-native-material-dropdown";
 
-import Header from "../Header";
-import VoltarLink from "../components/VoltarLink";
-import EyeShowPasswd from "../components/EyeShowPasswd";
+import Header from "../../Components/Header";
+import VoltarLink from "../../Components/VoltarLink";
+import EyeShowPasswd from "../../Components/EyeShowPasswd";
 
-import CadastroDialog from "../components/cadastroDialog";
+import CadastroDialog from "../../Components/CadastroDialog";
 
 export default function Cadastro() {
     const [showPass, setShowPassword] = useState(false);

@@ -6,11 +6,12 @@ import styles from "./styles";
 import arrow from "../../assets/arrow.png";
 
 import Login from "../Login";
-import Header from "../Header";
+import Header from "../../Components/Header";
 import UserHome from "../UserHome";
+import HomeLogged from "../../Components/HomeLogged";
 
 export default function Home() {
-    const [logado, setlogado] = useState(false);
+    const [logado, setlogado] = useState(true);
     return (
         <View style={globalStyles.container}>
             <Header />
@@ -27,7 +28,7 @@ export default function Home() {
                     />
                 </View>
             </View>
-            {logado ? <UserHome /> : <Login />}
+            {logado ? <HomeLogged /> : <Login />}
         </View>
     );
 }

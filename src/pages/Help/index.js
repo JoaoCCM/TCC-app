@@ -8,7 +8,7 @@ import styles from "./styles";
 import arrowUp from "../../assets/ArrowUp.png";
 import arrowDown from "../../assets/ArrowDown.png";
 
-import Header from "../Header";
+import Header from "../../Components/Header";
 
 const qNa = [
     { title: "question 1", body: "2bdui2dbiubde" },

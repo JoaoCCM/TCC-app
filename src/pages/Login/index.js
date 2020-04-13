@@ -1,16 +1,8 @@
 import React, { useState } from "react";
-import {
-    View,
-    Text,
-    TouchableOpacity,
-    Image,
-    Modal,
-    Keyboard,
-    TouchableWithoutFeedback,
-} from "react-native";
+import { View, Text, TouchableOpacity, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-import CadastroDialog from "../components/cadastroDialog";
+import CadastroDialog from "../../Components/CadastroDialog";
 
 import styles from "./styles";
 import emailIcon from "../../assets/Logar-Email.png";

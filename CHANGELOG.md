@@ -10,28 +10,28 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Release [0.0.3] - 12-04-2020
 
 ### Added
+- Swipe to delete
+- Favorites page
+- Icons in the tab fixed
+- "Registre-se" tab
 
--   Swipe to delete
--   Favorites page
--   Icons in the tab fixed
--   "Registre-se" tab
+### Fixed
+- Components organize
 
 ## Release [0.0.2] - 08-04-2020
 
 ### Added
-
--   Eye on / Eye off
--   Login pop up
--   Help Page
+- Eye on / Eye off
+- Login pop up
+- Help Page
 
 ## Release [0.0.1] - 06-04-2020
 
 ### Added
-
--   Logo on header
--   Navigation
--   Login page
--   Login Adjusts
--   Home and login
--   Account Inicial
--   User Homepage
+- Logo on header
+- Navigation
+- Login page
+- Login Adjusts
+- Home and login
+- Account Inicial
+- User Homepage

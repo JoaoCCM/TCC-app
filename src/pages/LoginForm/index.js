@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { View, TextInput, Text, TouchableOpacity, Image } from "react-native";
 import { Formik } from "formik";
-import { Feather } from "@expo/vector-icons";
 
 import styles from "./styles";
 
 import googleIcon from "../../assets/logar-google.png";
 import faceIcon from "../../assets/logar-facebook.png";
 
-import EyeShowPasswd from "../components/EyeShowPasswd";
+import EyeShowPasswd from "../../Components/EyeShowPasswd";
 
 export default function LoginForm() {
     const [showPass, setShowPassword] = useState(false);
