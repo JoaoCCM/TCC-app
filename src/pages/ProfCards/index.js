@@ -3,12 +3,19 @@ import { View, Text, Image, Platform } from 'react-native';
 import Swiper from 'react-native-deck-swiper';
 
 import Header from '../../components/Header';
-import Card from '../../components/Card';
 
 import globalStyles from '../../globalStyle/globalStyles';
 import styles from './styles';
+import userPhoto from '../../assets/defaultUserImage.png'
 
 
+const Card = () => {
+    return (
+        <View style={styles.card}>
+            <Image source={userPhoto} style={styles.cardImage} />
+        </View>
+    )
+}
 
 export default function ProfCards() {
     const [profList, setProfList] = useState([
