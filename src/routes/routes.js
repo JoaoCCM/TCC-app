@@ -11,6 +11,7 @@ import Help from "../pages/Help";
 import Account from "../pages/Account";
 import Cadastro from "../pages/Cadastro";
 import Favorites from "../pages/Favorites";
+import ProfCards from '../pages/ProfCards';
 
 export default function routes() {
     return (
@@ -51,9 +52,9 @@ export default function routes() {
                     inactiveTintColor: "gray",
                 }}
             >
-                <TabNav.Screen name="Cadastro" component={Cadastro} />
+                {/* <TabNav.Screen name="Cadastro" component={Cadastro} /> */}
                 <TabNav.Screen name="Home" component={Home} />
-                <TabNav.Screen name="Favorites" component={Favorites} />
+                <TabNav.Screen name="Favorites" component={ProfCards} />
                 <TabNav.Screen name="Account" component={Account} />
                 <TabNav.Screen name="Help" component={Help} />
             </TabNav.Navigator>

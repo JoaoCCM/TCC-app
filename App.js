@@ -3,6 +3,7 @@ import * as Font from "expo-font";
 import { AppLoading } from "expo";
 
 import Routes from "./src/routes/routes";
+import ProfCards from './src/pages/ProfCards';
 
 //loading fonts
 const getFonts = () => {
