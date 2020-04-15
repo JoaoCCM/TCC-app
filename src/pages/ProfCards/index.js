@@ -9,14 +9,6 @@ import styles from './styles';
 import userPhoto from '../../assets/defaultUserImage.png'
 
 
-const Card = () => {
-    return (
-        <View style={styles.card}>
-            <Image source={userPhoto} style={styles.cardImage} />
-        </View>
-    )
-}
-
 export default function ProfCards() {
     const [profList, setProfList] = useState([
         { id: 1, name: "Talita Cypriano", email: 'talita@gmail.com' },
@@ -46,7 +38,15 @@ export default function ProfCards() {
                     useViewOverflow={Platform.OS === 'ios'}
                     cards={profList}
                     cardIndex={index}
-                    renderCard={() => <Card />}
+                    renderCard={(card) => (
+                        <View style={styles.card}>
+                            <Image source={userPhoto} style={styles.cardImage} />
+                            <View style={styles.infoContainer}>
+                                <Text style={styles.profName}>{card.name}</Text>
+                                <Text style={styles.profEmail}>{card.email}</Text>
+                            </View>
+                        </View>
+                    )}
                     onSwiped={onSwipe}
                     stackSize={12}
                     stackScale={10}

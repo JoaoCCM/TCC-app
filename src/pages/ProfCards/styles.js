@@ -8,16 +8,33 @@ const styles = StyleSheet.create({
         elevation: 3,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#fff',
+        backgroundColor: '#fff'
     },
 
     cardImage: {
         width: 120,
-        marginBottom: 160,
-        resizeMode: 'contain'
+        marginBottom: -170,
+        resizeMode: 'contain',
+        alignSelf: 'center'
     },
-    cardContainer: {
-        flex: 1,
+
+    infoContainer: {
+        marginBottom: 220,
+        alignItems: 'center'
+    },
+
+    profEmail: {
+        marginTop: 20,
+        fontFamily: 'montserrat-regular',
+        fontSize: 18,
+        color: 'grey'
+    },
+
+    profName: {
+        marginTop: 80,
+        fontFamily: 'montserrat-regular',
+        fontSize: 18
+
     }
 })
 
