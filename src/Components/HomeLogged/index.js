@@ -4,6 +4,8 @@ import { useNavigation } from '@react-navigation/native';
 import Swipeable from "react-native-swipeable";
 import { Feather } from "@expo/vector-icons";
 
+import Empty from '../Empty';
+
 import styles from "./styles";
 import profilePic from "../../assets/defaultUserImage.png";
 import sendMail from "../../assets/Logar-Email.png";
@@ -28,6 +30,9 @@ export default function HomeLogged() {
         { id: 5, name: "Outra Professora", email: 'contato@gmail.com' },
         { id: 6, name: "Outra Professora", email: 'contato@gmail.com' },
     ]);
+
+    const msg = 'Nenhum professor salvo.';
+    const msg2 = 'Comece agora!';
 
     const navigation = useNavigation();
 
@@ -68,10 +73,6 @@ export default function HomeLogged() {
             )}
         />
     ) : (
-            <View style={styles.msgContainer}>
-                <Text style={styles.msg}>
-                    Você não possui nenhum professor salvo ainda!
-            </Text>
-            </View>
+            <Empty msg={msg} msg2={msg2} />
         );
 }
