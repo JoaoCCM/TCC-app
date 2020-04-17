@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 -   Empty component
+-   Bigest screens layouts
+-   Close keyboard when click on screen
 
 ## Release [0.0.4] - 15-04-2020
 

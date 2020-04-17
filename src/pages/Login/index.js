@@ -12,7 +12,7 @@ import faceIcon from "../../assets/logar-facebook.png";
 import Cadastro from "../Cadastro";
 
 export default function Login(props) {
-    const [emailLoginOpen, setEmailLoginOpen] = useState(false);
+    const [emailLoginOpen, setEmailLoginOpen] = useState(true);
 
     function closeDialog() {
         setEmailLoginOpen(!emailLoginOpen);

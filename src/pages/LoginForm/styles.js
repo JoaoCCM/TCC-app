@@ -7,15 +7,16 @@ const styles = StyleSheet.create({
     },
     input: {
         fontSize: 19,
-        width: 260,
         height: 50,
         borderBottomWidth: 1.3,
         borderBottomColor: "rgba(51, 51, 51, 0.80)",
         textAlignVertical: "center",
         marginTop: 10,
+        alignSelf: "stretch",
     },
     passwordContainer: {
         flexDirection: "row",
+        alignSelf: "stretch",
     },
     passwordInput: {
         width: 240,

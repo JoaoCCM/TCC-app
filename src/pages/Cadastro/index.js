@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, Image, TouchableOpacity } from "react-native";
+import {
+    View,
+    Text,
+    TextInput,
+    Image,
+    TouchableOpacity,
+    TouchableWithoutFeedback,
+    Keyboard,
+} from "react-native";
 import { Formik } from "formik";
 
 import googleIcon from "../../assets/logar-google.png";
@@ -51,112 +59,148 @@ export default function Cadastro() {
                 visible={emailLoginOpen}
                 closeDialog={closeDialog}
             />
-            <View style={styles.cadastroContainer}>
-                <VoltarLink />
-                <View style={styles.cadastro}>
-                    <Text style={styles.cadastroTitle}>Registre-se</Text>
-                    <Formik
-                        initialValues={{ name: "", email: "", password: "" }}
-                        onSubmit={() => { }}
-                    >
-                        {(formikProps) => (
-                            <View style={stylesFormik.inputContainer}>
-                                <TextInput
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <View style={styles.cadastroContainer}>
+                    <VoltarLink />
+                    <View style={styles.cadastro}>
+                        <Text style={styles.cadastroTitle}>Registre-se</Text>
+                        <Formik
+                            initialValues={{
+                                name: "",
+                                email: "",
+                                password: "",
+                            }}
+                            onSubmit={() => {}}
+                        >
+                            {(formikProps) => (
+                                <View
                                     style={{
-                                        ...stylesFormik.input,
-                                        ...styles.input,
+                                        ...stylesFormik.inputContainer,
+                                        ...styles.inputContainer,
                                     }}
-                                    placeholder="Nome"
-                                    value={formikProps.values.nome}
-                                    onChangeText={formikProps.handleChange(
-                                        "name"
-                                    )}
-                                    onBlur={formikProps.handleBlur("name")}
-                                />
-                                <TextInput
-                                    style={{
-                                        ...stylesFormik.input,
-                                        ...styles.input,
-                                    }}
-                                    placeholder="E-mail"
-                                    value={formikProps.values.email}
-                                    onChangeText={formikProps.handleChange(
-                                        "email"
-                                    )}
-                                    onBlur={formikProps.handleBlur("email")}
-                                />
-                                <View style={stylesFormik.passwordContainer}>
+                                >
                                     <TextInput
                                         style={{
                                             ...stylesFormik.input,
-                                            ...stylesFormik.passwordInput,
                                             ...styles.input,
-                                            ...styles.inputSenha,
                                         }}
-                                        placeholder="Senha"
-                                        value={formikProps.values.password}
+                                        placeholder="Nome"
+                                        value={formikProps.values.nome}
                                         onChangeText={formikProps.handleChange(
-                                            "password"
+                                            "name"
                                         )}
-                                        onBlur={formikProps.handleBlur(
-                                            "password"
+                                        onBlur={formikProps.handleBlur("name")}
+                                    />
+                                    <TextInput
+                                        style={{
+                                            ...stylesFormik.input,
+                                            ...styles.input,
+                                        }}
+                                        placeholder="E-mail"
+                                        value={formikProps.values.email}
+                                        onChangeText={formikProps.handleChange(
+                                            "email"
                                         )}
-                                        secureTextEntry={!showPass}
+                                        onBlur={formikProps.handleBlur("email")}
                                     />
-                                    <EyeShowPasswd
-                                        showPassword={showPassword}
-                                        eyeIcon={eyeIcon}
-                                        height={45}
-                                    />
-                                </View>
-                                <View style={styles.cursos}>
-                                    <Dropdown
-                                        label="Curso"
-                                        data={cursos}
-                                        dropdownOffset={{ top: 25, left: 0 }}
-                                    />
-                                </View>
-                                <View style={styles.esqueceuSenhaContainer}>
-                                    <TouchableOpacity onPress={() => { }}>
-                                        <Text style={styles.esqueceuSenha}>
-                                            Esqueceu a Senha
-                                        </Text>
-                                    </TouchableOpacity>
-                                </View>
-                                <View
-                                    style={{
-                                        ...stylesFormik.submitContainer,
-                                        ...styles.sendInput,
-                                    }}
-                                >
-                                    <TouchableOpacity>
-                                        <Image
-                                            source={faceIcon}
-                                            style={stylesFormik.faceIcon}
-                                        />
-                                    </TouchableOpacity>
-                                    <TouchableOpacity>
-                                        <Image
-                                            source={googleIcon}
-                                            style={stylesFormik.googleIcon}
-                                        />
-                                    </TouchableOpacity>
-                                    <TouchableOpacity
-                                        style={stylesFormik.btnSubmit}
+                                    <View
+                                        style={{
+                                            ...stylesFormik.passwordContainer,
+                                            ...styles.passwordContainer,
+                                        }}
                                     >
-                                        <Text style={stylesFormik.btnText}>
-                                            Entre
-                                        </Text>
-                                    </TouchableOpacity>
+                                        <TextInput
+                                            style={{
+                                                ...stylesFormik.input,
+                                                ...styles.input,
+                                                ...styles.inputSenha,
+                                            }}
+                                            placeholder="Senha"
+                                            value={formikProps.values.password}
+                                            onChangeText={formikProps.handleChange(
+                                                "password"
+                                            )}
+                                            onBlur={formikProps.handleBlur(
+                                                "password"
+                                            )}
+                                            secureTextEntry={!showPass}
+                                        />
+                                        <EyeShowPasswd
+                                            showPassword={showPassword}
+                                            eyeIcon={eyeIcon}
+                                            height={45}
+                                        />
+                                    </View>
+                                    <View style={styles.cursos}>
+                                        <Dropdown
+                                            label="Curso"
+                                            data={cursos}
+                                            dropdownOffset={{
+                                                top: 32,
+                                                left: 0,
+                                            }}
+                                            fontSize={19}
+                                            style={styles.cursosDrop}
+                                        />
+                                    </View>
+                                    <View style={styles.esqueceuSenhaContainer}>
+                                        <TouchableOpacity onPress={() => {}}>
+                                            <Text style={styles.esqueceuSenha}>
+                                                Esqueceu a Senha
+                                            </Text>
+                                        </TouchableOpacity>
+                                    </View>
+                                    <View
+                                        style={{
+                                            ...stylesFormik.submitContainer,
+                                            ...styles.sendInput,
+                                        }}
+                                    >
+                                        <View
+                                            style={{
+                                                flexDirection: "row",
+                                                justifyContent: "space-between",
+                                            }}
+                                        >
+                                            <TouchableOpacity>
+                                                <Image
+                                                    source={faceIcon}
+                                                    style={
+                                                        stylesFormik.faceIcon
+                                                    }
+                                                />
+                                            </TouchableOpacity>
+                                            <TouchableOpacity>
+                                                <Image
+                                                    source={googleIcon}
+                                                    style={
+                                                        stylesFormik.googleIcon
+                                                    }
+                                                />
+                                            </TouchableOpacity>
+                                        </View>
+                                        <TouchableOpacity
+                                            style={stylesFormik.btnSubmit}
+                                        >
+                                            <Text style={stylesFormik.btnText}>
+                                                Entre
+                                            </Text>
+                                        </TouchableOpacity>
+                                    </View>
                                 </View>
-                            </View>
-                        )}
-                    </Formik>
-                    <TouchableOpacity onPress={() => setEmailLoginOpen(true)}>
-                        <Text style={styles.emailLogin}>Já é cadastrado?</Text>
-                    </TouchableOpacity>
+                            )}
+                        </Formik>
+                        <TouchableOpacity
+                            onPress={() => setEmailLoginOpen(true)}
+                            style={styles.emailLoginContainer}
+                        >
+                            <Text style={styles.emailLogin}>
+                                Já é cadastrado?
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-            </View>
+            </TouchableWithoutFeedback>
         </View>
     );
 }

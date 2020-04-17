@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
     searchContainer: {
         justifyContent: "center",
         alignItems: "center",
+        flex: 1,
     },
     searchText: {
         marginTop: 40,

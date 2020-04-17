@@ -1,18 +1,21 @@
-import React from 'react';
-import { View, Text, Image, TouchableOpacity, TouchableOpacityBase } from 'react-native';
+import React from "react";
+import {
+    View,
+    Text,
+    Image,
+    TouchableOpacity,
+    TouchableOpacityBase,
+} from "react-native";
 
-import globalStyles from '../../globalStyle/globalStyles';
-import styles from './styles';
-import ghost from '../../assets/notFound.png';
-
+import globalStyles from "../../globalStyle/globalStyles";
+import styles from "./styles";
+import ghost from "../../assets/notFound.png";
 
 export default function Empty({ msg, msg2 }) {
     return (
         <View style={globalStyles.container}>
             <View style={styles.content}>
-
                 <Image source={ghost} style={styles.ghost} />
-
 
                 <View style={styles.textContent}>
                     <Text style={styles.OopsText}>{msg}</Text>
@@ -26,5 +29,5 @@ export default function Empty({ msg, msg2 }) {
                 </TouchableOpacity>
             </View>
         </View>
-    )
+    );
 }

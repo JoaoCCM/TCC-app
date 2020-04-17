@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     link: {
         color: "#6A82FB",
         fontSize: 17,
-        padding: 20,
+        padding: 10,
     },
     doubleArrow: {
         width: 20,

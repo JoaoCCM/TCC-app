@@ -2,27 +2,42 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
     cadastro: {
-        paddingHorizontal: 20,
         alignItems: "center",
+        flex: 1,
+        justifyContent: "space-between",
+    },
+    cadastroContainer: {
+        flex: 1,
+    },
+    emailLoginContainer: {
+        flex: 1,
+        paddingVertical: 10,
+        justifyContent: "center",
     },
     cadastroTitle: {
         fontFamily: "montserrat-regular",
         fontSize: 27,
         fontWeight: "bold",
+        flex: 0.8,
+    },
+    inputContainer: {
+        justifyContent: "space-between",
+        alignSelf: "stretch",
+        paddingHorizontal: "10%",
     },
     input: {
         height: 35,
-        width: 290,
+        alignSelf: "stretch",
     },
     inputSenha: {
-        width: 270,
+        marginEnd: 0,
+        flex: 1,
     },
     cursos: {
-        width: 290,
+        alignSelf: "stretch",
     },
     esqueceuSenhaContainer: {
-        paddingHorizontal: 48,
-        width: 390,
+        alignSelf: "stretch",
         paddingVertical: 10,
     },
     esqueceuSenha: {
@@ -33,7 +48,7 @@ export default StyleSheet.create({
     },
     sendInput: {
         marginTop: 10,
-        width: 290,
+        alignSelf: "stretch",
     },
     emailLogin: {
         color: "#6A82FB",
@@ -41,4 +56,5 @@ export default StyleSheet.create({
         textDecorationLine: "underline",
         fontSize: 16,
     },
+    passwordContainer: {},
 });
