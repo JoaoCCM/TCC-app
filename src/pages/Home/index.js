@@ -33,7 +33,7 @@ export default function Home() {
                             placeholder="Ex: Web"
                             underlineColorAndroid="#333"
                             accessibilityLabel="Search Input"
-                            onChange={() => {}}
+                            onChange={() => { }}
                         />
                     </View>
                 </View>

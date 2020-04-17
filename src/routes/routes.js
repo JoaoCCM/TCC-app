@@ -52,7 +52,7 @@ export default function routes() {
                     inactiveTintColor: "gray",
                 }}
             >
-                <TabNav.Screen name="Cadastro" component={Cadastro} />
+                {/* <TabNav.Screen name="Cadastro" component={Cadastro} /> */}
                 <TabNav.Screen name="Home" component={Home} />
                 <TabNav.Screen name="Favorites" component={ProfCards} />
                 <TabNav.Screen name="Account" component={Account} />

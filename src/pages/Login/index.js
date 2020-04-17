@@ -11,16 +11,16 @@ import faceIcon from "../../assets/logar-facebook.png";
 
 import Cadastro from "../Cadastro";
 
-export default function Login(props) {
+export default function Login() {
     const [emailLoginOpen, setEmailLoginOpen] = useState(true);
 
     function closeDialog() {
         setEmailLoginOpen(!emailLoginOpen);
     }
-    // const navigation = useNavigation();
+    const navigation = useNavigation();
 
     const toCadastro = () => {
-        //     navigation.navigate("Cadastro");
+        // navigation.navigate('Cadastro')
     };
 
     return (

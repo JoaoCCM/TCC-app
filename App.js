@@ -3,7 +3,6 @@ import * as Font from "expo-font";
 import { AppLoading } from "expo";
 
 import Routes from "./src/routes/routes";
-import Empty from './src/components/Empty'
 
 //loading fonts
 const getFonts = () => {
@@ -17,7 +16,8 @@ export default function App() {
     const [fontsLoaded, setFontsLoaded] = useState(false);
 
     if (fontsLoaded) {
-        return <Routes />;
+        return <Routes />
+
     } else {
         return (
             <AppLoading
