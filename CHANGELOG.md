@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Release [0.0.5] - 16-04-2020
 
 ### Added
+-   Create Redux
 -   Empty component
 -   Bigest screens layouts
 -   Close keyboard when click on screen

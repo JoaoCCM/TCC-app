@@ -9,6 +9,7 @@ import Empty from '../Empty';
 import styles from "./styles";
 import profilePic from "../../assets/defaultUserImage.png";
 import sendMail from "../../assets/Logar-Email.png";
+import { connect } from 'react-redux'
 
 const btns = [
     <TouchableOpacity onPress={() => { }} style={styles.touch}>
@@ -21,7 +22,7 @@ const btns = [
     </TouchableOpacity>,
 ];
 
-export default function HomeLogged() {
+function HomeLogged(props) {
     const [profList, setProfList] = useState([
         { id: 1, name: "Talita Cypriano", email: 'talita@gmail.com' },
         { id: 2, name: "André Leme", email: 'andre@gmail.com' },
@@ -47,6 +48,10 @@ export default function HomeLogged() {
     const toFavorites = () => {
         navigation.navigate('Favorites', { profList: profList })
     }
+    const { favorProfs, user } = props
+    console.log('Nome do aluno: ', user.nome)
+    console.log('Professores Favoritados: ', favorProfs)
+
     return profList.length ? (
         <FlatList
             style={styles.favList}
@@ -76,3 +81,12 @@ export default function HomeLogged() {
             <Empty msg={msg} msg2={msg2} />
         );
 }
+
+const mapStateToProps = (state) => {
+    return {
+        user: state.user,
+        favorProfs: state.favorProfs
+    }
+}
+
+export default connect(mapStateToProps)(HomeLogged)

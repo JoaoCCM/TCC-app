@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
+import  { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import rootReducer from './src/reducers/rootReducer'
 
 import Routes from "./src/routes/routes";
 
@@ -12,12 +15,17 @@ const getFonts = () => {
     });
 };
 
+const store = createStore(rootReducer);
+
 export default function App() {
     const [fontsLoaded, setFontsLoaded] = useState(false);
 
     if (fontsLoaded) {
-        return <Routes />
-
+        return (
+            <Provider store={store}>
+                <Routes />
+            </Provider>
+        )
     } else {
         return (
             <AppLoading
