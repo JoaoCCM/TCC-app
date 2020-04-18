@@ -17,7 +17,7 @@ import Header from "../../components/Header";
 import HomeLogged from "../../components/HomeLogged";
 
 export default function Home() {
-    const [logado, setlogado] = useState(false);
+    const [logado, setlogado] = useState(true);
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={globalStyles.container}>
