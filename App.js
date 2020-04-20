@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
-import  { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import rootReducer from './src/reducers/rootReducer'
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import rootReducer from "./src/reducers/rootReducer";
 
 import Routes from "./src/routes/routes";
 
@@ -25,7 +25,7 @@ export default function App() {
             <Provider store={store}>
                 <Routes />
             </Provider>
-        )
+        );
     } else {
         return (
             <AppLoading
