@@ -13,6 +13,16 @@ const initState = {
 }
 
 const rootReducer = (state = initState, action) => {
+    switch(action.type){
+        case 'DELETE_PROF':
+            return {
+                ...state,
+                favorProfs: state.favorProfs.filter(prof => prof.id !== action.id)
+            }
+        default:
+            return state
+    }
+
     return state;
 }
 

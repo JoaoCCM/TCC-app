@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 -   Create Redux
+-   Delete prof - Redux 
 -   Empty component
 -   Bigest screens layouts
 -   Close keyboard when click on screen

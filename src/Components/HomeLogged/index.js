@@ -23,6 +23,8 @@ const btns = [
 ];
 
 function HomeLogged(props) {
+    const { favorProfs } = props
+
     const [profList, setProfList] = useState([
         { id: 1, name: "Talita Cypriano", email: 'talita@gmail.com' },
         { id: 2, name: "André Leme", email: 'andre@gmail.com' },
@@ -38,26 +40,20 @@ function HomeLogged(props) {
     const navigation = useNavigation();
 
     const deleteProf = (id) => {
-        setProfList((currentList) => {
-            return currentList.filter((el) => {
-                return el.id !== id;
-            });
-        });
+        props.deleteProf(id)
     };
 
     const toFavorites = () => {
+        console.log('clicou aqui')
         navigation.navigate('Favorites', { profList: profList })
     }
-    const { favorProfs, user } = props
-    console.log('Nome do aluno: ', user.nome)
-    console.log('Professores Favoritados: ', favorProfs)
 
-    return profList.length ? (
+    return favorProfs.length ? (
         <FlatList
             style={styles.favList}
-            data={profList}
+            data={favorProfs}
             showsVerticalScrollIndicator={false}
-            keyExtractor={(profList) => String(profList.id)}
+            keyExtractor={(favorProfs) => String(favorProfs.id)}
             renderItem={({ item: prof }) => (
                 <Swipeable
                     leftButtons={btns}
@@ -89,4 +85,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(HomeLogged)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        deleteProf: (id) => { dispatch({type: 'DELETE_PROF', id: id}) }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeLogged)

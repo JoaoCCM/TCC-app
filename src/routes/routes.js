@@ -54,7 +54,7 @@ export default function routes() {
             >
                 {/* <TabNav.Screen name="Cadastro" component={Cadastro} /> */}
                 <TabNav.Screen name="Home" component={Home} />
-                <TabNav.Screen name="Favorites" component={ProfCards} />
+                <TabNav.Screen name="Favorites" component={Favorites} />
                 <TabNav.Screen name="Account" component={Account} />
                 <TabNav.Screen name="Help" component={Help} />
             </TabNav.Navigator>
