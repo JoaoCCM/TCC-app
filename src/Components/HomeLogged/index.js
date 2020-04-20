@@ -3,13 +3,13 @@ import { View, Text, TouchableOpacity, Image, FlatList } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import Swipeable from "react-native-swipeable";
 import { Feather } from "@expo/vector-icons";
+import { connect } from 'react-redux'
 
 import Empty from '../Empty';
 
 import styles from "./styles";
 import profilePic from "../../assets/defaultUserImage.png";
 import sendMail from "../../assets/Logar-Email.png";
-import { connect } from 'react-redux'
 
 const btns = [
     <TouchableOpacity onPress={() => { }} style={styles.touch}>
@@ -87,7 +87,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        deleteProf: (id) => { dispatch({type: 'DELETE_PROF', id: id}) }
+        deleteProf: (id) => { dispatch({ type: 'DELETE_PROF', id: id }) }
     }
 }
 

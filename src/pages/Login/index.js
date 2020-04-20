@@ -20,7 +20,7 @@ export default function Login() {
     const navigation = useNavigation();
 
     const toCadastro = () => {
-        // navigation.navigate('Cadastro')
+        navigation.navigate('Register')
     };
 
     return (

@@ -27,7 +27,9 @@ const styles = StyleSheet.create({
         maxWidth: 210,
     },
 
-    textContent: {},
+    textContent: {
+        marginRight: 20
+    },
 
     seachContainer: {
         justifyContent: "center",
