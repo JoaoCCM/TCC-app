@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { View, Text, Image, Platform } from "react-native";
+import { View, Text, Image, Platform, TouchableOpacity } from "react-native";
 import Swiper from "react-native-deck-swiper";
 import { connect } from 'react-redux'
+import { useNavigation } from '@react-navigation/native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import Header from "../../components/Header";
 import Empty from "../../components/Empty";
@@ -9,33 +11,38 @@ import Empty from "../../components/Empty";
 import globalStyles from "../../globalStyle/globalStyles";
 import styles from "./styles";
 import userPhoto from "../../assets/defaultUserImage.png";
+import heartRed from "../../assets/heartRed.png";
+import normalHeart from "../../assets/normalHeart.png";
 
 function ProfCards(props) {
     const { favorProfs } = props
 
-    // const [profList, setProfList] = useState([
-    //     { id: 1, name: "Talita Cypriano", email: "talita@gmail.com" },
-    //     { id: 2, name: "André Leme", email: "andre@gmail.com" },
-    //     { id: 3, name: "Emílio Rodrigues", email: "emilio@gmail.com" },
-    //     { id: 4, name: "Outro Professor", email: "contato@gmail.com" },
-    //     { id: 5, name: "Outra Professora", email: "contato@gmail.com" },
-    //     { id: 6, name: "Outra Professora", email: "contato@gmail.com" },
-    // ]);
-
+    const navigation = useNavigation();
     const msg = "Oops...";
     const msg2 = "Nenhum professor encontrado";
 
     const [index, setIndex] = useState(0);
+    const [fav, setFav] = useState(false);
+    const [heart, setHeart] = useState('heart-outline');
 
     const onSwipe = () => {
         setIndex(index + 1);
     };
 
+    function toProfInfo(card) {
+        navigation.navigate('ProfInfo', { card });
+    }
+
+    function favorite() {
+        setFav(!fav);
+        fav ? setHeart('heart-outline') : setHeart('heart');
+    }
+
     return (
         <>
             <Header />
             <View style={globalStyles.container}>
-                {favorProfs.length || favorProfs.length !== index ? (
+                {favorProfs.length && favorProfs.length !== index ? (
                     <Swiper
                         backgroundColor={"transparent"}
                         useViewOverflow={Platform.OS === "ios"}
@@ -43,20 +50,26 @@ function ProfCards(props) {
                         cardIndex={index}
                         renderCard={(card) => (
                             card &&
-                                <View style={styles.card}>
-                                    <Image
-                                        source={userPhoto}
-                                        style={styles.cardImage}
-                                    />
-                                    <View style={styles.infoContainer}>
-                                        <Text style={styles.profName}>
-                                            {card.name}
-                                        </Text>
-                                        <Text style={styles.profEmail}>
-                                            {card.email}
-                                        </Text>
-                                    </View>
+                            <View style={styles.card}>
+                                <Image
+                                    source={userPhoto}
+                                    style={styles.cardImage}
+                                />
+                                <TouchableOpacity onPress={favorite}>
+                                    <MaterialCommunityIcons name={heart} size={22} style={styles.heart} />
+                                </TouchableOpacity>
+                                <View style={styles.infoContainer}>
+                                    <Text style={styles.profName}>
+                                        {card.name}
+                                    </Text>
+                                    <Text style={styles.profEmail}>
+                                        {card.email}
+                                    </Text>
+                                    <TouchableOpacity onPress={() => toProfInfo(card)}>
+                                        <Text style={styles.profInfo}>Informações Acadêmicas</Text>
+                                    </TouchableOpacity>
                                 </View>
+                            </View>
                         )}
                         onSwiped={onSwipe}
                         stackSize={12}
@@ -65,11 +78,10 @@ function ProfCards(props) {
                         disableTopSwipe
                         disableBottomSwipe
                         animateCardOpacity
-                        // infinite={true}
                     />
                 ) : (
-                    <Empty msg={msg} msg2={msg2} />
-                )}
+                        <Empty msg={msg} msg2={msg2} />
+                    )}
             </View>
         </>
     );
@@ -84,7 +96,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        deleteProf: (id) => { dispatch({type: 'DELETE_PROF', id: id}) }
+        deleteProf: (id) => { dispatch({ type: 'DELETE_PROF', id: id }) }
     }
 }
 

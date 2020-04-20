@@ -9,14 +9,13 @@ import {
     Keyboard,
 } from "react-native";
 import { Formik } from "formik";
+import { Dropdown } from "react-native-material-dropdown";
 
 import googleIcon from "../../assets/logar-google.png";
 import faceIcon from "../../assets/logar-facebook.png";
-
 import styles from "./styles";
 import stylesFormik from "../LoginForm/styles";
 import globalStyles from "../../globalStyle/globalStyles";
-import { Dropdown } from "react-native-material-dropdown";
 
 import Header from "../../components/Header";
 import VoltarLink from "../../components/VoltarLink";
@@ -70,7 +69,7 @@ export default function Cadastro() {
                                 email: "",
                                 password: "",
                             }}
-                            onSubmit={() => {}}
+                            onSubmit={() => { }}
                         >
                             {(formikProps) => (
                                 <View
@@ -144,7 +143,7 @@ export default function Cadastro() {
                                         />
                                     </View>
                                     <View style={styles.esqueceuSenhaContainer}>
-                                        <TouchableOpacity onPress={() => {}}>
+                                        <TouchableOpacity onPress={() => { }}>
                                             <Text style={styles.esqueceuSenha}>
                                                 Esqueceu a Senha
                                             </Text>

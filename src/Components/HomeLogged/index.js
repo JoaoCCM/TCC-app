@@ -44,8 +44,7 @@ function HomeLogged(props) {
     };
 
     const toFavorites = () => {
-        console.log('clicou aqui')
-        navigation.navigate('Favorites', { profList: profList })
+
     }
 
     return favorProfs.length ? (

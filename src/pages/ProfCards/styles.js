@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     },
 
     infoContainer: {
-        marginBottom: 220,
+        marginBottom: 130,
         alignItems: 'center'
     },
 
@@ -35,6 +35,19 @@ const styles = StyleSheet.create({
         fontFamily: 'montserrat-regular',
         fontSize: 18
 
+    },
+
+    profInfo: {
+        marginTop: 50,
+        textDecorationLine: 'underline',
+        color: '#6A82FB',
+        fontFamily: 'montserrat-regular'
+    },
+
+    heart: {
+        // justifyContent: 'flex-end',
+        marginLeft: 250,
+        marginTop: 0
     }
 })
 

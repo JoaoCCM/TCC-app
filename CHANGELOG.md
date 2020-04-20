@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 -   Nested Tab and Stack navigation 
+-   Professor info page
 
 
 ## Release [0.0.5] - 16-04-2020

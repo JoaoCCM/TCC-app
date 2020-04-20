@@ -13,6 +13,7 @@ import Account from "../pages/Account";
 import Cadastro from "../pages/Cadastro";
 import Favorites from "../pages/Favorites";
 import ProfCards from "../pages/ProfCards";
+import ProfInfo from "../pages/ProfInfo";
 
 function TabNavigation() {
     return (
@@ -57,6 +58,7 @@ function TabNavigation() {
             <TabNav.Screen name="Favorites" component={Favorites} />
             <TabNav.Screen name="Account" component={Account} />
             <TabNav.Screen name="Help" component={Help} />
+            <TabNav.Screen name="Card" component={ProfCards} />
         </TabNav.Navigator>
 
     );
@@ -68,6 +70,7 @@ export default function routes() {
             <AppStack.Navigator screenOptions={{ headerShown: false }} initialRouteName='Home'>
                 <AppStack.Screen name='Home' component={TabNavigation} />
                 <AppStack.Screen name='Register' component={Cadastro} />
+                <AppStack.Screen name='ProfInfo' component={ProfInfo} />
             </AppStack.Navigator>
         </NavigationContainer>
     )
