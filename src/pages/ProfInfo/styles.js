@@ -17,11 +17,10 @@ const styles = StyleSheet.create({
         // alignSelf: 'center',
         flex: 0.8,
         marginTop: 20,
-        borderWidth: 1,
-        borderColor: 'black',
         borderRadius: 8,
         maxWidth: 300,
-        marginLeft: 30
+        marginLeft: 30,
+        elevation: 2
     },
 
     prof: {

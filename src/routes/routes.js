@@ -58,7 +58,7 @@ function TabNavigation() {
             <TabNav.Screen name="Favorites" component={Favorites} />
             <TabNav.Screen name="Account" component={Account} />
             <TabNav.Screen name="Help" component={Help} />
-            <TabNav.Screen name="Card" component={ProfCards} />
+            {/* <TabNav.Screen name="Card" component={ProfCards} /> */}
         </TabNav.Navigator>
 
     );
@@ -70,7 +70,7 @@ export default function routes() {
             <AppStack.Navigator screenOptions={{ headerShown: false }} initialRouteName='Home'>
                 <AppStack.Screen name='Home' component={TabNavigation} />
                 <AppStack.Screen name='Register' component={Cadastro} />
-                <AppStack.Screen name='ProfInfo' component={ProfInfo} />
+                <AppStack.Screen name='Card' component={ProfCards} />
             </AppStack.Navigator>
         </NavigationContainer>
     )

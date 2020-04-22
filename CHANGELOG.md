@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## Release [0.0.7] - 22-04-2020
+
+### Added
+-   Components to account page
+
+
+
 ## Release [0.0.6] - 20-04-2020
 
 ### Added

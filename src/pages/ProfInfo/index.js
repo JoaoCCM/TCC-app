@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native'
 
 import globalStyles from '../../globalStyle/globalStyles';
@@ -31,10 +31,18 @@ export default function ProfInfo() {
                     </View>
 
                     <View style={styles.info}>
-                        <Text style={styles.textinfo}>Linha de pesquisa</Text>
-                        <Text style={styles.textinfo}>Projetos de pesquisa</Text>
-                        <Text style={styles.textinfo}>Produções</Text>
-                        <Text style={styles.textinfo}>Banca</Text>
+                        <TouchableOpacity>
+                            <Text style={styles.textinfo}>Linha de pesquisa</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <Text style={styles.textinfo}>Projetos de pesquisa</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <Text style={styles.textinfo}>Produções</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <Text style={styles.textinfo}>Banca</Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
 

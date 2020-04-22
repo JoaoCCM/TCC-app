@@ -25,15 +25,6 @@ const btns = [
 function HomeLogged(props) {
     const { favorProfs } = props
 
-    const [profList, setProfList] = useState([
-        { id: 1, name: "Talita Cypriano", email: 'talita@gmail.com' },
-        { id: 2, name: "André Leme", email: 'andre@gmail.com' },
-        { id: 3, name: "Emílio Rodrigues", email: 'emilio@gmail.com' },
-        { id: 4, name: "Outro Professor", email: 'contato@gmail.com' },
-        { id: 5, name: "Outra Professora", email: 'contato@gmail.com' },
-        { id: 6, name: "Outra Professora", email: 'contato@gmail.com' },
-    ]);
-
     const msg = 'Nenhum professor salvo.';
     const msg2 = 'Comece agora!';
 
@@ -44,7 +35,7 @@ function HomeLogged(props) {
     };
 
     const toFavorites = () => {
-
+        navigation.navigate('Favorites')
     }
 
     return favorProfs.length ? (
@@ -58,7 +49,7 @@ function HomeLogged(props) {
                     leftButtons={btns}
                     onLeftActionRelease={() => deleteProf(prof.id)}
                 >
-                    <TouchableOpacity onPress={() => toFavorites}>
+                    <TouchableOpacity onPress={toFavorites}>
                         <View style={styles.listContainer}>
                             <Image source={profilePic} style={styles.profilePic} />
                             <Text style={styles.profName}>{prof.name}</Text>

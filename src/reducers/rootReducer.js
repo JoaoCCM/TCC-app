@@ -1,6 +1,8 @@
 const initState = {
     user: {
-        "nome": "Arthur"
+        name: "Arthur Oliveira",
+        email: "arthur_oliveira@gmail.com",
+        course: "ADS"
     },
     favorProfs: [
         { id: 1, name: "Talita Cypriano", email: 'talita@gmail.com' },
@@ -13,7 +15,7 @@ const initState = {
 }
 
 const rootReducer = (state = initState, action) => {
-    switch(action.type){
+    switch (action.type) {
         case 'DELETE_PROF':
             return {
                 ...state,
