@@ -17,7 +17,7 @@ import Header from "../../components/Header";
 import HomeLogged from "../../components/HomeLogged";
 
 export default function Home() {
-    const [logado, setlogado] = useState(true);
+    const [logado, setlogado] = useState(false);
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={globalStyles.container}>
@@ -33,7 +33,7 @@ export default function Home() {
                             placeholder="Ex: Web"
                             underlineColorAndroid="#333"
                             accessibilityLabel="Search Input"
-                            onChange={() => { }}
+                            onChange={() => {}}
                         />
                     </View>
                 </View>

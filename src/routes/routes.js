@@ -1,7 +1,7 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator } from "@react-navigation/stack";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const TabNav = createBottomTabNavigator();
@@ -17,7 +17,6 @@ import ProfInfo from "../pages/ProfInfo";
 
 function TabNavigation() {
     return (
-
         <TabNav.Navigator
             initialRouteName="Home"
             screenOptions={({ route }) => ({
@@ -33,9 +32,7 @@ function TabNavigation() {
                     } else if (route.name === "Account") {
                         iconName = focused ? "account" : "account-outline";
                     } else if (route.name === "Favorites") {
-                        iconName = focused
-                            ? "cards-heart"
-                            : "heart-outline";
+                        iconName = focused ? "cards-heart" : "heart-outline";
                     }
 
                     // You can return any component that you like here!
@@ -55,23 +52,26 @@ function TabNavigation() {
             }}
         >
             <TabNav.Screen name="Home" component={Home} />
-            <TabNav.Screen name="Favorites" component={Favorites} />
+            <TabNav.Screen name="Favorites" component={ProfCards} />
             <TabNav.Screen name="Account" component={Account} />
             <TabNav.Screen name="Help" component={Help} />
             {/* <TabNav.Screen name="Card" component={ProfCards} /> */}
         </TabNav.Navigator>
-
     );
 }
 
 export default function routes() {
     return (
         <NavigationContainer>
-            <AppStack.Navigator screenOptions={{ headerShown: false }} initialRouteName='Home'>
-                <AppStack.Screen name='Home' component={TabNavigation} />
-                <AppStack.Screen name='Register' component={Cadastro} />
-                <AppStack.Screen name='Card' component={ProfCards} />
+            <AppStack.Navigator
+                screenOptions={{ headerShown: false }}
+                initialRouteName="Home"
+            >
+                <AppStack.Screen name="Home" component={TabNavigation} />
+                <AppStack.Screen name="Register" component={Cadastro} />
+                <AppStack.Screen name="ProfInfo" component={ProfInfo} />
+                <AppStack.Screen name="Card" component={ProfCards} />
             </AppStack.Navigator>
         </NavigationContainer>
-    )
+    );
 }
