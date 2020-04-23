@@ -12,14 +12,15 @@ const styles = StyleSheet.create({
         fontSize: 24
     },
 
+    align: {
+        alignItems: 'center',
+        marginTop: 10
+    },
+
     infoContainer: {
-        // justifyContent: 'center',
-        // alignSelf: 'center',
-        flex: 0.8,
         marginTop: 20,
         borderRadius: 8,
-        maxWidth: 300,
-        marginLeft: 30,
+        width: 300,
         elevation: 2
     },
 

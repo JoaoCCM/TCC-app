@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Image, TouchableOpacity, Text } from "react-native";
 
 import styles from "./styles";
@@ -7,12 +7,19 @@ import magGlass from "../../assets/magGlass.png";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
 
-export default function Header() {
-    // const navigation = useNavigation();
 
-    // const toHome = () => {
-    //     navigation.navigate("Home");
-    // };
+export default function Header() {
+
+    const navigation = useNavigation();
+
+    const toHome = () => {
+        navigation.navigate("Home");
+    };
+
+    const toSearch = () => {
+        navigation.navigate('Search')
+    }
+
     return (
         <View style={styles.header}>
             <LinearGradient
@@ -23,10 +30,12 @@ export default function Header() {
                 style={styles.gradientBar}
             ></LinearGradient>
             <View style={styles.headerRow}>
-                <TouchableOpacity onPress={() => {}}>
+                <TouchableOpacity onPress={toHome}>
                     <Image source={logo} style={{ width: 80, height: 50 }} />
                 </TouchableOpacity>
-                <Image source={magGlass} style={styles.magGlassIcon} />
+                <TouchableOpacity onPress={toSearch}>
+                    <Image source={magGlass} style={styles.magGlassIcon} />
+                </TouchableOpacity>
             </View>
         </View>
     );

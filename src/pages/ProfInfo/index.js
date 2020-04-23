@@ -23,29 +23,29 @@ export default function ProfInfo() {
                 <View style={styles.title}>
                     <Text style={styles.titleText}>Salvo</Text>
                 </View>
+                <View style={styles.align}>
+                    <View style={styles.infoContainer}>
+                        <View style={styles.prof}>
+                            <Image source={photo} style={styles.profImage} />
+                            <Text style={styles.profNome}>{prof.name}</Text>
+                        </View>
 
-                <View style={styles.infoContainer}>
-                    <View style={styles.prof}>
-                        <Image source={photo} style={styles.profImage} />
-                        <Text style={styles.profNome}>{prof.name}</Text>
-                    </View>
-
-                    <View style={styles.info}>
-                        <TouchableOpacity>
-                            <Text style={styles.textinfo}>Linha de pesquisa</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity>
-                            <Text style={styles.textinfo}>Projetos de pesquisa</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity>
-                            <Text style={styles.textinfo}>Produções</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity>
-                            <Text style={styles.textinfo}>Banca</Text>
-                        </TouchableOpacity>
+                        <View style={styles.info}>
+                            <TouchableOpacity>
+                                <Text style={styles.textinfo}>Linha de pesquisa</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity>
+                                <Text style={styles.textinfo}>Projetos de pesquisa</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity>
+                                <Text style={styles.textinfo}>Produções</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity>
+                                <Text style={styles.textinfo}>Banca</Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </View>
-
             </View>
         </>
     )

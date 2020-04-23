@@ -30,4 +30,17 @@ export default StyleSheet.create({
         width: 30,
         height: 27,
     },
+    modalToggle: {
+        // marginBottom: 10,
+        padding: 10,
+        alignSelf: "center"
+    },
+    modalClose: {
+        marginTop: 20,
+        marginBottom: 0
+    },
+    modalContent: {
+        flex: 1,
+        height: '100%'
+    }
 });
