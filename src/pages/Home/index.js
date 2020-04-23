@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
     View,
     Text,
@@ -9,6 +9,7 @@ import {
 } from "react-native";
 
 import globalStyles from "../../globalStyle/globalStyles";
+import { loginContext } from "../../Context/loginContext";
 import styles from "./styles";
 import arrow from "../../assets/arrow.png";
 
@@ -17,7 +18,8 @@ import Header from "../../components/Header";
 import HomeLogged from "../../components/HomeLogged";
 
 export default function Home() {
-    const [logado, setlogado] = useState(false);
+    const { logged } = useContext(loginContext);
+
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={globalStyles.container}>
@@ -37,7 +39,7 @@ export default function Home() {
                         />
                     </View>
                 </View>
-                {logado ? <HomeLogged /> : <Login />}
+                {logged ? <HomeLogged /> : <Login />}
             </View>
         </TouchableWithoutFeedback>
     );

@@ -10,8 +10,13 @@ import {
 import globalStyles from "../../globalStyle/globalStyles";
 import styles from "./styles";
 import ghost from "../../assets/notFound.png";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Empty({ msg, msg2 }) {
+    const navigation = useNavigation();
+    const toSearch = () => {
+        navigation.navigate("Search");
+    };
     return (
         <View style={globalStyles.container}>
             <View style={styles.content}>
@@ -24,7 +29,7 @@ export default function Empty({ msg, msg2 }) {
             </View>
 
             <View style={styles.seachContainer}>
-                <TouchableOpacity style={styles.searchBtn}>
+                <TouchableOpacity style={styles.searchBtn} onPress={toSearch}>
                     <Text style={styles.searchText}>Faça uma busca!</Text>
                 </TouchableOpacity>
             </View>

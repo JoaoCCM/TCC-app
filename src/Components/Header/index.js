@@ -7,9 +7,7 @@ import magGlass from "../../assets/magGlass.png";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
 
-
 export default function Header() {
-
     const navigation = useNavigation();
 
     const toHome = () => {
@@ -17,8 +15,8 @@ export default function Header() {
     };
 
     const toSearch = () => {
-        navigation.navigate('Search')
-    }
+        navigation.navigate("Search");
+    };
 
     return (
         <View style={styles.header}>

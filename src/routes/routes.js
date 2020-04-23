@@ -14,11 +14,10 @@ import Cadastro from "../pages/Cadastro";
 import Favorites from "../pages/Favorites";
 import ProfCards from "../pages/ProfCards";
 import ProfInfo from "../pages/ProfInfo";
-import Search from '../pages/Search';
+import Search from "../pages/Search";
 
 function StackRoutes() {
     return (
-
         <AppStack.Navigator
             screenOptions={{ headerShown: false }}
             initialRouteName="Home"
@@ -28,8 +27,8 @@ function StackRoutes() {
             <AppStack.Screen name="ProfInfo" component={ProfInfo} />
             <AppStack.Screen name="Card" component={ProfCards} />
             <AppStack.Screen name="Search" component={Search} />
+            <AppStack.Screen name="ProfCards" component={ProfCards} />
         </AppStack.Navigator>
-
     );
 }
 
@@ -51,7 +50,9 @@ export default function routes() {
                         } else if (route.name === "Account") {
                             iconName = focused ? "account" : "account-outline";
                         } else if (route.name === "Favorites") {
-                            iconName = focused ? "cards-heart" : "heart-outline";
+                            iconName = focused
+                                ? "cards-heart"
+                                : "heart-outline";
                         }
 
                         // You can return any component that you like here!
@@ -71,7 +72,7 @@ export default function routes() {
                 }}
             >
                 <TabNav.Screen name="Home" component={StackRoutes} />
-                <TabNav.Screen name="Favorites" component={ProfCards} />
+                <TabNav.Screen name="Favorites" component={Favorites} />
                 <TabNav.Screen name="Account" component={Account} />
                 <TabNav.Screen name="Help" component={Help} />
                 {/* <TabNav.Screen name="Card" component={ProfCards} /> */}
@@ -79,4 +80,3 @@ export default function routes() {
         </NavigationContainer>
     );
 }
-

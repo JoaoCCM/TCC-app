@@ -4,6 +4,7 @@ import { AppLoading } from "expo";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./src/reducers/rootReducer";
+import LoginContextProvider from "./src/Context/loginContext";
 
 import Routes from "./src/routes/routes";
 
@@ -23,7 +24,9 @@ export default function App() {
     if (fontsLoaded) {
         return (
             <Provider store={store}>
-                <Routes />
+                <LoginContextProvider>
+                    <Routes />
+                </LoginContextProvider>
             </Provider>
         );
     } else {

@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import { Feather } from '@expo/vector-icons';
-import { connect } from 'react-redux'
+import { Feather } from "@expo/vector-icons";
+import { connect } from "react-redux";
 
 import Header from "../../components/Header";
 
@@ -10,7 +10,7 @@ import globalStyles from "../../globalStyle/globalStyles";
 import defaultUser from "../../assets/defaultUserImage.png";
 
 function Account(props) {
-    const { user } = props
+    const { user } = props;
     return (
         <View style={globalStyles.container}>
             <Header />
@@ -30,7 +30,7 @@ function Account(props) {
                         <Text style={styles.passwordLink}>Trocar a Senha</Text>
                         <View style={styles.edit}>
                             <TouchableOpacity>
-                                <Feather name='edit' size={22} />
+                                <Feather name="edit" size={22} />
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -43,14 +43,12 @@ function Account(props) {
             </View>
         </View>
     );
-
-
 }
 
 const mapStateToProps = (state) => {
     return {
-        user: state.user,
-    }
-}
+        user: state.user.userInfo,
+    };
+};
 
-export default connect(mapStateToProps)(Account)
+export default connect(mapStateToProps)(Account);

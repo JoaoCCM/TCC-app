@@ -81,7 +81,7 @@ function HomeLogged(props) {
 const mapStateToProps = (state) => {
     return {
         user: state.user,
-        favorProfs: state.favorProfs,
+        favorProfs: state.user.favorProfs,
     };
 };
 
