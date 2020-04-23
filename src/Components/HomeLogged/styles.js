@@ -1,6 +1,9 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
+    profListContainer: {
+        flex: 2,
+    },
     searchContainer: {
         justifyContent: "center",
         alignItems: "center",

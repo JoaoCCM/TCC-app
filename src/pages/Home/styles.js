@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
         // fontFamily: "montserrat-regular",
     },
     searchContainer: {
+        flex: 1,
         justifyContent: "center",
         alignItems: "center",
     },

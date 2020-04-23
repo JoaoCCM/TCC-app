@@ -62,14 +62,14 @@ export default function Cadastro() {
                 <View style={styles.cadastroContainer}>
                     <VoltarLink />
                     <View style={styles.cadastro}>
-                        <Text style={styles.cadastroTitle}>Registre-se</Text>
+                        <Text style={styles.cadastroTitle}>Cadastre-se</Text>
                         <Formik
                             initialValues={{
                                 name: "",
                                 email: "",
                                 password: "",
                             }}
-                            onSubmit={() => { }}
+                            onSubmit={() => {}}
                         >
                             {(formikProps) => (
                                 <View
@@ -143,7 +143,7 @@ export default function Cadastro() {
                                         />
                                     </View>
                                     <View style={styles.esqueceuSenhaContainer}>
-                                        <TouchableOpacity onPress={() => { }}>
+                                        <TouchableOpacity onPress={() => {}}>
                                             <Text style={styles.esqueceuSenha}>
                                                 Esqueceu a Senha
                                             </Text>

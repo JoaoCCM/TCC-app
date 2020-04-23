@@ -18,7 +18,7 @@ export default StyleSheet.create({
         fontFamily: "montserrat-regular",
         fontSize: 27,
         fontWeight: "bold",
-        flex: 0.8,
+        flex: 0.7,
     },
     inputContainer: {
         justifyContent: "space-between",
