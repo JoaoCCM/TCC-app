@@ -4,7 +4,7 @@ export const loginContext = createContext();
 
 class LoginContextProvider extends Component {
     state = {
-        logged: false,
+        logged: true,
     };
     toggleLogin = () => {
         this.setState({ logged: !this.state.logged });

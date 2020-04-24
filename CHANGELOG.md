@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 -   Header navigation
 -   Different Redux for all teachers and user 
 -   Context to user logged
+-   Favorites change order
 
 
 ## Release [0.0.7] - 22-04-2020

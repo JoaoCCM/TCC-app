@@ -1,37 +1,44 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-
     titleContainer: {
         flex: 1,
         padding: 50,
-        alignItems: 'center',
-        marginBottom: 20
+        alignItems: "center",
+        marginBottom: 20,
     },
 
     title: {
-        textAlign: 'center',
-        fontSize: 26,
-        fontFamily: 'montserrat-medium'
-
+        textAlign: "center",
+        fontSize: 27,
+        fontFamily: "montserrat-medium",
+        fontWeight: "bold",
+        color: "#333",
     },
 
     favList: {
         marginTop: 10,
     },
-    listContainer: {
+    itemContainer: {
         flexDirection: "row",
         justifyContent: "space-evenly",
         alignItems: "center",
         marginTop: 10,
         paddingVertical: 5,
 
+        backgroundColor: "white",
         borderBottomWidth: 1,
         borderBottomColor: "#cacaca",
         borderTopWidth: 1,
         borderTopColor: "#cacaca",
     },
-
+    listContainer: {
+        flexDirection: "row",
+        width: "100%",
+    },
+    draggableContainer: {
+        flex: 4,
+    },
     profilePic: {
         width: 40,
         height: 40,
@@ -56,27 +63,27 @@ const styles = StyleSheet.create({
     },
 
     touch: {
-        backgroundColor: '#AF2222',
+        backgroundColor: "#AF2222",
         height: 62,
-        marginTop: 10
+        marginTop: 10,
     },
     deleteText: {
-        textAlign: 'right',
-        alignItems: 'center',
+        textAlign: "right",
+        alignItems: "center",
         marginTop: 17,
         marginRight: 25,
     },
 
     msgContainer: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 100
+        justifyContent: "center",
+        alignItems: "center",
+        flex: 3,
     },
 
     msg: {
-        fontFamily: 'montserrat-regular',
-        color: 'grey'
-    }
+        fontFamily: "montserrat-regular",
+        color: "grey",
+    },
 });
 
 export default styles;

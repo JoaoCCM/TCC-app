@@ -20,6 +20,12 @@ const userReducer = (state = initState, action) => {
                     (prof) => prof.id !== action.id
                 ),
             };
+        case "CHANGE_ORDER":
+            return {
+                ...state,
+                favorProfs: action.newState,
+            };
+
         default:
             return state;
     }

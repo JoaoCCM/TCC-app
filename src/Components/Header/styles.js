@@ -13,7 +13,7 @@ export default StyleSheet.create({
         shadowOpacity: 0.27,
         shadowRadius: 4.65,
 
-        elevation: 6,
+        elevation: 3,
     },
     headerRow: {
         flexDirection: "row",
@@ -33,14 +33,14 @@ export default StyleSheet.create({
     modalToggle: {
         // marginBottom: 10,
         padding: 10,
-        alignSelf: "center"
+        alignSelf: "center",
     },
     modalClose: {
         marginTop: 20,
-        marginBottom: 0
+        marginBottom: 0,
     },
     modalContent: {
         flex: 1,
-        height: '100%'
-    }
+        height: "100%",
+    },
 });
