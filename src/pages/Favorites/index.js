@@ -4,16 +4,17 @@ import Swipeable from "react-native-swipeable";
 import { View, TouchableOpacity, Text, Image } from "react-native";
 import { connect } from "react-redux";
 import { Feather } from "@expo/vector-icons";
-
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useNavigation } from '@react-navigation/native';
+
 import globalStyles from "../../globalStyle/globalStyles";
-import profilePic from "../../assets/defaultUserImage.png";
 import styles from "./styles";
+import profilePic from "../../assets/defaultUserImage.png";
 
 import Header from "../../components/Header";
 
 const btns = [
-    <TouchableOpacity onPress={() => {}} style={styles.touch}>
+    <TouchableOpacity onPress={() => { }} style={styles.touch}>
         <Feather
             name="trash-2"
             style={styles.deleteText}
@@ -22,6 +23,7 @@ const btns = [
         />
     </TouchableOpacity>,
 ];
+
 
 class Favorites extends Component {
     changeOrder = (newState) => {
@@ -42,7 +44,6 @@ class Favorites extends Component {
                     style={{
                         ...styles.itemContainer,
                     }}
-                    onPressIn={drag}
                 >
                     <View
                         style={{
@@ -50,7 +51,12 @@ class Favorites extends Component {
                             elevation: isActive ? 3 : 1,
                         }}
                     >
-                        <MaterialCommunityIcons name="drag" size={40} />
+                        <TouchableOpacity
+
+                            onPressIn={drag}
+                        >
+                            <MaterialCommunityIcons name="drag" size={40} />
+                        </TouchableOpacity>
                         <Image source={profilePic} style={styles.profilePic} />
                         <Text style={styles.profName}>{item.name}</Text>
                     </View>
@@ -80,12 +86,12 @@ class Favorites extends Component {
                         />
                     </View>
                 ) : (
-                    <View style={styles.msgContainer}>
-                        <Text style={styles.msg}>
-                            Você não possui nenhum professor salvo ainda!
+                        <View style={styles.msgContainer}>
+                            <Text style={styles.msg}>
+                                Você não possui nenhum professor salvo ainda!
                         </Text>
-                    </View>
-                )}
+                        </View>
+                    )}
             </View>
         );
     }
