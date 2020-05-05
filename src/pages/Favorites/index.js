@@ -25,7 +25,10 @@ const btns = [
 ];
 
 
+
 class Favorites extends Component {
+    // navigation = useNavigation();
+
     changeOrder = (newState) => {
         this.props.changeOrder(newState.data);
     };
@@ -33,6 +36,10 @@ class Favorites extends Component {
     deleteProf = (id) => {
         this.props.deleteProf(id);
     };
+
+    // toCards = () => {
+    //     navigation.navigate('Card')
+    // }
 
     renderItem = ({ item, index, drag, isActive }) => {
         return (
@@ -59,6 +66,9 @@ class Favorites extends Component {
                         </TouchableOpacity>
                         <Image source={profilePic} style={styles.profilePic} />
                         <Text style={styles.profName}>{item.name}</Text>
+                        <TouchableOpacity onPress={() => this.deleteProf(item.id)} style={styles.trash} >
+                            <Feather name='trash-2' color='red' size={20} />
+                        </TouchableOpacity>
                     </View>
                 </TouchableOpacity>
             </Swipeable>

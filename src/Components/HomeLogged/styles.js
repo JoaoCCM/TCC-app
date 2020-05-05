@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
         bottom: 10,
     },
     favList: {
-        marginTop: 10,
+        marginTop: 25,
     },
     listContainer: {
         flexDirection: "row",

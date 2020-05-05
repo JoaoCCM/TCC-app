@@ -84,6 +84,10 @@ const styles = StyleSheet.create({
         fontFamily: "montserrat-regular",
         color: "grey",
     },
+    trash: {
+        alignItems: 'center',
+        justifyContent: 'center'
+    }
 });
 
 export default styles;

@@ -4,7 +4,6 @@ const styles = StyleSheet.create({
     loginContainer: {
         flex: 1,
         backgroundColor: "#fbfbfb",
-        // fontFamily: "montserrat-regular",
     },
     searchContainer: {
         flex: 1,
