@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## Release [0.0.9] - 28-05-2020
+
+### Added
+- Image Picker
+
+
 ## Release [0.0.8] - 23-04-2020
 
 ### Added

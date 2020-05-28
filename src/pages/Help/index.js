@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Text, ScrollView } from "react-native";
 import DropDownItem from "react-native-drop-down-item";
-import { Feather } from "@expo/vector-icons";
 
 import globalStyles from "../../globalStyle/globalStyles";
 import styles from "./styles";
@@ -17,6 +16,37 @@ const qNa = [
     { title: "question 4", body: "2bdui2dbiubde" },
 ];
 
+const getHelp = () => {
+    return (
+        <View style={styles.questionsContainer}>
+            <ScrollView>
+                {qNa
+                    ? qNa.map((item, i) => {
+                          return (
+                              <DropDownItem
+                                  style={styles.dropdown}
+                                  key={i}
+                                  contentVisible={false}
+                                  invisibleImage={arrowDown}
+                                  visibleImage={arrowUp}
+                                  header={
+                                      <View style={styles.headerContent}>
+                                          <Text style={styles.headerText}>
+                                              {item.title}
+                                          </Text>
+                                      </View>
+                                  }
+                              >
+                                  <Text style={styles.body}>{item.body}</Text>
+                              </DropDownItem>
+                          );
+                      })
+                    : null}
+            </ScrollView>
+        </View>
+    );
+};
+
 export default function Help() {
     return (
         <View style={globalStyles.container}>
@@ -29,35 +59,7 @@ export default function Help() {
                     fringilla urna.
                 </Text>
             </View>
-
-            <View style={styles.questionsContainer}>
-                <ScrollView>
-                    {qNa
-                        ? qNa.map((item, i) => {
-                            return (
-                                <DropDownItem
-                                    style={styles.dropdown}
-                                    key={i}
-                                    contentVisible={false}
-                                    invisibleImage={arrowDown}
-                                    visibleImage={arrowUp}
-                                    header={
-                                        <View style={styles.headerContent}>
-                                            <Text style={styles.headerText}>
-                                                {item.title}
-                                            </Text>
-                                        </View>
-                                    }
-                                >
-                                    <Text style={styles.body}>
-                                        {item.body}
-                                    </Text>
-                                </DropDownItem>
-                            );
-                        })
-                        : null}
-                </ScrollView>
-            </View>
+            {getHelp()}
         </View>
     );
 }

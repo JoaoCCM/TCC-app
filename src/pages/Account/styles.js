@@ -7,20 +7,24 @@ export default StyleSheet.create({
         paddingTop: 30,
     },
     userPhoto: {
-        width: 100,
-        height: 100,
+        width: 110,
+        height: 110,
+    },
+    addImg: {
+        resizeMode: "contain",
+        bottom: 45,
+        left: 45,
     },
     userName: {
         fontSize: 25,
         color: "#333",
-        paddingTop: 20,
-        fontFamily: 'montserrat-medium',
+        // paddingTop: 10,
+        fontFamily: "montserrat-medium",
         // fontWeight: "bold",
     },
     container: {
-        justifyContent: 'center',
-        alignItems: 'center'
-
+        justifyContent: "center",
+        alignItems: "center",
     },
     infoContainer: {
         height: 170,
@@ -32,34 +36,33 @@ export default StyleSheet.create({
         padding: 10,
     },
     info: {
-        marginLeft: 15
+        marginLeft: 15,
     },
     text: {
         marginTop: 20,
-        fontFamily: 'montserrat-regular',
-        fontSize: 17
+        fontFamily: "montserrat-regular",
+        fontSize: 17,
     },
     passwordLink: {
         marginTop: 20,
-        fontFamily: 'montserrat-regular',
+        fontFamily: "montserrat-regular",
         fontSize: 17,
-        color: '#6A82FB',
-        textDecorationLine: 'underline'
+        color: "#6A82FB",
+        textDecorationLine: "underline",
     },
     edit: {
-        alignItems: 'flex-end',
+        alignItems: "flex-end",
         marginRight: 10,
     },
     logout: {
-        alignItems: 'flex-end',
+        alignItems: "flex-end",
         padding: 20,
-        marginRight: 15
+        marginRight: 15,
     },
     logoutText: {
-        color: 'red',
-        fontFamily: 'montserrat-regular',
+        color: "red",
+        fontFamily: "montserrat-regular",
         fontSize: 17,
-        textDecorationLine: 'underline'
-    }
-
+        textDecorationLine: "underline",
+    },
 });

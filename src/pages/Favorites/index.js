@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import DraggableFlatList from "react-native-draggable-flatlist";
-import Swipeable from "react-native-swipeable";
+// import Swipeable from "react-native-swipeable";
 import { View, TouchableOpacity, Text, Image } from "react-native";
 import { connect } from "react-redux";
 import { Feather } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
+import Swipeable from "react-native-gesture-handler/Swipeable";
 
 import globalStyles from "../../globalStyle/globalStyles";
 import styles from "./styles";
@@ -14,7 +15,7 @@ import profilePic from "../../assets/defaultUserImage.png";
 import Header from "../../components/Header";
 
 const btns = [
-    <TouchableOpacity onPress={() => { }} style={styles.touch}>
+    <TouchableOpacity onPress={() => {}} style={styles.touch}>
         <Feather
             name="trash-2"
             style={styles.deleteText}
@@ -23,8 +24,6 @@ const btns = [
         />
     </TouchableOpacity>,
 ];
-
-
 
 class Favorites extends Component {
     // navigation = useNavigation();
@@ -41,37 +40,42 @@ class Favorites extends Component {
     //     navigation.navigate('Card')
     // }
 
+    getRightContent = () => {
+        return (
+            <TouchableOpacity>
+                <Feather name="trash" size={20} color="#fff" />
+            </TouchableOpacity>
+        );
+    };
+
     renderItem = ({ item, index, drag, isActive }) => {
         return (
-            <Swipeable
-                leftButtons={btns}
-                onLeftActionRelease={() => deleteProf(item.id)}
+            <TouchableOpacity
+                style={{
+                    ...styles.itemContainer,
+                }}
             >
-                <TouchableOpacity
-                    style={{
-                        ...styles.itemContainer,
-                    }}
-                >
+                <Swipeable onSwipeableLeftOpen={this.getRightContent}>
                     <View
                         style={{
                             ...styles.listContainer,
                             elevation: isActive ? 3 : 1,
                         }}
                     >
-                        <TouchableOpacity
-
-                            onPressIn={drag}
-                        >
+                        <TouchableOpacity onPressIn={drag}>
                             <MaterialCommunityIcons name="drag" size={40} />
                         </TouchableOpacity>
                         <Image source={profilePic} style={styles.profilePic} />
                         <Text style={styles.profName}>{item.name}</Text>
-                        <TouchableOpacity onPress={() => this.deleteProf(item.id)} style={styles.trash} >
-                            <Feather name='trash-2' color='red' size={20} />
+                        <TouchableOpacity
+                            onPress={() => this.deleteProf(item.id)}
+                            style={styles.trash}
+                        >
+                            <Feather name="trash-2" color="red" size={20} />
                         </TouchableOpacity>
                     </View>
-                </TouchableOpacity>
-            </Swipeable>
+                </Swipeable>
+            </TouchableOpacity>
         );
     };
 
@@ -96,12 +100,12 @@ class Favorites extends Component {
                         />
                     </View>
                 ) : (
-                        <View style={styles.msgContainer}>
-                            <Text style={styles.msg}>
-                                Você não possui nenhum professor salvo ainda!
+                    <View style={styles.msgContainer}>
+                        <Text style={styles.msg}>
+                            Você não possui nenhum professor salvo ainda!
                         </Text>
-                        </View>
-                    )}
+                    </View>
+                )}
             </View>
         );
     }

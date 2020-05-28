@@ -1,18 +1,63 @@
-import React from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { connect } from "react-redux";
+import * as ImagePicker from "expo-image-picker";
+import Constants from "expo-constants";
+import * as Permissions from "expo-permissions";
 
 import Header from "../../components/Header";
 
 import styles from "./styles";
 import globalStyles from "../../globalStyle/globalStyles";
 import defaultUser from "../../assets/defaultUserImage.png";
+import addImg from "../../assets/addImg.png";
 
 function Account(props) {
+    const [image, setImage] = useState(null);
+
     const { user } = props;
+
+    useEffect(() => {
+        getPermissionAsync();
+    });
+
+    const getPermissionAsync = async () => {
+        if (Constants.platform.ios) {
+            const { status } = await Permissions.askAsync(
+                Permissions.CAMERA_ROLL
+            );
+            if (status !== "granted") {
+                alert(
+                    "Sorry, we need camera roll permissions to make this work!"
+                );
+            }
+        }
+    };
+
+    const _pickImage = async () => {
+        try {
+            let result = await ImagePicker.launchImageLibraryAsync({
+                mediaTypes: ImagePicker.MediaTypeOptions.All,
+                allowsEditing: true,
+                aspect: [4, 3],
+                quality: 1,
+            });
+            if (!result.cancelled) {
+                this.setState({ image: result.uri });
+            }
+
+            console.log(result);
+        } catch (E) {
+            console.log(E);
+        }
+    };
+
     return (
-        <View style={globalStyles.container}>
+        <ScrollView
+            showsVerticalScrollIndicator={false}
+            style={globalStyles.container}
+        >
             <Header />
             <View style={styles.imageContainer}>
                 <Image
@@ -20,6 +65,15 @@ function Account(props) {
                     source={defaultUser}
                     resizeMode="contain"
                 />
+
+                <TouchableOpacity
+                    activeOpacity={0.8}
+                    style={styles.addImg}
+                    onPress={() => _pickImage()}
+                >
+                    <Image source={addImg} />
+                </TouchableOpacity>
+
                 <Text style={styles.userName}>{user.name}</Text>
             </View>
             <View style={styles.container}>
@@ -41,7 +95,7 @@ function Account(props) {
                     <Text style={styles.logoutText}>Logout</Text>
                 </TouchableOpacity>
             </View>
-        </View>
+        </ScrollView>
     );
 }
 
