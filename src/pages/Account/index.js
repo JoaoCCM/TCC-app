@@ -14,7 +14,7 @@ import defaultUser from "../../assets/defaultUserImage.png";
 import addImg from "../../assets/addImg.png";
 
 function Account(props) {
-    const [image, setImage] = useState(null);
+    const [imageSrc, setImageSrc] = useState("");
 
     const { user } = props;
 
@@ -44,10 +44,8 @@ function Account(props) {
                 quality: 1,
             });
             if (!result.cancelled) {
-                this.setState({ image: result.uri });
+                setImageSrc(result.uri);
             }
-
-            console.log(result);
         } catch (E) {
             console.log(E);
         }
@@ -60,11 +58,14 @@ function Account(props) {
         >
             <Header />
             <View style={styles.imageContainer}>
-                <Image
-                    style={styles.userPhoto}
-                    source={defaultUser}
-                    resizeMode="contain"
-                />
+                <View style={styles.userPhotoContainer}>
+                    <Image
+                        style={styles.userPhoto}
+                        // source={defaultUser}
+                        source={{ uri: imageSrc }}
+                        resizeMode="contain"
+                    />
+                </View>
 
                 <TouchableOpacity
                     activeOpacity={0.8}

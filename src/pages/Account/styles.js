@@ -8,7 +8,8 @@ export default StyleSheet.create({
     },
     userPhoto: {
         width: 110,
-        height: 110,
+        height: 90,
+        borderRadius: 110 / 2,
     },
     addImg: {
         resizeMode: "contain",
