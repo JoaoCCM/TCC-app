@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
         marginLeft: 15,
         fontFamily: "montserrat-regular",
         fontSize: 18,
-        textTransform: "capitalize",
     },
     body: {
         marginBottom: 15,

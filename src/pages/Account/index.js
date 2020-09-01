@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
-import { Feather } from "@expo/vector-icons";
 import { connect } from "react-redux";
-import * as ImagePicker from "expo-image-picker";
 import Constants from "expo-constants";
+import { Feather } from "@expo/vector-icons";
 import * as Permissions from "expo-permissions";
+import * as ImagePicker from "expo-image-picker";
+import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
 
 import Header from "../../components/Header";
 
@@ -14,7 +14,7 @@ import defaultUser from "../../assets/defaultUserImage.png";
 import addImg from "../../assets/addImg.png";
 
 function Account(props) {
-    const [imageSrc, setImageSrc] = useState("");
+    const [imageSrc, setImageSrc] = useState();
 
     const { user } = props;
 
@@ -40,16 +40,17 @@ function Account(props) {
             let result = await ImagePicker.launchImageLibraryAsync({
                 mediaTypes: ImagePicker.MediaTypeOptions.All,
                 allowsEditing: true,
-                aspect: [4, 3],
+                aspect: [4, 4],
                 quality: 1,
             });
             if (!result.cancelled) {
                 setImageSrc(result.uri);
             }
         } catch (E) {
-            console.log(E);
+            console.error(E);
         }
     };
+    const source = imageSrc ? { uri: imageSrc } : defaultUser;
 
     return (
         <ScrollView
@@ -61,8 +62,7 @@ function Account(props) {
                 <View style={styles.userPhotoContainer}>
                     <Image
                         style={styles.userPhoto}
-                        // source={defaultUser}
-                        source={{ uri: imageSrc }}
+                        source={source}
                         resizeMode="contain"
                     />
                 </View>
@@ -90,11 +90,11 @@ function Account(props) {
                         </View>
                     </View>
                 </View>
-            </View>
-            <View style={styles.logout}>
-                <TouchableOpacity>
-                    <Text style={styles.logoutText}>Logout</Text>
-                </TouchableOpacity>
+                <View style={styles.logout}>
+                    <TouchableOpacity>
+                        <Text style={styles.logoutText}>Logout</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         </ScrollView>
     );

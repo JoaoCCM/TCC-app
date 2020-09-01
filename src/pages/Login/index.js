@@ -20,7 +20,7 @@ export default function Login() {
     const navigation = useNavigation();
 
     const toCadastro = () => {
-        navigation.navigate('Register')
+        navigation.navigate("Register");
     };
 
     return (
@@ -39,16 +39,23 @@ export default function Login() {
             <View style={styles.or}>
                 <Text style={styles.orText}>ou</Text>
             </View>
-            <View style={styles.loginOpt}>
-                <TouchableOpacity onPress={() => setEmailLoginOpen(true)}>
-                    <Image source={emailIcon} style={styles.loginIcon} />
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => console.log("face clicked")}>
-                    <Image source={faceIcon} style={styles.loginIcon} />
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => console.log("google clicked")}>
-                    <Image source={googleIcon} style={styles.loginIcon} />
-                </TouchableOpacity>
+            <View style={styles.loginContent}>
+                <Text style={styles.loginText}>Entre: </Text>
+                <View style={styles.loginOpt}>
+                    <TouchableOpacity onPress={() => setEmailLoginOpen(true)}>
+                        <Image source={emailIcon} style={styles.loginIcon} />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => console.log("face clicked")}
+                    >
+                        <Image source={faceIcon} style={styles.loginIcon} />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => console.log("google clicked")}
+                    >
+                        <Image source={googleIcon} style={styles.loginIcon} />
+                    </TouchableOpacity>
+                </View>
             </View>
         </View>
     );

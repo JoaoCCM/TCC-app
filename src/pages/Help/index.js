@@ -10,10 +10,13 @@ import arrowDown from "../../assets/ArrowDown.png";
 import Header from "../../components/Header";
 
 const qNa = [
-    { title: "question 1", body: "2bdui2dbiubde" },
-    { title: "question 2", body: "2bdui2dbiubde" },
-    { title: "question 3", body: "2bdui2dbiubde" },
-    { title: "question 4", body: "2bdui2dbiubde" },
+    {
+        title: "Qual o máximo de pessoas?",
+        body: "No máximo de 3 pessoas na equipe para desenvolver o TCC",
+    },
+    { title: "Quais são as modalidades?", body: "2bdui2dbiubde" },
+    { title: "Onde está o edital?", body: "2bdui2dbiubde" },
+    { title: "Qual a função de um Orientador?", body: "2bdui2dbiubde" },
 ];
 
 const getHelp = () => {

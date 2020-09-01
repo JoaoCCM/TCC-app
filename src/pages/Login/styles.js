@@ -77,9 +77,16 @@ const styles = StyleSheet.create({
         position: "absolute",
         bottom: 10,
     },
+    loginContent: {
+        marginTop: 20,
+        paddingHorizontal: 65,
+    },
+    loginText: {
+        fontSize: 16,
+        fontFamily: "montserrat-medium",
+    },
     loginOpt: {
-        marginTop: 30,
-        paddingHorizontal: 50,
+        marginTop: 10,
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-evenly",

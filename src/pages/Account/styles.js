@@ -31,10 +31,10 @@ export default StyleSheet.create({
         height: 170,
         borderRadius: 8,
         elevation: 2,
-        // alignItems: 'flex-start',
-        width: 300,
+        backgroundColor: "#fff",
+        width: 350,
         marginTop: 30,
-        padding: 10,
+        paddingHorizontal: 10,
     },
     info: {
         marginLeft: 15,
@@ -56,9 +56,10 @@ export default StyleSheet.create({
         marginRight: 10,
     },
     logout: {
+        width: 350,
+        paddingVertical: 20,
+        marginRight: 35,
         alignItems: "flex-end",
-        padding: 20,
-        marginRight: 15,
     },
     logoutText: {
         color: "red",
