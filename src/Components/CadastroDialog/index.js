@@ -11,6 +11,7 @@ export default function CadastroDialog(props) {
 
     return (
         <Dialog
+            width="90%"
             visible={visible}
             onTouchOutside={() => {
                 closeDialog();

@@ -135,7 +135,7 @@ export default function Cadastro() {
                                             label="Curso"
                                             data={cursos}
                                             dropdownOffset={{
-                                                top: 32,
+                                                top: 10,
                                                 left: 0,
                                             }}
                                             fontSize={19}

@@ -43,13 +43,13 @@ export default function routes() {
 
                         if (route.name === "Home") {
                             iconName = focused ? "home" : "home-outline";
-                        } else if (route.name === "Help") {
+                        } else if (route.name === "Help Me") {
                             iconName = focused
                                 ? "help-circle"
                                 : "help-circle-outline";
-                        } else if (route.name === "Account") {
+                        } else if (route.name === "Conta") {
                             iconName = focused ? "account" : "account-outline";
-                        } else if (route.name === "Favorites") {
+                        } else if (route.name === "Favoritos") {
                             iconName = focused
                                 ? "cards-heart"
                                 : "heart-outline";
@@ -72,9 +72,9 @@ export default function routes() {
                 }}
             >
                 <TabNav.Screen name="Home" component={StackRoutes} />
-                <TabNav.Screen name="Favorites" component={Favorites} />
-                <TabNav.Screen name="Account" component={Account} />
-                <TabNav.Screen name="Help" component={Help} />
+                <TabNav.Screen name="Favoritos" component={Favorites} />
+                <TabNav.Screen name="Conta" component={Account} />
+                <TabNav.Screen name="Help Me" component={Help} />
                 {/* <TabNav.Screen name="Card" component={ProfCards} /> */}
             </TabNav.Navigator>
         </NavigationContainer>

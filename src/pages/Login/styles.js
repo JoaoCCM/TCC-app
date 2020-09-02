@@ -84,6 +84,8 @@ const styles = StyleSheet.create({
     loginText: {
         fontSize: 16,
         fontFamily: "montserrat-medium",
+        paddingBottom: 5,
+        textAlign: "center",
     },
     loginOpt: {
         marginTop: 10,

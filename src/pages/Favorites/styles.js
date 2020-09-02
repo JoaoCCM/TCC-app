@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-evenly",
         alignItems: "center",
         marginTop: 10,
-        paddingVertical: 5,
+        paddingVertical: 10,
 
         backgroundColor: "white",
         borderBottomWidth: 1,
@@ -34,17 +34,18 @@ const styles = StyleSheet.create({
     },
     listContainer: {
         flexDirection: "row",
+        alignItems: "center",
         width: "100%",
     },
     draggableContainer: {
         flex: 4,
     },
     profilePic: {
-        width: 40,
-        height: 40,
+        width: 45,
+        height: 45,
+        borderRadius: 25,
         marginLeft: 10,
     },
-
     profName: {
         width: 200,
         height: 50,
@@ -85,9 +86,9 @@ const styles = StyleSheet.create({
         color: "grey",
     },
     trash: {
-        alignItems: 'center',
-        justifyContent: 'center'
-    }
+        alignItems: "center",
+        justifyContent: "center",
+    },
 });
 
 export default styles;

@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
         borderBottomColor: "rgba(51, 51, 51, 0.80)",
         textAlignVertical: "center",
         marginTop: 10,
+        marginBottom: 10,
         alignSelf: "stretch",
     },
     passwordContainer: {
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
         alignSelf: "stretch",
     },
     passwordInput: {
-        width: 240,
+        width: "93%",
         height: 50,
     },
     submitContainer: {
@@ -27,6 +28,10 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "space-between",
         marginTop: 20,
+        width: "100%",
+    },
+    loginSocialMedia: {
+        flexDirection: "row",
     },
     btnSubmit: {
         borderWidth: 1,

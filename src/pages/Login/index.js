@@ -40,7 +40,7 @@ export default function Login() {
                 <Text style={styles.orText}>ou</Text>
             </View>
             <View style={styles.loginContent}>
-                <Text style={styles.loginText}>Entre: </Text>
+                <Text style={styles.loginText}>Entre</Text>
                 <View style={styles.loginOpt}>
                     <TouchableOpacity onPress={() => setEmailLoginOpen(true)}>
                         <Image source={emailIcon} style={styles.loginIcon} />

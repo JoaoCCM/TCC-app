@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, TouchableOpacity } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { StyleSheet } from "react-native";
@@ -9,7 +9,7 @@ export default function EyeShowPasswd({ showPassword, eyeIcon, height }) {
             <TouchableOpacity onPress={showPassword}>
                 <Feather
                     name={eyeIcon}
-                    size={17}
+                    size={20}
                     style={styles.eye}
                     color="#6A82FB"
                 />

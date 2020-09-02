@@ -55,45 +55,49 @@ function Account(props) {
     return (
         <ScrollView
             showsVerticalScrollIndicator={false}
-            style={globalStyles.container}
+            contentContainerStyle={globalStyles.container}
         >
             <Header />
-            <View style={styles.imageContainer}>
-                <View style={styles.userPhotoContainer}>
-                    <Image
-                        style={styles.userPhoto}
-                        source={source}
-                        resizeMode="contain"
-                    />
-                </View>
-
-                <TouchableOpacity
-                    activeOpacity={0.8}
-                    style={styles.addImg}
-                    onPress={() => _pickImage()}
-                >
-                    <Image source={addImg} />
-                </TouchableOpacity>
-
-                <Text style={styles.userName}>{user.name}</Text>
-            </View>
             <View style={styles.container}>
-                <View style={styles.infoContainer}>
-                    <View style={styles.info}>
-                        <Text style={styles.text}>{user.email}</Text>
-                        <Text style={styles.text}>{user.course}</Text>
-                        <Text style={styles.passwordLink}>Trocar a Senha</Text>
-                        <View style={styles.edit}>
-                            <TouchableOpacity>
-                                <Feather name="edit" size={22} />
-                            </TouchableOpacity>
+                <View style={styles.imageContainer}>
+                    <View style={styles.userPhotoContainer}>
+                        <Image
+                            style={styles.userPhoto}
+                            source={source}
+                            resizeMode="contain"
+                        />
+                    </View>
+
+                    <TouchableOpacity
+                        activeOpacity={0.8}
+                        style={styles.addImg}
+                        onPress={() => _pickImage()}
+                    >
+                        <Image source={addImg} />
+                    </TouchableOpacity>
+
+                    <Text style={styles.userName}>{user.name}</Text>
+                </View>
+                <View style={styles.formContainer}>
+                    <View style={styles.infoContainer}>
+                        <View style={styles.info}>
+                            <Text style={styles.text}>{user.email}</Text>
+                            <Text style={styles.text}>{user.course}</Text>
+                            <Text style={styles.passwordLink}>
+                                Trocar a Senha
+                            </Text>
+                            <View style={styles.edit}>
+                                <TouchableOpacity>
+                                    <Feather name="edit" size={22} />
+                                </TouchableOpacity>
+                            </View>
                         </View>
                     </View>
-                </View>
-                <View style={styles.logout}>
-                    <TouchableOpacity>
-                        <Text style={styles.logoutText}>Logout</Text>
-                    </TouchableOpacity>
+                    <View style={styles.logout}>
+                        <TouchableOpacity>
+                            <Text style={styles.logoutText}>Logout</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </View>
         </ScrollView>

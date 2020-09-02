@@ -1,6 +1,10 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: "center",
+    },
     imageContainer: {
         justifyContent: "flex-start",
         alignItems: "center",
@@ -23,7 +27,7 @@ export default StyleSheet.create({
         fontFamily: "montserrat-medium",
         // fontWeight: "bold",
     },
-    container: {
+    formContainer: {
         justifyContent: "center",
         alignItems: "center",
     },

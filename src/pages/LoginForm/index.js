@@ -21,7 +21,7 @@ export default function LoginForm() {
         <View style={styles.loginFormContainer}>
             <Formik
                 initialValues={{ email: "", password: "" }}
-                onSubmit={() => { }}
+                onSubmit={() => {}}
             >
                 {(formikProps) => (
                     <View style={styles.inputContainer}>
@@ -53,18 +53,20 @@ export default function LoginForm() {
                             />
                         </View>
                         <View style={styles.submitContainer}>
-                            <TouchableOpacity>
-                                <Image
-                                    source={faceIcon}
-                                    style={styles.faceIcon}
-                                />
-                            </TouchableOpacity>
-                            <TouchableOpacity>
-                                <Image
-                                    source={googleIcon}
-                                    style={styles.googleIcon}
-                                />
-                            </TouchableOpacity>
+                            <View style={styles.loginSocialMedia}>
+                                <TouchableOpacity>
+                                    <Image
+                                        source={faceIcon}
+                                        style={styles.faceIcon}
+                                    />
+                                </TouchableOpacity>
+                                <TouchableOpacity>
+                                    <Image
+                                        source={googleIcon}
+                                        style={styles.googleIcon}
+                                    />
+                                </TouchableOpacity>
+                            </View>
                             <TouchableOpacity style={styles.btnSubmit}>
                                 <Text style={styles.btnText}>Entre</Text>
                             </TouchableOpacity>

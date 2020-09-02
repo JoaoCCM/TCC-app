@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
     body: {
-        marginBottom: 15,
+        marginBottom: 30,
         marginLeft: 15,
         fontFamily: "montserrat-regular",
         fontSize: 18,

@@ -71,7 +71,7 @@ class Favorites extends Component {
                             onPress={() => this.deleteProf(item.id)}
                             style={styles.trash}
                         >
-                            <Feather name="trash-2" color="red" size={20} />
+                            <Feather name="trash-2" color="red" size={22} />
                         </TouchableOpacity>
                     </View>
                 </Swipeable>
