@@ -45,7 +45,7 @@ export default function Login() {
                     <TouchableOpacity onPress={() => setEmailLoginOpen(true)}>
                         <Image source={emailIcon} style={styles.loginIcon} />
                     </TouchableOpacity>
-                    <TouchableOpacity
+                    {/* <TouchableOpacity
                         onPress={() => console.log("face clicked")}
                     >
                         <Image source={faceIcon} style={styles.loginIcon} />
@@ -54,7 +54,7 @@ export default function Login() {
                         onPress={() => console.log("google clicked")}
                     >
                         <Image source={googleIcon} style={styles.loginIcon} />
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
             </View>
         </View>

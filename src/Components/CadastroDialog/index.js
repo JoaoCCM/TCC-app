@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import Dialog, { DialogContent } from "react-native-popup-dialog";
 import { View, Keyboard, TouchableWithoutFeedback, Text } from "react-native";
+import { loginContext } from "../../Context/loginContext";
 
 import styles from "./styles";
 import { Feather } from "@expo/vector-icons";
 import LoginForm from "../../pages/LoginForm";
 
 export default function CadastroDialog(props) {
+    const { toggleLogin } = useContext(loginContext);
+
     const { visible = false, closeDialog } = props;
 
     return (
@@ -46,7 +49,10 @@ export default function CadastroDialog(props) {
                                 onPress={() => closeDialog()}
                             />
                         </View>
-                        <LoginForm />
+                        <LoginForm
+                            toggleLogin={toggleLogin}
+                            closeDialog={closeDialog}
+                        />
                     </View>
                 </TouchableWithoutFeedback>
             </DialogContent>

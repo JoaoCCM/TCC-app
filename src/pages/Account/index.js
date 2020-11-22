@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { connect } from "react-redux";
 import Constants from "expo-constants";
 import { Feather } from "@expo/vector-icons";
 import * as Permissions from "expo-permissions";
 import * as ImagePicker from "expo-image-picker";
 import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
+import { loginContext } from "../../Context/loginContext";
 import Header from "../../components/Header";
 
 import styles from "./styles";
@@ -14,6 +16,9 @@ import defaultUser from "../../assets/defaultUserImage.png";
 import addImg from "../../assets/addImg.png";
 
 function Account(props) {
+    const navigation = useNavigation();
+    const { toggleLogin } = useContext(loginContext);
+
     const [imageSrc, setImageSrc] = useState();
 
     const { user } = props;
@@ -51,6 +56,12 @@ function Account(props) {
         }
     };
     const source = imageSrc ? { uri: imageSrc } : defaultUser;
+
+    const logout = () => {
+        AsyncStorage.clear();
+        toggleLogin();
+        navigation.navigate("Home");
+    };
 
     return (
         <ScrollView
@@ -94,7 +105,7 @@ function Account(props) {
                         </View>
                     </View>
                     <View style={styles.logout}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={logout}>
                             <Text style={styles.logoutText}>Logout</Text>
                         </TouchableOpacity>
                     </View>

@@ -6,13 +6,20 @@ class LoginContextProvider extends Component {
     state = {
         logged: false,
     };
+    setLogin = (isLogged) => {
+        this.setState({ logged: isLogged });
+    };
     toggleLogin = () => {
         this.setState({ logged: !this.state.logged });
     };
     render() {
         return (
             <loginContext.Provider
-                value={{ ...this.state, toggleLogin: this.toggleLogin }}
+                value={{
+                    ...this.state,
+                    toggleLogin: this.toggleLogin,
+                    setLogin: this.setLogin,
+                }}
             >
                 {this.props.children}
             </loginContext.Provider>

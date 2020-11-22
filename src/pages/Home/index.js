@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import {
     View,
     Text,
@@ -7,6 +7,7 @@ import {
     Keyboard,
     TouchableWithoutFeedback,
 } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import globalStyles from "../../globalStyle/globalStyles";
 import { loginContext } from "../../Context/loginContext";
@@ -18,7 +19,15 @@ import Header from "../../components/Header";
 import HomeLogged from "../../components/HomeLogged";
 
 export default function Home() {
-    const { logged } = useContext(loginContext);
+    const { logged, setLogin } = useContext(loginContext);
+
+    useEffect(() => {
+        const getUserData = async () => {
+            const userData = await AsyncStorage.getItem("userData");
+            setLogin(!!userData);
+        };
+        getUserData();
+    }, []);
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>

@@ -1,15 +1,18 @@
 import React, { useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { View, TextInput, Text, TouchableOpacity, Image } from "react-native";
 import { Formik } from "formik";
-
-import styles from "./styles";
+import api from "../../api/axios";
 
 import googleIcon from "../../assets/logar-google.png";
 import faceIcon from "../../assets/logar-facebook.png";
 
 import EyeShowPasswd from "../../components/EyeShowPasswd";
 
-export default function LoginForm() {
+import styles from "./styles";
+
+const LoginForm = ({ toggleLogin, closeDialog }) => {
+    const [formError, setFormError] = useState(false);
     const [showPass, setShowPassword] = useState(false);
     const [eyeIcon, setEyeIcon] = useState("eye-off");
 
@@ -17,16 +20,50 @@ export default function LoginForm() {
         setShowPassword(!showPass);
         showPass ? setEyeIcon("eye-off") : setEyeIcon("eye");
     }
+
+    const signin = async (email, senha) => {
+        try {
+            const body = { email, senha };
+            const { data } = await api.post("signIn", body);
+
+            await AsyncStorage.setItem("userData", JSON.stringify(data));
+
+            api.defaults.headers.common[
+                "Authorization"
+            ] = `bearer ${data.token}`;
+
+            closeDialog();
+            toggleLogin();
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const handleSubmit = async ({ email, senha }) => {
+        if (!email || !senha) {
+            return setFormError(true);
+        }
+        return await signin(email.trim(), senha);
+    };
+
+    const hasErrorClass = formError ? styles.errorInput : {};
+
+    const inputClass = {
+        ...styles.input,
+        ...hasErrorClass,
+    };
+
     return (
         <View style={styles.loginFormContainer}>
             <Formik
-                initialValues={{ email: "", password: "" }}
-                onSubmit={() => {}}
+                initialValues={{ email: "", senha: "" }}
+                onSubmit={handleSubmit}
             >
                 {(formikProps) => (
                     <View style={styles.inputContainer}>
                         <TextInput
-                            style={styles.input}
+                            name="email"
+                            style={inputClass}
                             placeholder="E-mail"
                             value={formikProps.values.email}
                             onChangeText={formikProps.handleChange("email")}
@@ -34,16 +71,15 @@ export default function LoginForm() {
                         />
                         <View style={styles.passwordContainer}>
                             <TextInput
+                                name="senha"
                                 style={{
-                                    ...styles.input,
+                                    ...inputClass,
                                     ...styles.passwordInput,
                                 }}
                                 placeholder="Senha"
-                                value={formikProps.values.password}
-                                onChangeText={formikProps.handleChange(
-                                    "password"
-                                )}
-                                onBlur={formikProps.handleBlur("password")}
+                                value={formikProps.values.senha}
+                                onChangeText={formikProps.handleChange("senha")}
+                                onBlur={formikProps.handleBlur("senha")}
                                 secureTextEntry={!showPass}
                             />
                             <EyeShowPasswd
@@ -67,7 +103,10 @@ export default function LoginForm() {
                                     />
                                 </TouchableOpacity>
                             </View>
-                            <TouchableOpacity style={styles.btnSubmit}>
+                            <TouchableOpacity
+                                style={styles.btnSubmit}
+                                onPress={formikProps.handleSubmit}
+                            >
                                 <Text style={styles.btnText}>Entre</Text>
                             </TouchableOpacity>
                         </View>
@@ -76,4 +115,6 @@ export default function LoginForm() {
             </Formik>
         </View>
     );
-}
+};
+
+export default LoginForm;

@@ -15,6 +15,9 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         alignSelf: "stretch",
     },
+    errorInput: {
+        borderBottomColor: "red",
+    },
     passwordContainer: {
         flexDirection: "row",
         alignSelf: "stretch",
