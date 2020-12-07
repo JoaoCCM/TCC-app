@@ -11,9 +11,9 @@ export default StyleSheet.create({
         paddingTop: 30,
     },
     userPhoto: {
-        width: 110,
-        height: 90,
-        borderRadius: 110 / 2,
+        width: 150,
+        height: 110,
+        borderRadius: 300 / 2,
     },
     addImg: {
         resizeMode: "contain",

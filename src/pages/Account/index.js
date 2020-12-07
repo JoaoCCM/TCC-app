@@ -10,6 +10,8 @@ import { useNavigation } from "@react-navigation/native";
 import { loginContext } from "../../Context/loginContext";
 import Header from "../../components/Header";
 
+import { findUser } from "../../api/user";
+
 import styles from "./styles";
 import globalStyles from "../../globalStyle/globalStyles";
 import defaultUser from "../../assets/defaultUserImage.png";
@@ -17,15 +19,25 @@ import addImg from "../../assets/addImg.png";
 
 function Account(props) {
     const navigation = useNavigation();
+    const [userData, setUserData] = useState();
     const { toggleLogin } = useContext(loginContext);
 
     const [imageSrc, setImageSrc] = useState();
 
-    const { user } = props;
-
     useEffect(() => {
         getPermissionAsync();
-    });
+
+        getUserInfo();
+    }, []);
+
+    const getUserInfo = async () => {
+        const token = await AsyncStorage.getItem("userData");
+
+        const { data } = await findUser(token.replace(/"/g, ""));
+
+        setUserData(data[0]);
+        setImageSrc(data[0].foto);
+    };
 
     const getPermissionAsync = async () => {
         if (Constants.platform.ios) {
@@ -48,11 +60,11 @@ function Account(props) {
                 aspect: [4, 4],
                 quality: 1,
             });
-            if (!result.cancelled) {
-                setImageSrc(result.uri);
-            }
-        } catch (E) {
-            console.error(E);
+            if (!result.cancelled) setImageSrc(result.uri);
+
+            console.log(result.uri);
+        } catch (error) {
+            console.error(error);
         }
     };
     const source = imageSrc ? { uri: imageSrc } : defaultUser;
@@ -62,6 +74,10 @@ function Account(props) {
         toggleLogin();
         navigation.navigate("Home");
     };
+
+    if (!userData) return null;
+
+    const { nome, curso, email } = userData;
 
     return (
         <ScrollView
@@ -87,13 +103,13 @@ function Account(props) {
                         <Image source={addImg} />
                     </TouchableOpacity>
 
-                    <Text style={styles.userName}>{user.name}</Text>
+                    <Text style={styles.userName}>{nome}</Text>
                 </View>
                 <View style={styles.formContainer}>
                     <View style={styles.infoContainer}>
                         <View style={styles.info}>
-                            <Text style={styles.text}>{user.email}</Text>
-                            <Text style={styles.text}>{user.course}</Text>
+                            <Text style={styles.text}>{email}</Text>
+                            <Text style={styles.text}>{curso}</Text>
                             <Text style={styles.passwordLink}>
                                 Trocar a Senha
                             </Text>

@@ -4,6 +4,8 @@ import { View, TextInput, Text, TouchableOpacity, Image } from "react-native";
 import { Formik } from "formik";
 import api from "../../api/axios";
 
+import { signIn } from "../../api/user";
+
 import googleIcon from "../../assets/logar-google.png";
 import faceIcon from "../../assets/logar-facebook.png";
 
@@ -24,13 +26,13 @@ const LoginForm = ({ toggleLogin, closeDialog }) => {
     const signin = async (email, senha) => {
         try {
             const body = { email, senha };
-            const { data } = await api.post("signIn", body);
+            const {
+                data: { token },
+            } = await signIn(body);
 
-            await AsyncStorage.setItem("userData", JSON.stringify(data));
+            await AsyncStorage.setItem("userData", JSON.stringify(token));
 
-            api.defaults.headers.common[
-                "Authorization"
-            ] = `bearer ${data.token}`;
+            api.defaults.headers.common["Authorization"] = `bearer ${token}`;
 
             closeDialog();
             toggleLogin();
