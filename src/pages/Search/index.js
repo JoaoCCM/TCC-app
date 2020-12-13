@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import * as _ from "lodash";
 import {
   View,
   Text,
@@ -11,9 +12,7 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { getAreas } from "../../api/teacher";
-import { Chip } from "react-native-paper";
-
+import { getAreas, searchForTerms } from "../../api/teacher";
 import globalStyles from "../../globalStyle/globalStyles";
 import styles from "./styles";
 import search from "../../assets/magGlass.png";
@@ -21,6 +20,8 @@ import search from "../../assets/magGlass.png";
 export default function Search() {
   const navigation = useNavigation();
   const [areas, setAreas] = useState([]);
+  const [searchText, setSearchText] = useState('');
+  const [filterAreas, setFilterAreas] = useState([]);
   const [chosenAreas, setChosenAreas] = useState([]);
 
   useEffect(() => {
@@ -49,14 +50,35 @@ export default function Search() {
     setChosenAreas(areas);
   }
 
-  function toCards() {
+  const toCards = async () => {
+    const teacherList = await getSearchForTerms();
+    console.log(teacherList)
     navigation.navigate("ProfCards");
   }
 
   const getAreasApi = async () => {
     const { data } = await getAreas();
     setAreas(data);
+    setFilterAreas(data)
   };
+
+  const getSearchForTerms = async () => {
+    let result = await Promise.all(
+      [...chosenAreas, searchText].map(async (search) => {
+        const { data } = await searchForTerms({ search })
+        return data
+      })
+    );
+
+    const joinArrays = _.flattenDeep(result)
+    return _.uniq(joinArrays, 'nome');
+  };
+
+  const onChangeText = (text) => {
+    const filterAreas = areas.filter(it => it.includes(text))
+    setFilterAreas(filterAreas)
+    setSearchText(text)
+  }
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -78,7 +100,7 @@ export default function Search() {
             placeholder="Busque palavras chave"
             underlineColorAndroid="#333"
             accessibilityLabel="Search Input"
-            onChange={() => {}}
+            onChangeText={text => onChangeText(text)}
           />
         </View>
         <View>
@@ -89,9 +111,9 @@ export default function Search() {
             <View>
               <ScrollView persistentScrollbar={true} style={{ flexGrow: 0 }}>
                 <View style={styles.chipContainer}>
-                  {areas.map((item, index) => (
+                  {filterAreas.map((item) => (
                     <View
-                      key={index}
+                      key={item}
                       style={
                         isSelected(item) ? styles.chipSelected : styles.chip
                       }
@@ -111,11 +133,11 @@ export default function Search() {
               </ScrollView>
             </View>
           </View>
-          <View style={styles.searchBtn}>
-            <TouchableOpacity style={styles.btn} onPress={toCards}>
-              <Text style={styles.text}>Aplicar</Text>
-            </TouchableOpacity>
-          </View>
+        </View>
+        <View style={styles.searchBtn}>
+          <TouchableOpacity style={styles.btn} onPress={toCards}>
+            <Text style={styles.text}>Aplicar</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </TouchableWithoutFeedback>

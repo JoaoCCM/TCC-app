@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     marginTop: 25,
   },
   chipView: {
-    maxHeight: "35%",
+    maxHeight: "55%",
   },
   chipTitle: {
     fontSize: 20,
@@ -51,7 +51,6 @@ const styles = StyleSheet.create({
   searchContainer: {
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 30,
   },
   input: {
     width: "85%",
@@ -63,7 +62,6 @@ const styles = StyleSheet.create({
     fontFamily: "montserrat-regular",
   },
   searchBtn: {
-    marginTop: 260,
     alignItems: "center",
     flexDirection: "column",
     justifyContent: "flex-end",
