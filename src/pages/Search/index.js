@@ -52,8 +52,8 @@ export default function Search() {
 
   const toCards = async () => {
     const teacherList = await getSearchForTerms();
-    console.log(teacherList)
-    navigation.navigate("ProfCards");
+    const teachers = teacherList ?? []
+    navigation.navigate("ProfCards", { teachers });
   }
 
   const getAreasApi = async () => {
@@ -70,8 +70,10 @@ export default function Search() {
       })
     );
 
+
     const joinArrays = _.flattenDeep(result)
-    return _.uniq(joinArrays, 'nome');
+
+    return  _.uniqWith(joinArrays, _.isEqual);
   };
 
   const onChangeText = (text) => {
