@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     prof: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'flex-start',
+        justifyContent: 'space-between',
         padding: 10
     },
 
@@ -38,8 +38,9 @@ const styles = StyleSheet.create({
     },
 
     profImage: {
-        width: 35,
-        height: 35
+        width: 50,
+        borderRadius: 25,
+        height: 50
     },
 
     info: {

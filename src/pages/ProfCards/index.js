@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, Image, Platform, TouchableOpacity } from "react-native";
 import Swiper from "react-native-deck-swiper";
 import { connect } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+import { findFavorites } from "../../api/user";
 
 import Header from "../../components/Header";
 import Empty from "../../components/Empty";
@@ -15,7 +18,20 @@ import heartRed from "../../assets/heartRed.png";
 import normalHeart from "../../assets/normalHeart.png";
 
 function ProfCards({ route }) {
+  const [favoriteList, setFavoriteList] = useState();
   const { teachers } = route.params;
+
+  useEffect(() => {
+    getUserFavorites();
+  }, []);
+
+  const getUserFavorites = async () => {
+    const token = await AsyncStorage.getItem("userData");
+
+    const { data } = await findFavorites(token.replace(/"/g, ""));
+    const favoriteProf = data.reduce((acc, item) => [...acc, item.nome], []);
+    setFavoriteList(favoriteProf);
+  };
 
   const navigation = useNavigation();
   const msg = "Oops...";
@@ -32,11 +48,16 @@ function ProfCards({ route }) {
     navigation.navigate("ProfInfo", { card });
   }
 
-  const favorite = () => {
-    setFav(!fav);
-  }
+  const favorite = (teacher) => {
+    if(!favoriteList.includes(teacher)) {
+      setFavoriteList([...favoriteList, teacher]);
+    }
+  };
 
-  const getHeartTime = () => fav ? "heart-outline" : "heart"
+  const getHeartTime = (teacher) =>
+    favoriteList.includes(teacher) ? "heart" : "heart-outline";
+
+  if (!favoriteList) return null;
 
   return (
     <>
@@ -51,16 +72,16 @@ function ProfCards({ route }) {
             renderCard={(teacher) =>
               teacher && (
                 <View style={styles.card}>
-                  <TouchableOpacity
-                    onPress={favorite}
+                  {/* <TouchableOpacity
+                    onPress={() => favorite(teacher.nome)}
                     style={styles.heartContainer}
                   >
                     <MaterialCommunityIcons
-                      name={getHeartTime()}
+                      name={getHeartTime(teacher.nome)}
                       size={30}
                       style={styles.heart}
                     />
-                  </TouchableOpacity>
+                  </TouchableOpacity> */}
                   <View style={styles.infoFoto}>
                     {teacher.foto ? (
                       <Image

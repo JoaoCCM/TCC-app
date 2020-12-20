@@ -25,6 +25,7 @@ export default function Home() {
         const getUserData = async () => {
             const userData = await AsyncStorage.getItem("userData");
             setLogin(!!userData);
+            console.log(userData)
         };
         getUserData();
     }, []);
