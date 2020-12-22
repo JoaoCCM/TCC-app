@@ -65,7 +65,6 @@ function ProfCards({ route }) {
       <View style={globalStyles.container}>
         {teachers.length && teachers.length !== index ? (
           <Swiper
-            goBackToPreviousCardOnSwipeLeft={true}
             backgroundColor={"transparent"}
             useViewOverflow={Platform.OS === "ios"}
             cards={teachers}
