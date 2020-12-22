@@ -62,7 +62,6 @@ function Account(props) {
             });
             if (!result.cancelled) setImageSrc(result.uri);
 
-            console.log(result.uri);
         } catch (error) {
             console.error(error);
         }
@@ -120,12 +119,12 @@ function Account(props) {
                             </View>
                         </View>
                     </View>
-                    <View style={styles.logout}>
-                        <TouchableOpacity onPress={logout}>
-                            <Text style={styles.logoutText}>Logout</Text>
-                        </TouchableOpacity>
-                    </View>
                 </View>
+            </View>
+            <View style={styles.logout}>
+                <TouchableOpacity onPress={logout}>
+                    <Text style={styles.logoutText}>Logout</Text>
+                </TouchableOpacity>
             </View>
         </ScrollView>
     );

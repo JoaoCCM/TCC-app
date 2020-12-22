@@ -61,7 +61,7 @@ export default StyleSheet.create({
     },
     logout: {
         width: 350,
-        paddingVertical: 20,
+        paddingBottom: 40,
         marginRight: 35,
         alignItems: "flex-end",
     },

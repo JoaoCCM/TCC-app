@@ -8,7 +8,7 @@ export default function VoltarLink({ link }) {
 
     return (
         <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Text style={styles.link}>{"<< Voltar"}</Text>
+            <Text style={styles.link}>{"< Voltar"}</Text>
         </TouchableOpacity>
     );
 }

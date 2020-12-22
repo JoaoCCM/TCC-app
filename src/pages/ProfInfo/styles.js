@@ -1,60 +1,91 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
+  title: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
 
-    title: {
-        justifyContent: 'center',
-        alignItems: 'center'
+  titleText: {
+    fontFamily: "montserrat-medium",
+    fontSize: 24,
+  },
+
+  align: {
+    alignItems: "center",
+    marginTop: 10,
+  },
+
+  infoContainer: {
+    marginTop: 20,
+    borderRadius: 8,
+    width: 300,
+    elevation: 2,
+  },
+
+  prof: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: 20,
+  },
+
+  profNome: {
+    alignSelf: 'center',
+    fontWeight: "bold",
+    fontFamily: "montserrat-regular",
+    fontSize: 18,
+  },
+
+  profImage: {
+    width: 50,
+    borderRadius: 25,
+    height: 50,
+  },
+
+  info: {
+    justifyContent: "flex-start",
+    padding: 15,
+  },
+
+  textinfo: {
+    paddingVertical: 10,
+    fontFamily: "montserrat-regular",
+    fontSize: 18,
+    color: "#6A82FB",
+    textDecorationLine: "underline",
+  },
+
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22,
+    backgroundColor: "rgba(0,0,0,0.2)"
+  },
+
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 10,
+    padding: 10,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
     },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5
+  },
 
-    titleText: {
-        fontFamily: 'montserrat-medium',
-        fontSize: 24
-    },
-
-    align: {
-        alignItems: 'center',
-        marginTop: 10
-    },
-
-    infoContainer: {
-        marginTop: 20,
-        borderRadius: 8,
-        width: 300,
-        elevation: 2
-    },
-
-    prof: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: 10
-    },
-
-    profNome: {
-        marginLeft: 20,
-        fontFamily: 'montserrat-regular',
-        fontSize: 17
-    },
-
-    profImage: {
-        width: 50,
-        borderRadius: 25,
-        height: 50
-    },
-
-    info: {
-        justifyContent: 'flex-start',
-        padding: 15
-    },
-
-    textinfo: {
-        paddingVertical: 10,
-        fontFamily: 'montserrat-regular',
-        fontSize: 18,
-        color: '#6A82FB',
-        textDecorationLine: 'underline'
-    }
+  modalClose: {
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    width: '100%',
+    height: '65%'
+  }
 
 });
 

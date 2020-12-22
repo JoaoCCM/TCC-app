@@ -9,6 +9,9 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
 } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+
 import { LinearGradient } from "expo-linear-gradient";
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
@@ -53,6 +56,7 @@ export default function Search() {
   const toCards = async () => {
     const teacherList = await getSearchForTerms();
     const teachers = teacherList ?? []
+    await AsyncStorage.setItem("searchParams", JSON.stringify(chosenAreas));
     navigation.navigate("ProfCards", { teachers });
   }
 
