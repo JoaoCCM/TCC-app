@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
     marginTop: 25,
   },
   chipView: {
+    minHeight: "55%",
     maxHeight: "55%",
   },
   chipTitle: {

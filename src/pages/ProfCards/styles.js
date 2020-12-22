@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
   },
 
   profInfo: {
+    fontSize: 20,
     marginTop: 50,
     textDecorationLine: "underline",
     color: "#6A82FB",

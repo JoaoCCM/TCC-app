@@ -57,9 +57,7 @@ export default function Help() {
             <View style={styles.initialInfo}>
                 <Text style={styles.title}>Help Me!</Text>
                 <Text style={styles.content}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
-                    aliquam, purus sit amet luctus venenatis, lectus magna
-                    fringilla urna.
+                    Algumas perguntas comuns pra quem está começando no processo do desenvolvimento do TCC.
                 </Text>
             </View>
             {getHelp()}
