@@ -18,27 +18,14 @@ import heartRed from "../../assets/heartRed.png";
 import normalHeart from "../../assets/normalHeart.png";
 
 function ProfCards({ route }) {
-  const [favoriteList, setFavoriteList] = useState();
+
   const { teachers } = route.params;
-
-  useEffect(() => {
-    getUserFavorites();
-  }, []);
-
-  const getUserFavorites = async () => {
-    const token = await AsyncStorage.getItem("userData");
-
-    const { data } = await findFavorites(token.replace(/"/g, ""));
-    const favoriteProf = data.reduce((acc, item) => [...acc, item.nome], []);
-    setFavoriteList(favoriteProf);
-  };
 
   const navigation = useNavigation();
   const msg = "Oops...";
   const msg2 = "Nenhum professor encontrado";
 
   const [index, setIndex] = useState(0);
-  const [fav, setFav] = useState(false);
 
   const onSwipe = () => {
     setIndex(index + 1);
@@ -47,17 +34,6 @@ function ProfCards({ route }) {
   function toProfInfo(card) {
     navigation.navigate("ProfInfo", { card });
   }
-
-  const favorite = (teacher) => {
-    if(!favoriteList.includes(teacher)) {
-      setFavoriteList([...favoriteList, teacher]);
-    }
-  };
-
-  const getHeartTime = (teacher) =>
-    favoriteList.includes(teacher) ? "heart" : "heart-outline";
-
-  if (!favoriteList) return null;
 
   return (
     <>
@@ -72,16 +48,6 @@ function ProfCards({ route }) {
             renderCard={(teacher) =>
               teacher && (
                 <View style={styles.card}>
-                  {/* <TouchableOpacity
-                    onPress={() => favorite(teacher.nome)}
-                    style={styles.heartContainer}
-                  >
-                    <MaterialCommunityIcons
-                      name={getHeartTime(teacher.nome)}
-                      size={30}
-                      style={styles.heart}
-                    />
-                  </TouchableOpacity> */}
                   <View style={styles.infoFoto}>
                     {teacher.foto ? (
                       <Image
@@ -135,6 +101,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     deleteProf: (id) => {
       dispatch({ type: "DELETE_PROF", id: id });
+    },
+    updateProfList: (profList) => {
+      dispatch({ type: "UPDATE_PROF", profList: profList });
     },
   };
 };

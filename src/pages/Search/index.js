@@ -3,14 +3,14 @@ import * as _ from "lodash";
 import {
   View,
   Text,
-  ScrollView,
-  TextInput,
-  TouchableOpacity,
   Keyboard,
+  TextInput,
+  ScrollView,
+  TouchableOpacity,
+  ActivityIndicator,
   TouchableWithoutFeedback,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
 
 import { LinearGradient } from "expo-linear-gradient";
 import { Feather } from "@expo/vector-icons";
@@ -18,12 +18,10 @@ import { useNavigation } from "@react-navigation/native";
 import { getAreas, searchForTerms } from "../../api/teacher";
 import globalStyles from "../../globalStyle/globalStyles";
 import styles from "./styles";
-import search from "../../assets/magGlass.png";
-
 export default function Search() {
   const navigation = useNavigation();
   const [areas, setAreas] = useState([]);
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState("");
   const [filterAreas, setFilterAreas] = useState([]);
   const [chosenAreas, setChosenAreas] = useState([]);
 
@@ -55,36 +53,51 @@ export default function Search() {
 
   const toCards = async () => {
     const teacherList = await getSearchForTerms();
-    const teachers = teacherList ?? []
+    const teachers = teacherList ?? [];
     await AsyncStorage.setItem("searchParams", JSON.stringify(chosenAreas));
     navigation.navigate("ProfCards", { teachers });
-  }
+  };
 
   const getAreasApi = async () => {
     const { data } = await getAreas();
     setAreas(data);
-    setFilterAreas(data)
+    setFilterAreas(data);
   };
 
   const getSearchForTerms = async () => {
     let result = await Promise.all(
       [...chosenAreas, searchText].map(async (search) => {
-        const { data } = await searchForTerms({ search })
-        return data
+        const { data } = await searchForTerms({ search });
+        return data;
       })
     );
 
+    const joinArrays = _.flattenDeep(result);
 
-    const joinArrays = _.flattenDeep(result)
-
-    return  _.uniqWith(joinArrays, _.isEqual);
+    return _.uniqWith(joinArrays, _.isEqual);
   };
 
   const onChangeText = (text) => {
-    const filterAreas = areas.filter(it => it.includes(text))
-    setFilterAreas(filterAreas)
-    setSearchText(text)
-  }
+    const filterAreas = areas.filter((it) => it.includes(text));
+    setFilterAreas(filterAreas);
+    setSearchText(text);
+  };
+
+  const getFilterAreas = () =>
+    filterAreas.map((item, index) => (
+      <View
+        key={`${index}${item}`}
+        style={isSelected(item) ? styles.chipSelected : styles.chip}
+      >
+        <TouchableOpacity
+          style={styles.chipContent}
+          onPress={() => handleClick(item)}
+        >
+          <Text style={styles.chipText}>{item}</Text>
+          {isSelected(item) && <Feather name="x" size={20} color={"white"} />}
+        </TouchableOpacity>
+      </View>
+    ));
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -106,7 +119,7 @@ export default function Search() {
             placeholder="Busque palavras chave"
             underlineColorAndroid="#333"
             accessibilityLabel="Search Input"
-            onChangeText={text => onChangeText(text)}
+            onChangeText={(text) => onChangeText(text)}
           />
         </View>
         <View>
@@ -117,24 +130,17 @@ export default function Search() {
             <View>
               <ScrollView persistentScrollbar={true} style={{ flexGrow: 0 }}>
                 <View style={styles.chipContainer}>
-                  {filterAreas.map((item) => (
-                    <View
-                      key={item}
-                      style={
-                        isSelected(item) ? styles.chipSelected : styles.chip
-                      }
-                    >
-                      <TouchableOpacity
-                        style={styles.chipContent}
-                        onPress={() => handleClick(item)}
-                      >
-                        <Text style={styles.chipText}>{item}</Text>
-                        {isSelected(item) && (
-                          <Feather name="x" size={20} color={"white"} />
-                        )}
-                      </TouchableOpacity>
+                  {!filterAreas.length ? (
+                    <View style={{...styles.chipView, ...styles.loadingContent }}>
+                       <ActivityIndicator
+                          visible={true}
+                          size={"large"}
+                          color="#6A82FB"
+                        />
                     </View>
-                  ))}
+                  ) : (
+                    getFilterAreas()
+                  )}
                 </View>
               </ScrollView>
             </View>

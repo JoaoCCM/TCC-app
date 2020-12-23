@@ -9,6 +9,12 @@ const styles = StyleSheet.create({
     minHeight: "55%",
     maxHeight: "55%",
   },
+  loadingContent: {
+    paddingVertical: 50,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: "center",
+  },
   chipTitle: {
     fontSize: 20,
     paddingBottom: 10,
