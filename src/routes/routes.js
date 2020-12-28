@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { loginContext } from "../Context/loginContext";
 
 const TabNav = createBottomTabNavigator();
 const AppStack = createStackNavigator();
@@ -33,6 +34,7 @@ function StackRoutes() {
 }
 
 export default function routes() {
+    const { logged } = useContext(loginContext);
     return (
         <NavigationContainer>
             <TabNav.Navigator
@@ -72,8 +74,8 @@ export default function routes() {
                 }}
             >
                 <TabNav.Screen name="Home" component={StackRoutes} />
-                <TabNav.Screen name="Favoritos" component={Favorites} />
-                <TabNav.Screen name="Conta" component={Account} />
+                {logged && <TabNav.Screen name="Favoritos" component={Favorites} />}
+                {logged && <TabNav.Screen name="Conta" component={Account} />}
                 <TabNav.Screen name="Help Me" component={Help} />
                 {/* <TabNav.Screen name="Card" component={ProfCards} /> */}
             </TabNav.Navigator>

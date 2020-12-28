@@ -1,26 +1,23 @@
-import React, { useEffect, useState } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import {
-  View,
-  Modal,
-  Text,
-  Image,
-  TouchableOpacity,
-  TouchableHighlight,
-} from "react-native";
+import React, { useEffect, useState, useContext } from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { findFavorites, addFavorite, removeFavorite } from "../../api/user";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { View, Modal, Text, Image, TouchableOpacity } from "react-native";
+
 import { getTeacherInfo } from "../../api/teacher";
+import { findFavorites, addFavorite, removeFavorite } from "../../api/user";
+import { loginContext } from "../../Context/loginContext"
+
+import Header from "../../components/Header";
 import Loading from "../../components/Loading";
+import VoltarLink from "../../components/VoltarLink";
+import photo from "../../assets/defaultUserImage.png";
 
 import globalStyles from "../../globalStyle/globalStyles";
 import styles from "./styles";
-import photo from "../../assets/defaultUserImage.png";
 
-import Header from "../../components/Header";
-import VoltarLink from "../../components/VoltarLink";
+const ProfInfo = ({ route }) => {
+  const { logged } = useContext(loginContext);
 
-export default function ProfInfo({ route }) {
   const { card: teacher } = route.params;
 
   const [modalVisible, setModalVisible] = useState(false);
@@ -44,6 +41,8 @@ export default function ProfInfo({ route }) {
   const getUserFavorites = async () => {
     setIsLoading(true);
     const newToken = await AsyncStorage.getItem("userData");
+
+    if(!newToken) return setFavoriteList([]);
 
     const { data } = await findFavorites(newToken.replace(/"/g, ""));
 
@@ -154,13 +153,15 @@ export default function ProfInfo({ route }) {
               ) : (
                 <Image source={photo} style={styles.profImage} />
               )}
-              <TouchableOpacity onPress={() => favorite(teacher.nome)}>
-                <MaterialCommunityIcons
-                  name={getHeartTime(teacher.nome)}
-                  size={30}
-                  style={styles.heart}
-                />
-              </TouchableOpacity>
+              {logged && (
+                <TouchableOpacity onPress={() => favorite(teacher.nome)}>
+                  <MaterialCommunityIcons
+                    name={getHeartTime(teacher.nome)}
+                    size={30}
+                    style={styles.heart}
+                  />
+                </TouchableOpacity>
+              )}
             </View>
             <Text style={styles.profNome}>{teacher.nome}</Text>
             <View style={styles.info}>
@@ -185,3 +186,5 @@ export default function ProfInfo({ route }) {
     </>
   );
 }
+
+export default ProfInfo

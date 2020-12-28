@@ -5,6 +5,7 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./src/reducers/rootReducer";
 import LoginContextProvider from "./src/Context/loginContext";
+import FavoritesContextProvider from "./src/Context/favoritesContext";
 
 import Routes from "./src/routes/routes";
 
@@ -24,9 +25,11 @@ export default function App() {
     if (fontsLoaded) {
         return (
             <Provider store={store}>
-                <LoginContextProvider>
-                    <Routes />
-                </LoginContextProvider>
+                <FavoritesContextProvider>
+                  <LoginContextProvider>
+                      <Routes />
+                  </LoginContextProvider>
+                </FavoritesContextProvider>
             </Provider>
         );
     } else {

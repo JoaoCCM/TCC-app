@@ -1,21 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, Image, Platform, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
 import Swiper from "react-native-deck-swiper";
+import { View, Text, Image, Platform, TouchableOpacity } from "react-native";
+
 import { connect } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { findFavorites } from "../../api/user";
 
+import globalStyles from "../../globalStyle/globalStyles";
+import userPhoto from "../../assets/defaultUserImage.png";
 import Header from "../../components/Header";
 import Empty from "../../components/Empty";
 
-import globalStyles from "../../globalStyle/globalStyles";
 import styles from "./styles";
-import userPhoto from "../../assets/defaultUserImage.png";
-import heartRed from "../../assets/heartRed.png";
-import normalHeart from "../../assets/normalHeart.png";
 
 function ProfCards({ route }) {
 

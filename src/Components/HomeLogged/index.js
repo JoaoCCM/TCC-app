@@ -1,19 +1,12 @@
-import React from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  Image,
-  FlatList,
-  KeyboardAvoidingView,
-} from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import React, { useContext } from "react";
 import Swipeable from "react-native-swipeable";
+import { View, Text, TouchableOpacity, Image, FlatList, KeyboardAvoidingView } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
 import { connect } from "react-redux";
 
+import { favoritesContext } from "../../Context/favoritesContext"
 import Empty from "../Empty";
-
 import styles from "./styles";
 import profilePic from "../../assets/defaultUserImage.png";
 import sendMail from "../../assets/Logar-Email.png";
@@ -24,39 +17,32 @@ const btns = [
   </TouchableOpacity>,
 ];
 
-function HomeLogged(props) {
-  const { favorProfs } = props;
+function HomeLogged() {
+  const { favoriteTeacher, removeFromFavorites } = useContext(favoritesContext);
+  const navigation = useNavigation();
 
   const msg = "Nenhum professor salvo.";
   const msg2 = "Comece agora!";
 
-  const navigation = useNavigation();
+  const toFavorites = () => navigation.navigate("Favorites");
 
-  const deleteProf = (id) => {
-    props.deleteProf(id);
-  };
-
-  const toFavorites = () => {
-    navigation.navigate("Favorites");
-  };
-
-  return favorProfs.length ? (
+  return favoriteTeacher.length ? (
     <View style={styles.profListContainer}>
       <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
         <FlatList
           style={styles.favList}
-          data={favorProfs}
+          data={favoriteTeacher}
           showsVerticalScrollIndicator={false}
-          keyExtractor={(favorProfs) => String(favorProfs.id)}
+          keyExtractor={(favoriteTeacher) => String(favoriteTeacher.id)}
           renderItem={({ item: prof }) => (
             <Swipeable
               leftButtons={btns}
-              onLeftActionRelease={() => deleteProf(prof.id)}
+              onLeftActionRelease={() => removeFromFavorites(prof.id)}
             >
               <TouchableOpacity onPress={toFavorites}>
                 <View style={styles.listContainer}>
                   <Image source={profilePic} style={styles.profilePic} />
-                  <Text style={styles.profName}>{prof.name}</Text>
+                  <Text style={styles.profName}>{prof.nome}</Text>
                   <TouchableOpacity
                     onPress={() => console.log("mail composer")}
                   >

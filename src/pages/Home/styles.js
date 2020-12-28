@@ -68,16 +68,16 @@ const styles = StyleSheet.create({
     },
 
     arrowText: {
-        flexDirection: "row-reverse",
-        position: "relative",
+      flexDirection: "row",
+      alignItems: "flex-end",
+      position: "relative",
     },
 
     arrow: {
-        width: 36,
-        height: 36,
+        width: 38,
+        height: 38,
         paddingTop: 5,
         alignItems: "center",
-        position: "absolute",
         bottom: 10,
     },
     loginOpt: {

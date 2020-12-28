@@ -13,12 +13,14 @@ import Header from "../../components/Header";
 import { findUser } from "../../api/user";
 
 import styles from "./styles";
+import Loading from "../../components/Loading";
 import globalStyles from "../../globalStyle/globalStyles";
 import defaultUser from "../../assets/defaultUserImage.png";
 import addImg from "../../assets/addImg.png";
 
 function Account(props) {
     const navigation = useNavigation();
+    const [isLoading, setIsLoading] = useState(false);
     const [userData, setUserData] = useState();
     const { toggleLogin } = useContext(loginContext);
 
@@ -31,15 +33,17 @@ function Account(props) {
     }, []);
 
     const getUserInfo = async () => {
+        setIsLoading(true)
         const token = await AsyncStorage.getItem("userData");
 
         const { data } = await findUser(token.replace(/"/g, ""));
+        setIsLoading(false)
 
         setUserData(data[0]);
         setImageSrc(data[0].foto);
-    };
+      };
 
-    const getPermissionAsync = async () => {
+      const getPermissionAsync = async () => {
         if (Constants.platform.ios) {
             const { status } = await Permissions.askAsync(
                 Permissions.CAMERA_ROLL
@@ -78,7 +82,11 @@ function Account(props) {
 
     const { nome, curso, email } = userData;
 
-    return (
+
+
+    return isLoading ? (
+      <Loading backgroundColor="rgba(0,0,0,0.1)" />
+    ) : (
         <ScrollView
             showsVerticalScrollIndicator={false}
             contentContainerStyle={globalStyles.container}

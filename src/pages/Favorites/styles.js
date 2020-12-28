@@ -2,10 +2,9 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     titleContainer: {
-        flex: 1,
         padding: 50,
         alignItems: "center",
-        marginBottom: 20,
+        marginVertical: 5,
     },
 
     title: {
@@ -38,7 +37,7 @@ const styles = StyleSheet.create({
         width: "100%",
     },
     draggableContainer: {
-        flex: 4,
+        flex: 5,
     },
     profilePic: {
         width: 45,
