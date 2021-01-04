@@ -3,7 +3,6 @@ import Swipeable from "react-native-swipeable";
 import { View, Text, TouchableOpacity, Image, FlatList, KeyboardAvoidingView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
-import { connect } from "react-redux";
 
 import { favoritesContext } from "../../Context/favoritesContext"
 import Empty from "../Empty";
@@ -24,7 +23,7 @@ function HomeLogged() {
   const msg = "Nenhum professor salvo.";
   const msg2 = "Comece agora!";
 
-  const toFavorites = () => navigation.navigate("Favorites");
+  const toTeacherDetails = (teacher) => navigation.navigate("ProfInfo", { teacher });
 
   return favoriteTeacher.length ? (
     <View style={styles.profListContainer}>
@@ -39,9 +38,16 @@ function HomeLogged() {
               leftButtons={btns}
               onLeftActionRelease={() => removeFromFavorites(prof.id)}
             >
-              <TouchableOpacity onPress={toFavorites}>
+              <TouchableOpacity onPress={() => toTeacherDetails(prof)}>
                 <View style={styles.listContainer}>
-                  <Image source={profilePic} style={styles.profilePic} />
+                  {prof.foto ? (
+                    <Image
+                      source={{ uri: prof.foto }}
+                      style={styles.profilePic}
+                    />
+                  ) : (
+                    <Image source={profilePic} style={styles.profilePic} />
+                  )}
                   <Text style={styles.profName}>{prof.nome}</Text>
                   <TouchableOpacity
                     onPress={() => console.log("mail composer")}
@@ -62,19 +68,4 @@ function HomeLogged() {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    user: state.user,
-    favorProfs: state.user.favorProfs,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    deleteProf: (id) => {
-      dispatch({ type: "DELETE_PROF", id: id });
-    },
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(HomeLogged);
+export default HomeLogged;

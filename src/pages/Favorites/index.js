@@ -1,57 +1,28 @@
-import React, { useState, useEffect } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import DraggableFlatList from "react-native-draggable-flatlist";
-
-import { View, TouchableOpacity, Text, Image } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import React, { useContext } from "react";
 import { useNavigation } from "@react-navigation/native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { View, TouchableOpacity, Text, Image } from "react-native";
 import { Feather } from "@expo/vector-icons";
-import { connect } from "react-redux";
-
-import { findFavorites } from "../../api/user";
-import Loading from "../../components/Loading";
-import Header from "../../components/Header";
+import DraggableFlatList from "react-native-draggable-flatlist";
 import Swipeable from "react-native-gesture-handler/Swipeable";
+
+import Header from "../../components/Header";
+import { favoritesContext } from "../../Context/favoritesContext"
 
 import profilePic from "../../assets/defaultUserImage.png";
 
 import globalStyles from "../../globalStyle/globalStyles";
 import styles from "./styles";
 
-const Favorites = ({ changeOrder, deleteProf, favorProfs, updateList }) => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [favoriteList, setFavoriteList] = useState(favorProfs);
+const Favorites = () => {
+  const navigation = useNavigation();
+  const { favoriteTeacher, removeFromFavorites, changeOrder } = useContext(favoritesContext);
 
-  useEffect(() => {
-    getUserFavorites();
-  }, []);
+  const handleChangeOrder = ({ data }) => changeOrder(data);
 
-  const getUserFavorites = async () => {
-    setIsLoading(true);
-    const newToken = await AsyncStorage.getItem("userData");
-
-    const { data } = await findFavorites(newToken.replace(/"/g, ""));
-
-    const favoriteProf = data.reduce(
-      (acc, item, index) => [
-        ...acc,
-        { id: index + 1, nome: item.nome, email: item.email },
-      ],
-      []
-    );
-
-    updateList(favoriteProf);
-    setFavoriteList(favoriteProf);
-    setIsLoading(false);
-  };
-
-  const handleChangeOrder = (newState) => {
-    changeOrder(newState.data);
-  };
-
-  const handleDeleteProf = (id) => {
-    deleteProf(id);
-  };
+  function toProfInfo(teacher) {
+    navigation.navigate("ProfInfo", { teacher });
+  }
 
   const getRightContent = () => {
     return (
@@ -64,9 +35,8 @@ const Favorites = ({ changeOrder, deleteProf, favorProfs, updateList }) => {
   const renderItem = ({ item, index, drag, isActive }) => {
     return (
       <TouchableOpacity
-        style={{
-          ...styles.itemContainer,
-        }}
+        style={styles.itemContainer}
+        onPress={() => toProfInfo(item)}
       >
         <Swipeable onSwipeableLeftOpen={getRightContent}>
           <View
@@ -78,10 +48,17 @@ const Favorites = ({ changeOrder, deleteProf, favorProfs, updateList }) => {
             <TouchableOpacity onPressIn={drag}>
               <MaterialCommunityIcons name="drag" size={40} />
             </TouchableOpacity>
-            <Image source={profilePic} style={styles.profilePic} />
+            {item.foto ? (
+                <Image
+                  source={{ uri: item.foto }}
+                  style={styles.profilePic}
+                />
+              ) : (
+                <Image source={profilePic} style={styles.profilePic} />
+              )}
             <Text style={styles.profName}>{item.nome}</Text>
             <TouchableOpacity
-              onPress={() => handleDeleteProf(item.id)}
+              onPress={() => removeFromFavorites(item.id)}
               style={styles.trash}
             >
               <Feather name="trash-2" color="red" size={22} />
@@ -95,16 +72,15 @@ const Favorites = ({ changeOrder, deleteProf, favorProfs, updateList }) => {
   return (
     <View style={globalStyles.container}>
       <Header />
-      {isLoading && <Loading backgroundColor="rgba(0,0,0,0.2)" />}
       <View style={styles.titleContainer}>
         <Text style={styles.title}>Salvos</Text>
       </View>
-      {favorProfs ? (
+      {favoriteTeacher ? (
         <View style={styles.draggableContainer}>
           <DraggableFlatList
-            data={favorProfs}
+            data={favoriteTeacher}
             renderItem={renderItem}
-            keyExtractor={(item, index) => `draggable-item-${item.id}`}
+            keyExtractor={(item) => `draggable-item-${item.id}`}
             onDragEnd={({ data }) => handleChangeOrder({ data })}
           />
         </View>
@@ -119,25 +95,4 @@ const Favorites = ({ changeOrder, deleteProf, favorProfs, updateList }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    user: state.user,
-    favorProfs: state.user.favorProfs,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    deleteProf: (id) => {
-      dispatch({ type: "DELETE_PROF", id: id });
-    },
-    updateList: (newState) => {
-      dispatch({ type: "UPDATE_LIST", newState: newState });
-    },
-    changeOrder: (newState) => {
-      dispatch({ type: "CHANGE_ORDER", newState: newState });
-    },
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Favorites);
+export default Favorites;

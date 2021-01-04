@@ -5,7 +5,6 @@ import { View, Text, Image, Platform, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 
-
 import globalStyles from "../../globalStyle/globalStyles";
 import userPhoto from "../../assets/defaultUserImage.png";
 import Header from "../../components/Header";
@@ -14,7 +13,6 @@ import Empty from "../../components/Empty";
 import styles from "./styles";
 
 function ProfCards({ route }) {
-
   const { teachers } = route.params;
 
   const navigation = useNavigation();
@@ -27,8 +25,8 @@ function ProfCards({ route }) {
     setIndex(index + 1);
   };
 
-  function toProfInfo(card) {
-    navigation.navigate("ProfInfo", { card });
+  function toProfInfo(teacher) {
+    navigation.navigate("ProfInfo", { teacher });
   }
 
   return (
@@ -45,17 +43,19 @@ function ProfCards({ route }) {
               teacher && (
                 <View style={styles.card}>
                   <View style={styles.infoFoto}>
-                    {teacher.foto ? (
-                      <Image
-                        source={{ uri: teacher.foto }}
-                        style={styles.cardImage}
-                      />
-                    ) : (
-                      <Image
-                        source={userPhoto}
-                        style={styles.cardDefaultImage}
-                      />
-                    )}
+                    <TouchableOpacity onPress={() => toProfInfo(teacher)}>
+                      {teacher.foto ? (
+                        <Image
+                          source={{ uri: teacher.foto }}
+                          style={styles.cardImage}
+                        />
+                      ) : (
+                        <Image
+                          source={userPhoto}
+                          style={styles.cardDefaultImage}
+                        />
+                      )}
+                    </TouchableOpacity>
                   </View>
                   <View style={styles.infoContainer}>
                     <Text style={styles.profName}>{teacher.nome}</Text>

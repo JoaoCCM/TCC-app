@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
   },
 
   infoContainer: {
+    backgroundColor: '#fff',
     marginTop: 20,
     borderRadius: 8,
     width: 300,
@@ -31,6 +32,8 @@ const styles = StyleSheet.create({
   },
 
   profNome: {
+    marginHorizontal: 15,
+    textAlign: 'center',
     alignSelf: 'center',
     fontWeight: "bold",
     fontFamily: "montserrat-regular",
@@ -65,7 +68,8 @@ const styles = StyleSheet.create({
   },
 
   modalView: {
-    margin: 20,
+    margin: 15,
+    marginVertical: 40,
     backgroundColor: "white",
     borderRadius: 10,
     padding: 10,
@@ -77,16 +81,18 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    elevation: 5
+    elevation: 5,
   },
 
   modalClose: {
     flexDirection: "row",
     justifyContent: "flex-end",
-    width: '100%',
-    height: '65%'
+    width: '100%'
+  },
+  modalContent: {
+    flex: 1,
+    backgroundColor: 'red',
   }
-
 });
 
 export default styles;

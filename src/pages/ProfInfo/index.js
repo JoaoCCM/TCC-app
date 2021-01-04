@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { View, Modal, Text, Image, TouchableOpacity } from "react-native";
+import { View, Modal, Text, Image, TouchableOpacity, FlatList } from "react-native";
 
 import { getTeacherInfo } from "../../api/teacher";
-import { findFavorites, addFavorite, removeFavorite } from "../../api/user";
 import { loginContext } from "../../Context/loginContext"
+import { favoritesContext } from "../../Context/favoritesContext"
 
 import Header from "../../components/Header";
 import Loading from "../../components/Loading";
@@ -16,40 +16,34 @@ import globalStyles from "../../globalStyle/globalStyles";
 import styles from "./styles";
 
 const ProfInfo = ({ route }) => {
+  const { favoriteTeacher, removeFromFavorites, addTeacherAsFavorite } = useContext(favoritesContext);
   const { logged } = useContext(loginContext);
 
-  const { card: teacher } = route.params;
+  const { teacher } = route.params;
 
   const [modalVisible, setModalVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [favoriteList, setFavoriteList] = useState();
+  const [searchParams, setSearchParams] = useState([]);
   const [teacherInfos, setTeacherInfos] = useState();
-  const [token, setToken] = useState("");
+  const [modalContent, setModalContent] = useState();
 
   useEffect(() => {
-    getUserFavorites();
-    requestTeacherInfo();
     getSearchParams();
+    requestTeacherInfo();
   }, []);
 
+  const checkIfTeacherIsFavorite = (teacherId) => {
+    return favoriteTeacher.some(({ id }) => id === teacherId )
+  }
+
   const getSearchParams = async () => {
+    setIsLoading(true);
+
     const searchParams = await AsyncStorage.getItem("searchParams")
 
-    return searchParams
-  };
-
-  const getUserFavorites = async () => {
-    setIsLoading(true);
-    const newToken = await AsyncStorage.getItem("userData");
-
-    if(!newToken) return setFavoriteList([]);
-
-    const { data } = await findFavorites(newToken.replace(/"/g, ""));
-
-    const favoriteProf = data.reduce((acc, item) => [...acc, item.nome], []);
-    setToken(newToken.replace(/"/g, ""));
-    setFavoriteList(favoriteProf);
     setIsLoading(false);
+
+    setSearchParams(JSON.parse(searchParams))
   };
 
   const requestTeacherInfo = async () => {
@@ -62,46 +56,54 @@ const ProfInfo = ({ route }) => {
     setTeacherInfos(data);
   };
 
-  const handleAddNewFavorite = async (nome) => {
-    const searchParams = await getSearchParams()
-    const body = {
-      teacherInfo: { nome },
-      searchParams: JSON.parse(searchParams),
-    };
-    setIsLoading(true);
-    const { status } = await addFavorite({ token, body });
+  const handleAddNewFavorite = async (teacher, searchParams) => {
+    const { id, nome, email, foto } = teacher
 
-    if ([200, 204].includes(status)) {
-      setFavoriteList([...favoriteList, nome]);
-    }
-    setIsLoading(false);
+    addTeacherAsFavorite({ id, nome, email, foto }, searchParams)
   };
 
-  const handleRemoveFavorite = async (nome) => {
-    const body = {
-      teacherInfo: { nome },
-    };
-    setIsLoading(true);
-    const { status } = await removeFavorite({ token, body });
-
-    if ([200, 204].includes(status)) {
-      const newList = favoriteList.filter((prof) => prof !== nome);
-      setFavoriteList(newList);
-    }
-    setIsLoading(false);
-  };
+  const handleRemoveFavorite = (id) => removeFromFavorites(id)
 
   const favorite = (teacher) => {
-    if (!favoriteList.includes(teacher)) {
-      return handleAddNewFavorite(teacher);
+    if (!checkIfTeacherIsFavorite(teacher.id)) {
+      return handleAddNewFavorite(teacher, searchParams);
     }
-    return handleRemoveFavorite(teacher);
+    return handleRemoveFavorite(teacher.id);
   };
 
-  const getHeartTime = (teacher) =>
-    favoriteList.includes(teacher) ? "heart" : "heart-outline";
+  const getHeartIcon = (teacherId) => {
+    return checkIfTeacherIsFavorite(teacherId) ? "heart" : "heart-outline";
+  }
 
-  if (!favoriteList || !teacherInfos) return <Loading />;
+  const getFormattedText = (item, value) => {
+    switch (item) {
+      case 'AreaAtuacao':
+        return (
+          <View
+            style={styles.modalContent}
+          >
+            <FlatList
+              style={styles.listAreas}
+              data={value}
+              renderItem={({item}) => <Text>{item}</Text>}
+            />
+          </View>
+        );
+
+      default:
+        return (
+          <Text style={styles.modalText}>Hello World!</Text>
+        );
+    }
+
+  }
+
+  const handleShowInfos = (item) => {
+    console.log(teacherInfos[item].items)
+    const newContent = getFormattedText(item, teacherInfos[item].items)
+    setModalContent(newContent)
+    setModalVisible(true);
+  }
 
   const formatTitle = {
     ProjetoPesquisa: "Projetos e Pesquisas",
@@ -111,6 +113,8 @@ const ProfInfo = ({ route }) => {
     AreaAtuacao: "Áreas de Atuação",
   };
 
+  if (!favoriteTeacher || !teacherInfos) return <Loading />
+
   return (
     <>
       <Header />
@@ -118,10 +122,8 @@ const ProfInfo = ({ route }) => {
         <Modal
           animationType="fade"
           transparent={true}
+          // onBackdropPress={() => setModalVisible(!modalVisible)}
           visible={modalVisible}
-          onRequestClose={() => {
-            Alert.alert("Modal has been closed.");
-          }}
         >
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
@@ -132,15 +134,11 @@ const ProfInfo = ({ route }) => {
                   <MaterialCommunityIcons name="close" size={30} />
                 </TouchableOpacity>
               </View>
-
-              <Text style={styles.modalText}>Hello World!</Text>
+              {modalContent}
             </View>
           </View>
         </Modal>
         <VoltarLink />
-        <View style={styles.title}>
-          <Text style={styles.titleText}>Salvo</Text>
-        </View>
         {isLoading && <Loading backgroundColor="rgba(0,0,0,0.2)" />}
         <View style={styles.align}>
           <View style={styles.infoContainer}>
@@ -154,9 +152,9 @@ const ProfInfo = ({ route }) => {
                 <Image source={photo} style={styles.profImage} />
               )}
               {logged && (
-                <TouchableOpacity onPress={() => favorite(teacher.nome)}>
+                <TouchableOpacity onPress={() => favorite(teacher)}>
                   <MaterialCommunityIcons
-                    name={getHeartTime(teacher.nome)}
+                    name={getHeartIcon(teacher.id)}
                     size={30}
                     style={styles.heart}
                   />
@@ -169,9 +167,7 @@ const ProfInfo = ({ route }) => {
                 item !== "Aluno" ? (
                   <TouchableOpacity
                     key={item}
-                    onPress={() => {
-                      setModalVisible(true);
-                    }}
+                    onPress={() => handleShowInfos(item)}
                   >
                     <Text style={styles.textinfo}>
                       {formatTitle[item] ?? item}

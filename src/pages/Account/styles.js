@@ -5,6 +5,12 @@ export default StyleSheet.create({
         flex: 1,
         justifyContent: "center",
     },
+    formBtnContainer: {
+      marginTop: 15,
+      flexDirection: "row",
+      alignItems: "flex-end",
+      justifyContent: "space-between",
+    },
     imageContainer: {
         justifyContent: "flex-start",
         alignItems: "center",
@@ -32,13 +38,15 @@ export default StyleSheet.create({
         alignItems: "center",
     },
     infoContainer: {
-        height: 170,
+        // height: 170,
         borderRadius: 8,
         elevation: 2,
         backgroundColor: "#fff",
         width: 350,
         marginTop: 30,
-        paddingHorizontal: 10,
+        paddingLeft: 10,
+        paddingRight: 20,
+        paddingVertical: 20,
     },
     info: {
         marginLeft: 15,
@@ -60,9 +68,9 @@ export default StyleSheet.create({
         marginRight: 10,
     },
     logout: {
-        width: 350,
+        marginTop: 20,
         paddingBottom: 40,
-        marginRight: 35,
+        marginRight: 45,
         alignItems: "flex-end",
     },
     logoutText: {
@@ -71,4 +79,27 @@ export default StyleSheet.create({
         fontSize: 17,
         textDecorationLine: "underline",
     },
+    btnSubmit: {
+      borderWidth: 1,
+      borderRadius: 5,
+      borderColor: "#6A82FB",
+      height: 30,
+      width: 100,
+      justifyContent: "center",
+      alignItems: "center",
+      textAlign: "center",
+  },
+  btnText: {
+      fontFamily: "montserrat-medium",
+      fontWeight: "bold",
+      color: "#6A82FB",
+      fontSize: 18,
+  },
+  input: {
+    fontSize: 18,
+    height: 30,
+    marginTop: 10,
+    marginBottom: 10,
+    alignSelf: "stretch",
+},
 });

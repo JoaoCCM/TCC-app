@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { findFavorites, removeFavorite } from "../api/user";
+import { findFavorites, removeFavorite, addFavorite } from "../api/user";
 
 import Loading from "../components/Loading";
 
@@ -27,9 +27,9 @@ const FavoritesContextProvider = ({ children }) => {
     const { data } = await findFavorites(token);
 
     const favoriteProf = data.reduce(
-      (acc, {nome, email, id}, index) => [
+      (acc, { nome, email, id, foto }) => [
         ...acc,
-        { orderPosition: index + 1, id, nome, email },
+        { id, nome, email, foto },
       ],
       []
     );
@@ -40,8 +40,6 @@ const FavoritesContextProvider = ({ children }) => {
   };
 
   const removeFromFavorites = async (id) => {
-    setIsLoading(true);
-
     const body = {
       body: { teacherInfo: { id } },
       token
@@ -49,20 +47,35 @@ const FavoritesContextProvider = ({ children }) => {
 
     const { status } = await removeFavorite(body);
 
-    if(status === 200) removeTeacher(id)
+    if(status === 200) {
+      const newTeacherList = favoriteTeacher.filter((teacher) => teacher.id !== id)
 
-    setIsLoading(false);
+      setFavoriteTeacher(newTeacherList);
+    }
   };
 
-  const addTeacher = (newTeacher) => {
-    const newTeacherList = [...favoriteTeacher, newTeacher];
-    setFavoriteTeacher(newTeacherList);
-  };
+  const changeOrder = (newOrder) => setFavoriteTeacher(newOrder)
 
-  const removeTeacher = (id) => {
-    const newTeacherList = favoriteTeacher.filter((teacher) => teacher.id !== id)
 
-    setFavoriteTeacher(newTeacherList);
+  const addTeacherAsFavorite = async (newTeacher, searchParams) => {
+
+    const { id } = newTeacher
+
+    const body = {
+      body: {
+        teacherInfo: { id },
+        searchParams,
+      },
+      token
+    }
+
+    const { status } = await addFavorite(body);
+
+    if(status === 200) {
+      const newTeacherList = [...favoriteTeacher, newTeacher];
+
+      setFavoriteTeacher(newTeacherList);
+    }
   };
 
   return isLoading ? (
@@ -70,7 +83,8 @@ const FavoritesContextProvider = ({ children }) => {
   ) : (
     <favoritesContext.Provider
       value={{
-        addTeacher,
+        addTeacherAsFavorite,
+        changeOrder,
         removeFromFavorites,
         favoriteTeacher,
       }}
