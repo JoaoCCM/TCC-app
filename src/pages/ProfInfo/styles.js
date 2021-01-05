@@ -58,40 +58,41 @@ const styles = StyleSheet.create({
     color: "#6A82FB",
     textDecorationLine: "underline",
   },
-
-  centeredView: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 22,
-    backgroundColor: "rgba(0,0,0,0.2)"
+  item: {
+    width: 10,
+    height: 10,
   },
-
-  modalView: {
-    margin: 15,
-    marginVertical: 40,
-    backgroundColor: "white",
-    borderRadius: 10,
-    padding: 10,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 10
   },
-
+  bold: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginVertical: 10
+  },
+  listItem: {
+    marginVertical: 10
+  },
   modalClose: {
     flexDirection: "row",
     justifyContent: "flex-end",
     width: '100%'
   },
+  modalView: {
+    backgroundColor: '#fff',
+    marginTop: 50,
+    paddingBottom: 90,
+    marginBottom: 50,
+    borderRadius: 8,
+    width: '100%',
+    elevation: 2,
+    padding: 20
+  },
   modalContent: {
-    flex: 1,
-    backgroundColor: 'red',
+    margin: 15,
   }
 });
 
