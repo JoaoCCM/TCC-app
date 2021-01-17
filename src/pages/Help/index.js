@@ -14,9 +14,8 @@ const qNa = [
         title: "Qual o máximo de pessoas?",
         body: "No máximo de 3 pessoas na equipe para desenvolver o TCC",
     },
-    { title: "Quais são as modalidades?", body: "2bdui2dbiubde" },
-    { title: "Onde está o edital?", body: "2bdui2dbiubde" },
-    { title: "Qual a função de um Orientador?", body: "2bdui2dbiubde" },
+    { title: "Quais são as modalidades?", body: "Monografia; Relato de experiência" },
+    { title: "Qual a função de um Orientador?", body: "O orientador deve guiar o aluno através dos documentos e processos necessários para o TCC acontecer." },
 ];
 
 const getHelp = () => {

@@ -1,27 +1,32 @@
 import React from "react";
 import { Text, TouchableOpacity } from "react-native";
 import { StyleSheet } from "react-native";
+import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
 export default function VoltarLink({ link }) {
-    const navigation = useNavigation();
+  const navigation = useNavigation();
 
-    return (
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Text style={styles.link}>{"< Voltar"}</Text>
-        </TouchableOpacity>
-    );
+  return (
+    <TouchableOpacity  style={styles.contentBack} onPress={() => navigation.goBack()}>
+      <Feather
+        name="chevrons-left"
+        size={27}
+        color="#6A82FB"
+      />
+      <Text style={styles.link}>{"Voltar"}</Text>
+    </TouchableOpacity>
+  );
 }
 
 const styles = StyleSheet.create({
-    link: {
-        color: "#6A82FB",
-        fontSize: 17,
-        padding: 10,
-    },
-    doubleArrow: {
-        width: 20,
-        height: 20,
-        backgroundColor: "red",
-    },
+  contentBack:{
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 20
+  },
+  link: {
+    color: "#6A82FB",
+    fontSize: 17,
+  },
 });

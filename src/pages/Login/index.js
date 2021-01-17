@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
@@ -8,19 +8,27 @@ import styles from "./styles";
 import emailIcon from "../../assets/Logar-Email.png";
 import googleIcon from "../../assets/logar-google.png";
 import faceIcon from "../../assets/logar-facebook.png";
+import { favoritesContext } from "../../Context/favoritesContext"
 
 import Cadastro from "../Cadastro";
 
 export default function Login() {
+    const { getFavorites } = useContext(favoritesContext);
+
     const [emailLoginOpen, setEmailLoginOpen] = useState(false);
 
-    function closeDialog() {
-        setEmailLoginOpen(!emailLoginOpen);
+    const favorite = async () => {
+      await getFavorites();
     }
+
+    const closeDialog = () => {
+      setEmailLoginOpen(!emailLoginOpen);
+    }
+
     const navigation = useNavigation();
 
     const toCadastro = () => {
-        navigation.navigate("Register");
+        navigation.push("Register");
     };
 
     return (
@@ -28,6 +36,7 @@ export default function Login() {
             <CadastroDialog
                 visible={emailLoginOpen}
                 closeDialog={closeDialog}
+                favorite={favorite}
             />
             <View>
                 <TouchableOpacity onPress={toCadastro}>

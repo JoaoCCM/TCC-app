@@ -6,8 +6,8 @@ const styles = StyleSheet.create({
     marginTop: 25,
   },
   chipView: {
-    minHeight: "55%",
-    maxHeight: "55%",
+    minHeight: "75%",
+    maxHeight: "75%",
   },
   loadingContent: {
     paddingVertical: 50,
@@ -56,6 +56,11 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   searchContainer: {
+    justifyContent: "space-between",
+    flex: 1,
+    paddingBottom: 50
+  },
+  searchInputContainer: {
     justifyContent: "center",
     alignItems: "center",
   },

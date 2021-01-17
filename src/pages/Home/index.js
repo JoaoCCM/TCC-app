@@ -40,7 +40,7 @@ export default function Home() {
     const teachers = teacherList ?? [];
     await AsyncStorage.setItem("searchParams", JSON.stringify([searchText]));
 
-    setSearchText('');
+    setSearchText("");
     navigation.navigate("ProfCards", { teachers });
   };
 
@@ -67,9 +67,11 @@ export default function Home() {
               onChangeText={(text) => setSearchText(text)}
               defaultValue={searchText}
             />
-            <TouchableOpacity onPress={toCards}>
-              <Image source={arrow} style={styles.arrow} />
-            </TouchableOpacity>
+            <View style={styles.inputSendBtn}>
+              <TouchableOpacity onPress={toCards}>
+                <Image source={arrow} style={styles.arrow} />
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
         {logged ? <HomeLogged /> : <Login />}

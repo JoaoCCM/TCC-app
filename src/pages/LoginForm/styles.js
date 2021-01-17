@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     submitContainer: {
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "space-between",
+        justifyContent: "flex-end",
         marginTop: 20,
         width: "100%",
     },

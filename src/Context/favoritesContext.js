@@ -39,6 +39,8 @@ const FavoritesContextProvider = ({ children }) => {
     setIsLoading(false);
   };
 
+  const getFavorites = async () => await getUserFavorites();
+
   const removeFromFavorites = async (id) => {
     const body = {
       body: { teacherInfo: { id } },
@@ -83,6 +85,7 @@ const FavoritesContextProvider = ({ children }) => {
   ) : (
     <favoritesContext.Provider
       value={{
+        getFavorites,
         addTeacherAsFavorite,
         changeOrder,
         removeFromFavorites,

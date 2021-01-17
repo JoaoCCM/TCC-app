@@ -1,8 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Swipeable from "react-native-swipeable";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { View, Text, TouchableOpacity, Image, FlatList, KeyboardAvoidingView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
+import * as MailComposer from 'expo-mail-composer';
 
 import { favoritesContext } from "../../Context/favoritesContext"
 import Empty from "../Empty";
@@ -19,9 +21,32 @@ const btns = [
 function HomeLogged() {
   const { favoriteTeacher, removeFromFavorites } = useContext(favoritesContext);
   const navigation = useNavigation();
+  const [userName, setUserName] = useState('')
+  const message = `Olá Professor(a), gostaria de conversar sobre uma possível orientação para o meu TCC. \n\n Quando seria o melhor horário? \n\n\n Atenciosamente, ${userName}`
+
+  function sendMailFunction(email) {
+    try{
+      MailComposer.composeAsync({
+        subject: `Orientação para o TCC`,
+        recipients: [email],
+        body: message
+      })
+    }catch(e){
+      console.error('error', e)
+    }
+  }
 
   const msg = "Nenhum professor salvo.";
   const msg2 = "Comece agora!";
+
+  useEffect(() => {
+    const getUserName = async () => {
+      const nome = await AsyncStorage.getItem("userNome")
+      setUserName(nome.replace(/"/g, ''))
+    }
+
+    getUserName()
+  }, [])
 
   const toTeacherDetails = (teacher) => navigation.navigate("ProfInfo", { teacher });
 
@@ -50,7 +75,7 @@ function HomeLogged() {
                   )}
                   <Text style={styles.profName}>{prof.nome}</Text>
                   <TouchableOpacity
-                    onPress={() => console.log("mail composer")}
+                    onPress={() => sendMailFunction(prof.email)}
                   >
                     <Image source={sendMail} style={styles.sendMail} />
                   </TouchableOpacity>

@@ -189,7 +189,6 @@ const ProfInfo = ({ route }) => {
   };
 
   const handleShowInfos = (item) => {
-    // console.log(teacherInfos[item].items);
     const newContent = getFormattedText(item, teacherInfos[item].items);
     setModalContent(newContent);
     setModalVisible(true);

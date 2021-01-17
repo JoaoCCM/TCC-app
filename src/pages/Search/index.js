@@ -114,42 +114,46 @@ export default function Search() {
         </TouchableOpacity>
 
         <View style={styles.searchContainer}>
-          <TextInput
-            style={styles.input}
-            placeholder="Busque palavras chave"
-            underlineColorAndroid="#333"
-            accessibilityLabel="Search Input"
-            onChangeText={(text) => onChangeText(text)}
-          />
-        </View>
-        <View>
-          <View style={styles.chipView}>
-            <View>
-              <Text style={styles.chipTitle}>Sugestões:</Text>
-            </View>
-            <View>
-              <ScrollView persistentScrollbar={true} style={{ flexGrow: 0 }}>
-                <View style={styles.chipContainer}>
-                  {!filterAreas.length ? (
-                    <View style={{...styles.chipView, ...styles.loadingContent }}>
-                       <ActivityIndicator
+          <View style={styles.searchInputContainer}>
+            <TextInput
+              style={styles.input}
+              placeholder="Busque palavras chave"
+              underlineColorAndroid="#333"
+              accessibilityLabel="Search Input"
+              onChangeText={(text) => onChangeText(text)}
+            />
+          </View>
+          <View>
+            <View style={styles.chipView}>
+              <View>
+                <Text style={styles.chipTitle}>Sugestões:</Text>
+              </View>
+              <View>
+                <ScrollView persistentScrollbar={true} style={{ flexGrow: 0 }}>
+                  <View style={styles.chipContainer}>
+                    {!filterAreas.length ? (
+                      <View
+                        style={{ ...styles.chipView, ...styles.loadingContent }}
+                      >
+                        <ActivityIndicator
                           visible={true}
                           size={"large"}
                           color="#6A82FB"
                         />
-                    </View>
-                  ) : (
-                    getFilterAreas()
-                  )}
-                </View>
-              </ScrollView>
+                      </View>
+                    ) : (
+                      getFilterAreas()
+                    )}
+                  </View>
+                </ScrollView>
+              </View>
             </View>
           </View>
-        </View>
-        <View style={styles.searchBtn}>
-          <TouchableOpacity style={styles.btn} onPress={toCards}>
-            <Text style={styles.text}>Aplicar</Text>
-          </TouchableOpacity>
+          <View style={styles.searchBtn}>
+            <TouchableOpacity style={styles.btn} onPress={toCards}>
+              <Text style={styles.text}>Aplicar</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </TouchableWithoutFeedback>

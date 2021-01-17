@@ -14,13 +14,16 @@ const styles = StyleSheet.create({
   align: {
     alignItems: "center",
     marginTop: 10,
+    flex: 1,
+    justifyContent: "center",
+    paddingBottom: '30%'
   },
 
   infoContainer: {
     backgroundColor: '#fff',
     marginTop: 20,
     borderRadius: 8,
-    width: 300,
+    width: "80%",
     elevation: 2,
   },
 
@@ -43,12 +46,12 @@ const styles = StyleSheet.create({
   profImage: {
     width: 50,
     borderRadius: 25,
-    height: 50,
+    height: 50
   },
 
   info: {
     justifyContent: "flex-start",
-    padding: 15,
+    padding: 25,
   },
 
   textinfo: {

@@ -72,6 +72,10 @@ const styles = StyleSheet.create({
       alignItems: "flex-end",
       position: "relative",
     },
+    inputSendBtn: {
+      position: 'absolute',
+      right: 0
+    },
 
     arrow: {
         width: 38,

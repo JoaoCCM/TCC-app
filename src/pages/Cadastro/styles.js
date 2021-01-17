@@ -29,12 +29,18 @@ export default StyleSheet.create({
         height: 35,
         alignSelf: "stretch",
     },
+    errorInput: {
+      borderBottomColor: "red",
+    },
     inputSenha: {
-        marginEnd: 0,
-        flex: 1,
+      marginEnd: 0,
+      flex: 1,
     },
     cursos: {
-        alignSelf: "stretch",
+      alignSelf: "stretch",
+    },
+    cursosDrop: {
+      borderBottomColor: "red",
     },
     esqueceuSenhaContainer: {
         alignSelf: "stretch",

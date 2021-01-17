@@ -20,7 +20,7 @@ export default StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
         paddingRight: 15,
-        paddingLeft: 5,
+        paddingLeft: 15,
     },
     gradientBar: {
         padding: 8,

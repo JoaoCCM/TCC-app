@@ -11,7 +11,10 @@ export default function Header() {
     const navigation = useNavigation();
 
     const toHome = () => {
-        navigation.navigate("Home");
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      });
     };
 
     const toSearch = () => {

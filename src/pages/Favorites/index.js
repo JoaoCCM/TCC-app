@@ -7,6 +7,7 @@ import DraggableFlatList from "react-native-draggable-flatlist";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 
 import Header from "../../components/Header";
+import Empty from "../../components/Empty";
 import { favoritesContext } from "../../Context/favoritesContext"
 
 import profilePic from "../../assets/defaultUserImage.png";
@@ -69,13 +70,16 @@ const Favorites = () => {
     );
   };
 
+  const msg = "Nenhum professor salvo.";
+  const msg2 = "Comece agora!";
+
   return (
     <View style={globalStyles.container}>
       <Header />
       <View style={styles.titleContainer}>
         <Text style={styles.title}>Salvos</Text>
       </View>
-      {favoriteTeacher ? (
+      {favoriteTeacher.length ? (
         <View style={styles.draggableContainer}>
           <DraggableFlatList
             data={favoriteTeacher}
@@ -86,9 +90,12 @@ const Favorites = () => {
         </View>
       ) : (
         <View style={styles.msgContainer}>
-          <Text style={styles.msg}>
+          {/* <Text style={styles.msg}>
             Você não possui nenhum professor salvo ainda!
-          </Text>
+          </Text> */}
+          <View style={styles.profListContainer}>
+            <Empty msg={msg} msg2={msg2} />
+          </View>
         </View>
       )}
     </View>

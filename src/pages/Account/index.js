@@ -87,7 +87,7 @@ function Account() {
       console.error(error);
     }
   };
-  const source = imageSrc ? { uri: imageSrc } : defaultUser;
+  const source = imageSrc && imageSrc !== "undefined" ? { uri: imageSrc } : defaultUser;
 
   const logout = () => {
     AsyncStorage.clear();
